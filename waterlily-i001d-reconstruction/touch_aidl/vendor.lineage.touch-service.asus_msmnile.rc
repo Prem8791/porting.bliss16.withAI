@@ -1,0 +1,13 @@
+on boot
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/zenmotion
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/swipeup
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/dclick
+
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/zenmotion
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/swipeup
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/dclick
+
+service vendor.touch-hal /vendor/bin/hw/vendor.lineage.touch-service.asus_msmnile
+    class hal
+    user system
+    group system

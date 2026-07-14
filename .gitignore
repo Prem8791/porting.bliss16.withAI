@@ -1,0 +1,3 @@
+# Reproducible source is tracked; interpreter caches are physical-state evidence only.
+**/__pycache__/
+**/*.py[cod]

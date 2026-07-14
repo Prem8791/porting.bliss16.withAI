@@ -1,0 +1,20 @@
+diff --git a/BoardConfigCommon.mk b/BoardConfigCommon.mk
+index 940ecb4..d82f445 100644
+--- a/BoardConfigCommon.mk
++++ b/BoardConfigCommon.mk
+@@ -157,6 +157,7 @@ TARGET_TAP_TO_WAKE_NODE := "/proc/driver/dclick"
+ 
+ # Properties
+ TARGET_SYSTEM_PROP += $(DEVICE_PATH_COMMON)/system.prop
++TARGET_PRODUCT_PROP += $(DEVICE_PATH_COMMON)/product.prop
+ TARGET_VENDOR_PROP += $(DEVICE_PATH_COMMON)/vendor.prop
+ TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH_COMMON)/system_ext.prop
+ TARGET_ODM_PROP += $(DEVICE_PATH_COMMON)/odm.prop
+diff --git a/product.prop b/product.prop
+new file mode 100644
+index 0000000..41051a4
+--- /dev/null
++++ b/product.prop
+@@ -0,0 +1,2 @@
++# eBPF
++ro.bpf.kver_override=5.10.239

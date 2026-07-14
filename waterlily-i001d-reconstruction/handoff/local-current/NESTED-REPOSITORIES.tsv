@@ -1,0 +1,7 @@
+path	commit	origin	working_state
+waterlily-i001d-reconstruction/baseline/device_asus_I001D	66473d931666769a627e65c6ee24b7f05fa61425	https://github.com/BlissRoms-Devices/android_device_asus_I001D.git	clean
+waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common	6cae628f8f24c75eac1d2a1759ac31df6dc25d77	https://github.com/BlissRoms-Devices/android_device_asus_sm8150-common.git	clean
+waterlily-i001d-reconstruction/baseline/kernel_asus_I001D	368dd4099045c66ae294f4a9d3717d615920c329	https://github.com/BlissRoms-Devices/android_kernel_asus_I001D.git	metadata-only local clone; index/worktree empty
+waterlily-i001d-reconstruction/baseline/vendor_asus_I001D	90c9d99e15b4df3e81fbba89ecdccfb29d5f98ba	https://github.com/BlissRoms-Devices/proprietary_vendor_asus_I001D.git	clean
+waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common	b5f485169923f41bf3588df159e1351f5f4edb1b	https://github.com/BlissRoms-Devices/proprietary_vendor_asus_sm8150-common.git	clean
+waterlily-i001d-reconstruction/work/HomeLauncher-repo	6b2bd1ecc8d66ded881e8bbbf4d2d7103dcfa854	https://github.com/Prem8791/homelauncher.git	tracked content clean; ignored local build/cache files present

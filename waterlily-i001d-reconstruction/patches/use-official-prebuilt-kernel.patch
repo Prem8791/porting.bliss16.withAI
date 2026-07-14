@@ -1,0 +1,11 @@
+--- a/device/asus/I001D/BoardConfig.mk
++++ b/device/asus/I001D/BoardConfig.mk
+@@ -16,6 +16,8 @@
+ # Kernel
+ TARGET_KERNEL_CONFIG := vendor/I001D_defconfig
+ TARGET_KERNEL_SOURCE := kernel/asus/I001D
++TARGET_FORCE_PREBUILT_KERNEL := true
++TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+ 
+ # Partitions
+ BOARD_DTBOIMG_PARTITION_SIZE := 8388608

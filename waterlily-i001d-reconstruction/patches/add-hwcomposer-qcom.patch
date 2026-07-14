@@ -1,0 +1,11 @@
+diff --git a/msmnile.mk b/msmnile.mk
+--- a/msmnile.mk
++++ b/msmnile.mk
+@@ -213,6 +213,7 @@ PRODUCT_PACKAGES += \
+     android.hardware.graphics.composer@2.4-service \
+     android.hardware.graphics.mapper@3.0-impl-qti-display \
+     android.hardware.graphics.mapper@4.0-impl-qti-display \
++    hwcomposer.qcom \
+     vendor.qti.hardware.memtrack-service \
+     libdisplayconfig.qti \
+     libdisplaydebug \

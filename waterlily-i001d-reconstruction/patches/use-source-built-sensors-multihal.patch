@@ -1,0 +1,34 @@
+diff --git a/device/asus/I001D/proprietary-files.txt b/device/asus/I001D/proprietary-files.txt
+--- a/device/asus/I001D/proprietary-files.txt
++++ b/device/asus/I001D/proprietary-files.txt
+@@ -903,10 +903,9 @@ vendor/lib64/libTrustedUI.so
+ 
+ # Sensors
+-vendor/bin/hw/android.hardware.sensors@2.0-service.multihal
++# The multihal service and RC are built from hardware/interfaces on Android 16.
+ vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
+ vendor/bin/sensors.qti
+ vendor/bin/sscrpcd
+-vendor/etc/init/android.hardware.sensors@2.0-service-multihal.rc
+ vendor/etc/init/init.vendor.sensors.rc
+ vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
+ vendor/etc/init/vendor.sensors.qti.rc
+diff --git a/vendor/asus/I001D/I001D-vendor.mk b/vendor/asus/I001D/I001D-vendor.mk
+--- a/vendor/asus/I001D/I001D-vendor.mk
++++ b/vendor/asus/I001D/I001D-vendor.mk
+@@ -16,7 +16,6 @@ PRODUCT_COPY_FILES += \
+     vendor/asus/I001D/proprietary/vendor/bin/fm_qsoc_patches:$(TARGET_COPY_OUT_VENDOR)/bin/fm_qsoc_patches \
+     vendor/asus/I001D/proprietary/vendor/bin/hvdcp_opti:$(TARGET_COPY_OUT_VENDOR)/bin/hvdcp_opti \
+     vendor/asus/I001D/proprietary/vendor/bin/hw/android.hardware.camera.provider@2.4-service_64:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.camera.provider@2.4-service_64 \
+-    vendor/asus/I001D/proprietary/vendor/bin/hw/android.hardware.sensors@2.0-service.multihal:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.sensors@2.0-service.multihal \
+     vendor/asus/I001D/proprietary/vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service \
+     vendor/asus/I001D/proprietary/vendor/bin/hw/vendor.qti.hardware.soter@1.0-service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/vendor.qti.hardware.soter@1.0-service \
+     vendor/asus/I001D/proprietary/vendor/bin/init.qti.chg_policy.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qti.chg_policy.sh \
+@@ -234,7 +233,6 @@ PRODUCT_COPY_FILES += \
+     vendor/asus/I001D/proprietary/vendor/etc/firmware/8.bin:$(TARGET_COPY_OUT_VENDOR)/etc/firmware/8.bin \
+     vendor/asus/I001D/proprietary/vendor/etc/firmware/9.bin:$(TARGET_COPY_OUT_VENDOR)/etc/firmware/9.bin \
+     vendor/asus/I001D/proprietary/vendor/etc/init/android.hardware.camera.provider@2.4-service_64.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.camera.provider@2.4-service_64.rc \
+-    vendor/asus/I001D/proprietary/vendor/etc/init/android.hardware.sensors@2.0-service-multihal.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.sensors@2.0-service-multihal.rc \
+     vendor/asus/I001D/proprietary/vendor/etc/init/init.goodixfp.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.goodixfp.rc \
+     vendor/asus/I001D/proprietary/vendor/etc/init/init.vendor.sensors.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.vendor.sensors.rc \
+     vendor/asus/I001D/proprietary/vendor/etc/init/vendor.qti.hardware.charger_monitor@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.charger_monitor@1.0-service.rc \
