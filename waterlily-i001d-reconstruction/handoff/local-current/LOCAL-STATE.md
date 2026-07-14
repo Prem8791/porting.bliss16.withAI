@@ -5,7 +5,7 @@
 Manifest SHA-256:
 
 ```text
-3e20d6d7c3297f0e220a2119c20e8ac3c4df5627ba2a20bc345037a20088fddb
+5e1e7e7b42494748083f12b4d0b5c069095806880df5192c7575f2f5e3aa3510
 ```
 
 The manifest includes nested Git object databases, ignored build/cache files, baseline proprietary files, the complete mirrored ProdX tree, and the latest ROM, so the original physical workstation can be audited byte-for-byte.

@@ -3923,3 +3923,26 @@ P0-01 is now `COMPLETE`. The checks built no ROM image and introduced no runtime
 behavior. The live milestone record and implementation report were updated;
 the immutable P0-00 reference set remains unchanged. P0-02 is still
 `NOT_STARTED` and no P0-02 source, contract, target or behavior has been added.
+
+## 2026-07-14: Checkpoint 34 Durable GitHub Takeover State
+
+`D:\AndroidProjects\porting` was initialized as the `main` branch of:
+
+- `https://github.com/Prem8791/porting.bliss16.withAI.git`
+
+The durable checkpoint contains the operational local project, pinned upstream
+repositories as Git submodules, the latest 1,482,821,089-byte ROM through Git
+LFS, the complete 61-file ProdX mirror, and deterministic handoff documentation.
+
+The VM was re-snapshotted from
+`/home/premanandal1978/android/waterlily`. The Git handoff includes its pinned
+1,160-project manifest, exact `repo status`, complete tracked `repo diff`, and a
+61-entry ProdX checksum manifest. The local ProdX mirror verified 61/61 against
+the VM. A separate physical-state manifest records path, size, and SHA-256 for
+the workstation files, including ignored caches and nested Git databases.
+
+The root `TAKEOVER.md` is the mandatory starting point for a replacement agent.
+It records the VM connection, reading order, immutable boundaries, expected
+local kernel-submodule status, successful P0-01 validation, and the fact that
+P0-02 remains unauthorized. No Android build or new runtime implementation was
+performed for this checkpoint.
