@@ -31,11 +31,10 @@ test Activity currently demonstrates safe no-op/synthetic capability paths.
 ProdX is not yet proven end-to-end as a boot-started service in a complete
 flashed ROM, and real AI/device actions are not yet enabled. The malformed
 SystemServer startup block has now been replaced with lifecycle-managed startup
-of `ProdXAuthorityService`, but it still requires the handed-off `m services`
-compile validation. Required modules and permissions must then be wired into the
-product, SELinux and lifecycle behavior must pass validation, a complete ROM
-must build and boot, and the on-device AI-to-ProdX-to-provider flow must be
-tested.
+of `ProdXAuthorityService`, and the resulting `m services` compile passed.
+Required modules and permissions must next be wired into the product, SELinux
+and lifecycle behavior must pass validation, a complete ROM must build and
+boot, and the on-device AI-to-ProdX-to-provider flow must be tested.
 
 ## Git repository
 
@@ -141,6 +140,8 @@ managed-project untracked files matched their VM SHA-256 values.
 - ProdX remains an internal hidden platform contract; no API lint baseline or
   public/system signature file was changed.
 - `m prodx-contract-runtime` passed 6127/6127 in 14:39.
+- `m services` passed 1089/1089 in 1:50 with the corrected ProdX SystemServer
+  lifecycle registration.
 - `m ProdXNoOpTestProvider` passed 9/9 in 18 seconds after pinning the APK to
   released API 36.
 - The API-36 APK installed on the connected ASUS I001D, and
@@ -158,9 +159,9 @@ no-op echo, provider health, and synthetic observation checks.
   describe the inert skeleton and are stale relative to current P0-02 code.
   Use `TAKEOVER.md` and `progress.md` for the current state until those live
   records are explicitly reconciled.
-- ProdX SystemServer startup has been structurally corrected and passes
-  `git diff --check`, but has not yet passed the targeted `m services` compile.
-  Do not begin a complete ROM build until that validation succeeds.
+- ProdX SystemServer startup is structurally corrected, passes
+  `git diff --check`, and is compile-validated by `m services`. It has not yet
+  been boot-validated in a newly built ROM.
 - Six build-tools `date`/`tar` symlinks are deleted in the VM checkpoint. Do not
   recreate or discard them without first understanding why the VM needed that
   state.
@@ -174,8 +175,8 @@ no-op echo, provider health, and synthetic observation checks.
    porcelain inventory before making changes.
 3. Exercise every item in `ProdXCapabilityActivity` on the device and record
    the displayed result.
-4. Run the handed-off targeted `m services` build and address its first ProdX
-   compile failure, if any.
+4. Preserve the successful `m services` checkpoint while moving into product
+   wiring; do not broaden changes into unrelated framework services.
 5. Wire only the approved ProdX modules, feature declarations, permissions, and
    policy into the I001D product, then validate the smallest relevant target.
 6. Hand each build command to the user and append its result to `progress.md`.

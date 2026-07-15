@@ -109,8 +109,8 @@ On the original workstation, parent `git status` reports the kernel submodule as
 
 ## Current next action
 
-Run the targeted `m services` validation handed off in `progress.md` for the
-corrected ProdX SystemServer lifecycle integration. Then continue interactive
-capability testing in `ProdXCapabilityActivity`. Do not flash a new OS merely
-to run the standalone test APK; the API-36 rebuild already installed on the
-current Android 16 device.
+The corrected ProdX SystemServer lifecycle integration passed `m services`
+(1089/1089 in 1:50). Continue interactive capability testing in
+`ProdXCapabilityActivity` and record the result of every spinner item. Do not
+flash a new OS merely to run the standalone test APK; the API-36 rebuild is
+already installed on the current Android 16 device.
