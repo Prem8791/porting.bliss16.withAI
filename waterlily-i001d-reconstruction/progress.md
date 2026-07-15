@@ -4575,3 +4575,12 @@ Key hashes are recorded in `TAKEOVER.md` and
 `d4b699b9e052892904a3375fa3584fbb6bccb094404e5ed14f9f4b4f0020f85a`.
 The workstation-only `.idea/` directory remains intentionally excluded, and
 the known intentionally empty kernel submodule worktree remains untouched.
+
+## 2026-07-15: Cross-PC Continuation Handoff Added
+
+Root `handsoff.md` now provides a concise continuation path for another PC. It
+records repository bootstrap commands, VM access and ownership details, exact
+checkpoint locations and hashes, validated build/device outcomes, known dirty
+state and stale-record caveats, the pending SystemServer integration issue, and
+the safe next actions. The byte-exact VM checkpoint remains commit `a93d725`;
+the handoff document is committed separately on top of it.
