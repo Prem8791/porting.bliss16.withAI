@@ -67,12 +67,12 @@ Recorded SHA-256 values:
 ```text
 manifest:     ebdce4ba5ebff4d7b2269f13f94884f63572f70b3a86f1304107010a75da1da4
 repo status:  04e287ae15ba629de513244186253c606ba63eac6794ab6c7e71ab9da71e37e5
-repo diff:    a8efcf83c6d2668f6afc01264766f0916ae344eda8496bd436d55ab5d0c7de24
+repo diff:    51e8d407f64804406219aac6dbf1e5c0e3922e8da410bfffb88c98aa2ad6bd46
 porcelain:    e869b8ec3639837538d288028b25047a21e1252b558718192662f126a192a4f7
 ProdX list:   197cd334678b51ab9def3bfd818612f186d7dc0ab02bbb20ab79f63f107dddc6
 framework:    d43f6879773ca9818aa8a5a972773552a79d233c47396b1cd311130672c40f9a
-untracked:    63581cf36bda59152a3d4ee1983e7478f8eb68ff3dc0dfdb0bc388fe6ddac030
-untracked tgz:9e7851d6fbf1a3a115034c365329254a2e6b509b9d0314cc057ac772ed8ceeee
+untracked:    7b79edcd1223b48a6c3aa21e79670b0f27a813b9a5588898dca67c61f4a09c82
+untracked tgz:5f9452e943af8687f11211b0b9066a8c46aca9612a43aeabe0bba2e44cb2066f
 test APK:     d4b699b9e052892904a3375fa3584fbb6bccb094404e5ed14f9f4b4f0020f85a
 ```
 
@@ -109,7 +109,8 @@ On the original workstation, parent `git status` reports the kernel submodule as
 
 ## Current next action
 
-Continue interactive capability testing in `ProdXCapabilityActivity`, then
-address the next reported P0-02 validation failure. Do not flash a new OS merely
+Run the targeted `m services` validation handed off in `progress.md` for the
+corrected ProdX SystemServer lifecycle integration. Then continue interactive
+capability testing in `ProdXCapabilityActivity`. Do not flash a new OS merely
 to run the standalone test APK; the API-36 rebuild already installed on the
 current Android 16 device.

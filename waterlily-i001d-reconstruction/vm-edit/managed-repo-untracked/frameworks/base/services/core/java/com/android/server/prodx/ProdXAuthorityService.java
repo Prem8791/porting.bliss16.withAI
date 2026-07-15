@@ -101,8 +101,8 @@ public class ProdXAuthorityService extends SystemService {
     }
 
     @Override
-    public void onUserUnlocking(TargetUser user, android.os.Bundle unlockedBundle) {
-        Slog.i(TAG, "User unlocking (DE): " + user);
+    public void onUserUnlocking(TargetUser user) {
+        Slog.i(TAG, "User unlocking: " + user);
     }
 
     @Override
@@ -113,10 +113,5 @@ public class ProdXAuthorityService extends SystemService {
     @Override
     public void onUserStopping(TargetUser user) {
         Slog.i(TAG, "User stopping: " + user);
-    }
-
-    @Override
-    public void onUserRemoved(TargetUser user) {
-        Slog.i(TAG, "User removed: " + user);
     }
 }

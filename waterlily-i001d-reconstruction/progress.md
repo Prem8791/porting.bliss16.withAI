@@ -4592,3 +4592,43 @@ policy boundaries, build modules, and the no-op capability Activity exist and
 the targeted builds pass, but boot-time SystemServer integration, product
 wiring, full-ROM build/boot, real capability providers, and end-to-end
 AI-to-ProdX execution remain to be completed and validated.
+
+## 2026-07-15: ProdX SystemServer Lifecycle Integration Corrected
+
+Implementation resumed with the boot integration blocker. Live VM inspection
+confirmed that two raw ProdX registration blocks were appended after the final
+`SystemServer` class brace. They also referenced an undefined
+`PackageManager.FEATURE_PRODX`, instantiated an undeclared authority variable,
+constructed `ProdXGrantAdminService` with the wrong arguments, and duplicated
+the Binder publication already owned by `ProdXAuthorityService.onStart()`.
+
+VM changes:
+
+- Removed both invalid post-class registration blocks.
+- Imported `com.android.server.prodx.ProdXAuthorityService` in `SystemServer`.
+- Added one guarded start in `startOtherServices()` using the existing
+  `R.bool.config_prodxEnabled` resource and
+  `mSystemServiceManager.startService(ProdXAuthorityService.class)`.
+- Kept failure containment through the standard `reportWtf` path.
+- Corrected `ProdXAuthorityService.onUserUnlocking()` to the Android 16
+  single-`TargetUser` lifecycle signature.
+- Removed the unsupported `onUserRemoved()` override.
+
+Static validation:
+
+- The patch passed `git apply --check` before application.
+- `frameworks/base` passes `git diff --check` afterward.
+- No `FEATURE_PRODX`, invalid two-argument `onUserUnlocking`, or invalid
+  authority-level `onUserRemoved` reference remains.
+- The complete 72-file managed-untracked mirror was regenerated and verified
+  with zero SHA-256 mismatches.
+- No Android build was run by the agent.
+
+Next user validation:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-userdebug
+m services
+```

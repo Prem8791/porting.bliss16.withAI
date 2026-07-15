@@ -29,11 +29,13 @@ Work has advanced beyond the inert repository skeleton:
 This is still the integration/validation stage, not a finished OS feature. The
 test Activity currently demonstrates safe no-op/synthetic capability paths.
 ProdX is not yet proven end-to-end as a boot-started service in a complete
-flashed ROM, and real AI/device actions are not yet enabled. Before calling it
-an in-OS working capability runtime, the SystemServer startup integration must
-be corrected, required modules and permissions must be wired into the product,
-SELinux and lifecycle behavior must pass validation, a complete ROM must build
-and boot, and the on-device AI-to-ProdX-to-provider flow must be tested.
+flashed ROM, and real AI/device actions are not yet enabled. The malformed
+SystemServer startup block has now been replaced with lifecycle-managed startup
+of `ProdXAuthorityService`, but it still requires the handed-off `m services`
+compile validation. Required modules and permissions must then be wired into the
+product, SELinux and lifecycle behavior must pass validation, a complete ROM
+must build and boot, and the on-device AI-to-ProdX-to-provider flow must be
+tested.
 
 ## Git repository
 
@@ -121,10 +123,10 @@ Important checkpoint hashes:
 ```text
 Repo manifest:  ebdce4ba5ebff4d7b2269f13f94884f63572f70b3a86f1304107010a75da1da4
 Repo status:    04e287ae15ba629de513244186253c606ba63eac6794ab6c7e71ab9da71e37e5
-Tracked patch:  a8efcf83c6d2668f6afc01264766f0916ae344eda8496bd436d55ab5d0c7de24
+Tracked patch:  51e8d407f64804406219aac6dbf1e5c0e3922e8da410bfffb88c98aa2ad6bd46
 Porcelain list: e869b8ec3639837538d288028b25047a21e1252b558718192662f126a192a4f7
 ProdX hashes:   197cd334678b51ab9def3bfd818612f186d7dc0ab02bbb20ab79f63f107dddc6
-Untracked tgz:  9e7851d6fbf1a3a115034c365329254a2e6b509b9d0314cc057ac772ed8ceeee
+Untracked tgz:  5f9452e943af8687f11211b0b9066a8c46aca9612a43aeabe0bba2e44cb2066f
 ```
 
 The source mirrors were verified after download: 201/201 ProdX files and 72/72
@@ -156,11 +158,9 @@ no-op echo, provider health, and synthetic observation checks.
   describe the inert skeleton and are stale relative to current P0-02 code.
   Use `TAKEOVER.md` and `progress.md` for the current state until those live
   records are explicitly reconciled.
-- The captured tracked patch shows ProdX startup blocks appended after the
-  closing brace of `frameworks/base/services/java/com/android/server/SystemServer.java`.
-  The targeted contract build did not expose this latent full-framework compile
-  problem. Inspect and integrate those blocks inside the correct SystemServer
-  startup method before attempting a complete ROM build.
+- ProdX SystemServer startup has been structurally corrected and passes
+  `git diff --check`, but has not yet passed the targeted `m services` compile.
+  Do not begin a complete ROM build until that validation succeeds.
 - Six build-tools `date`/`tar` symlinks are deleted in the VM checkpoint. Do not
   recreate or discard them without first understanding why the VM needed that
   state.
@@ -174,8 +174,8 @@ no-op echo, provider health, and synthetic observation checks.
    porcelain inventory before making changes.
 3. Exercise every item in `ProdXCapabilityActivity` on the device and record
    the displayed result.
-4. Correctly integrate the pending SystemServer service-start code, preserving
-   unrelated VM modifications.
+4. Run the handed-off targeted `m services` build and address its first ProdX
+   compile failure, if any.
 5. Wire only the approved ProdX modules, feature declarations, permissions, and
    policy into the I001D product, then validate the smallest relevant target.
 6. Hand each build command to the user and append its result to `progress.md`.

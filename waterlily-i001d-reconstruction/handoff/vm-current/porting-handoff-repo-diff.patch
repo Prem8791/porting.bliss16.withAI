@@ -102,35 +102,35 @@ index 4e2fc3e2b1b3..561f7fe67eba 100644
 +    <bool name="config_prodxEnabled">true</bool>
  </resources>
 diff --git a/services/java/com/android/server/SystemServer.java b/services/java/com/android/server/SystemServer.java
-index e3523b5b3825..f6853a593433 100644
+index e3523b5b3825..00c195cff25a 100644
 --- a/services/java/com/android/server/SystemServer.java
 +++ b/services/java/com/android/server/SystemServer.java
-@@ -3826,3 +3826,25 @@ public final class SystemServer implements Dumpable {
-     }
+@@ -246,6 +246,7 @@ import com.android.server.power.hint.HintManagerService;
+ import com.android.server.power.thermal.ThermalManagerService;
+ import com.android.server.powerstats.PowerStatsService;
+ import com.android.server.print.PrintManagerService;
++import com.android.server.prodx.ProdXAuthorityService;
+ import com.android.server.profcollect.ProfcollectForwardingService;
+ import com.android.server.recoverysystem.RecoverySystemService;
+ import com.android.server.resources.ResourcesManagerService;
+@@ -1579,6 +1580,17 @@ public final class SystemServer implements Dumpable {
  
- }
-+
-+    // ProdX Authority Service
-+    if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_PRODX, 0)) {
-+        try {
-+            Slog.i(TAG, "ProdX Authority Service");
-+            prodxAuthority = new ProdXAuthorityService(context);
-+            ServiceManager.addService(Context.PRODX_AUTHORITY_SERVICE, prodxAuthority);
-+        } catch (Throwable e) {
-+            Slog.wtf(TAG, "Failed to start ProdX Authority Service: " + e);
+         boolean isAutomotive = RoSystemFeatures.hasFeatureAutomotive(context);
+ 
++        if (context.getResources().getBoolean(R.bool.config_prodxEnabled)) {
++            t.traceBegin("StartProdXAuthorityService");
++            try {
++                // The authority owns and publishes both ProdX Binder endpoints.
++                mSystemServiceManager.startService(ProdXAuthorityService.class);
++            } catch (Throwable e) {
++                reportWtf("starting ProdX Authority Service", e);
++            }
++            t.traceEnd();
 +        }
-+    }
 +
-+    // ProdX Grant Admin Service
-+    if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_PRODX, 0)) {
-+        try {
-+            Slog.i(TAG, "ProdX Grant Admin Service");
-+            prodxGrantAdmin = new ProdXGrantAdminService(context);
-+            ServiceManager.addService(Context.PRODX_GRANT_ADMIN_SERVICE, prodxGrantAdmin);
-+        } catch (Throwable e) {
-+            Slog.wtf(TAG, "Failed to start ProdX Grant Admin Service: " + e);
-+        }
-+    }
+         try {
+             final String SECONDARY_ZYGOTE_PRELOAD = "SecondaryZygotePreload";
+             // We start the preload ~1s before the webview factory preparation, to
 
 project prebuilts/build-tools/
 diff --git a/path/darwin-x86/date b/path/darwin-x86/date
