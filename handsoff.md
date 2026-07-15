@@ -106,7 +106,7 @@ The Git checkpoint contains three complementary forms of VM state:
   status, porcelain inventory, tracked patch, hash manifests, and the archive
   of all managed-project untracked files;
 - `waterlily-i001d-reconstruction/vm-edit/packages-modules-ProdX/`: the exact
-  standalone 201-file ProdX tree; and
+  standalone 203-file ProdX tree; and
 - `waterlily-i001d-reconstruction/vm-edit/managed-repo-untracked/`: all 72
   untracked files beneath Repo-managed projects, preserving Android-root paths.
 
@@ -122,13 +122,13 @@ Important checkpoint hashes:
 ```text
 Repo manifest:  ebdce4ba5ebff4d7b2269f13f94884f63572f70b3a86f1304107010a75da1da4
 Repo status:    04e287ae15ba629de513244186253c606ba63eac6794ab6c7e71ab9da71e37e5
-Tracked patch:  51e8d407f64804406219aac6dbf1e5c0e3922e8da410bfffb88c98aa2ad6bd46
+Tracked patch:  abe955a0228989808bfba250eb6a9c31f6a2145e1f182a586b82d2dc3c90e400
 Porcelain list: e869b8ec3639837538d288028b25047a21e1252b558718192662f126a192a4f7
-ProdX hashes:   197cd334678b51ab9def3bfd818612f186d7dc0ab02bbb20ab79f63f107dddc6
+ProdX hashes:   5c5bf55242b003e2aac05aa40ecae74d4dbbc52e54796995525b982312ce97fb
 Untracked tgz:  5f9452e943af8687f11211b0b9066a8c46aca9612a43aeabe0bba2e44cb2066f
 ```
 
-The source mirrors were verified after download: 201/201 ProdX files and 72/72
+The source mirrors were verified after download: 203/203 ProdX files and 72/72
 managed-project untracked files matched their VM SHA-256 values.
 
 ## Current validated state
@@ -149,7 +149,8 @@ managed-project untracked files matched their VM SHA-256 values.
   Activity Manager status `ok`.
 
 The Activity contains a capability spinner, Go button, and result label for
-no-op echo, provider health, and synthetic observation checks.
+no-op echo, provider health, and synthetic observation checks. All three checks
+passed on the connected ASUS I001D.
 
 ## Known caveats
 
@@ -162,6 +163,13 @@ no-op echo, provider health, and synthetic observation checks.
 - ProdX SystemServer startup is structurally corrected, passes
   `git diff --check`, and is compile-validated by `m services`. It has not yet
   been boot-validated in a newly built ROM.
+- The framework default for ProdX is now disabled. I001D explicitly enables it
+  through `FrameworksResOverlay` and includes the `android.software.prodx`
+  feature XML. This product wiring is statically validated but awaits its
+  targeted Soong/product build.
+- The draft signature-permission and privapp XML files are not packaged. They
+  are placeholders and must be replaced by reviewed platform permission
+  declarations and Binder enforcement before real providers are enabled.
 - Six build-tools `date`/`tar` symlinks are deleted in the VM checkpoint. Do not
   recreate or discard them without first understanding why the VM needed that
   state.
@@ -173,12 +181,12 @@ no-op echo, provider health, and synthetic observation checks.
    `progress.md` entry.
 2. Connect to the existing VM and run `repo status`; compare it with the saved
    porcelain inventory before making changes.
-3. Exercise every item in `ProdXCapabilityActivity` on the device and record
-   the displayed result.
-4. Preserve the successful `m services` checkpoint while moving into product
-   wiring; do not broaden changes into unrelated framework services.
-5. Wire only the approved ProdX modules, feature declarations, permissions, and
-   policy into the I001D product, then validate the smallest relevant target.
+3. Preserve the successful three-capability Activity result and `m services`
+   checkpoint while moving into product wiring.
+4. Run the handed-off targeted build for the I001D overlay and ProdX feature
+   prebuilt; address only the first relevant failure.
+5. Replace the draft permission placeholders with reviewed hidden platform
+   permissions and enforce them at each Binder boundary before real providers.
 6. Hand each build command to the user and append its result to `progress.md`.
 7. After targeted gates pass, build/flash the ROM and validate the real
    AI-to-ProdX capability path on-device.

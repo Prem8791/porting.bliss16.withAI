@@ -92,14 +92,14 @@ index c5031b4e675d..f80fc7056617 100644
 +    public static final String PRODX_GRANT_ADMIN_SERVICE = "prodx_grant_admin";
  }
 diff --git a/core/res/res/values/config.xml b/core/res/res/values/config.xml
-index 4e2fc3e2b1b3..561f7fe67eba 100644
+index 4e2fc3e2b1b3..27749bb70aeb 100644
 --- a/core/res/res/values/config.xml
 +++ b/core/res/res/values/config.xml
 @@ -7770,4 +7770,5 @@
      <integer name="config_qsTileColumnsMax">6</integer>
      <integer name="config_qsTileQqsRowsMax">3</integer>
      <integer name="config_qsTileQsRowsMax">5</integer>
-+    <bool name="config_prodxEnabled">true</bool>
++    <bool name="config_prodxEnabled">false</bool>
  </resources>
 diff --git a/services/java/com/android/server/SystemServer.java b/services/java/com/android/server/SystemServer.java
 index e3523b5b3825..00c195cff25a 100644

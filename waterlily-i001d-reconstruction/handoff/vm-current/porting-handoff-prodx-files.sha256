@@ -32,6 +32,8 @@ a0775127c47b2a35f6efda8420e533a05ee364fb143581edd0d5a1e1ef12f069  ./framework/co
 dcd63b6456afaf0465d95e4d150aeb2151370f9b16f0771f240222b06fff3c0a  ./framework/contract/src/com/android/prodx/contract/SchemaRegistry.kt
 a75aa80a475f37753c6e14a3c50504ffcab7743f856a59a6aa70f8c7efbd1783  ./framework/contract/src/com/android/prodx/contract/SchemaValidator.kt
 2fc6af2886136374621d06395541540136d63e7219afe6a37d3e4de61f18ec36  ./framework/contract/src/com/android/prodx/contract/TypedError.kt
+ca454dc7cde17e04709dc5e629d6fa098c0c03e104dc8a4086435e6acf679acb  ./permissions/Android.bp
+249a5b411ae756cb2cde5481b10c1b943a61ebc58179076b53fe50756a831744  ./permissions/android.software.prodx.xml
 456d915529211701a99278c2a4d7162b45e7f4056c48387ab8a27e7e64aa34b9  ./providers/README.md
 635881638761ff4a3dcf2baf929fb8f6b52b98a671a8fc3215a4d67688c6a0b9  ./providers/test/Android.bp
 303480740eb4939ec0cce346e65f740939ddd836511d32bb6f5237b334844af2  ./providers/test/AndroidManifest.xml

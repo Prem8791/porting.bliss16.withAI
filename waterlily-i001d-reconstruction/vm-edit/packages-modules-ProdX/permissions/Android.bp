@@ -1,0 +1,6 @@
+prebuilt_etc {
+    name: "prodx-system-feature.xml",
+    src: "android.software.prodx.xml",
+    filename_from_src: true,
+    sub_dir: "permissions",
+}

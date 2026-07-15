@@ -12,6 +12,7 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_ZS660KL.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/mixer_paths_ZS660KL.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_ZS660KL.xml \
     $(LOCAL_PATH)/audio/mixer_paths_ZS660KL_EU.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_ZS660KL_EU.xml \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
@@ -38,6 +39,10 @@ PRODUCT_PACKAGES += \
     SettingsRes \
     SystemUIRog2 \
     SettingsProviderRog2
+
+# ProdX
+PRODUCT_PACKAGES += \
+    prodx-system-feature.xml
 
 # UDFPS animations
 EXTRA_UDFPS_ANIMATIONS := true

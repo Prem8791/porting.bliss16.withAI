@@ -58,7 +58,7 @@ The recoverable 2026-07-15 VM checkpoint is in
 - `porting-handoff-repo-diff.patch`: complete tracked uncommitted patch.
 - `porting-handoff-untracked-files.tar.gz`: contents of all 72 untracked files
   inside managed projects, with path list and SHA-256 manifest alongside it.
-- `porting-handoff-prodx-files.sha256`: all 201 standalone ProdX files.
+- `porting-handoff-prodx-files.sha256`: all 203 standalone ProdX files.
 - `porting-handoff-framework-prodx-files.sha256`: the 41 framework contract
   files under `android/app/prodx`.
 
@@ -67,9 +67,9 @@ Recorded SHA-256 values:
 ```text
 manifest:     ebdce4ba5ebff4d7b2269f13f94884f63572f70b3a86f1304107010a75da1da4
 repo status:  04e287ae15ba629de513244186253c606ba63eac6794ab6c7e71ab9da71e37e5
-repo diff:    51e8d407f64804406219aac6dbf1e5c0e3922e8da410bfffb88c98aa2ad6bd46
+repo diff:    abe955a0228989808bfba250eb6a9c31f6a2145e1f182a586b82d2dc3c90e400
 porcelain:    e869b8ec3639837538d288028b25047a21e1252b558718192662f126a192a4f7
-ProdX list:   197cd334678b51ab9def3bfd818612f186d7dc0ab02bbb20ab79f63f107dddc6
+ProdX list:   5c5bf55242b003e2aac05aa40ecae74d4dbbc52e54796995525b982312ce97fb
 framework:    d43f6879773ca9818aa8a5a972773552a79d233c47396b1cd311130672c40f9a
 untracked:    7b79edcd1223b48a6c3aa21e79670b0f27a813b9a5588898dca67c61f4a09c82
 untracked tgz:5f9452e943af8687f11211b0b9066a8c46aca9612a43aeabe0bba2e44cb2066f
@@ -80,7 +80,9 @@ The tracked patch currently spans bionic, three external projects,
 frameworks/base, and six deleted build-tools symlinks. New ProdX framework,
 SystemUI, Settings, permission, service, and sepolicy files are preserved in the
 managed-untracked mirror. ProdX itself is not a Repo-manifest project, so its
-full 201-file mirror is stored separately.
+full 203-file mirror is stored separately. The I001D tree is not represented in
+the Repo status output, so its current `device.mk` and framework-overlay config
+are also mirrored directly under `vm-edit/`.
 
 ## Local checkpoint
 
@@ -109,8 +111,7 @@ On the original workstation, parent `git status` reports the kernel submodule as
 
 ## Current next action
 
-The corrected ProdX SystemServer lifecycle integration passed `m services`
-(1089/1089 in 1:50). Continue interactive capability testing in
-`ProdXCapabilityActivity` and record the result of every spinner item. Do not
-flash a new OS merely to run the standalone test APK; the API-36 rebuild is
-already installed on the current Android 16 device.
+The corrected ProdX SystemServer lifecycle integration passed `m services`, and
+all three `ProdXCapabilityActivity` spinner checks passed on-device. Validate
+the I001D-only enablement overlay and `android.software.prodx` feature prebuilt
+with the targeted product build in `progress.md`. Do not flash yet.

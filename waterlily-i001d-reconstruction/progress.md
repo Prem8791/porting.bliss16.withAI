@@ -4649,3 +4649,53 @@ and Android 16 lifecycle override signatures compile in the platform services
 graph. The next validation is interactive execution of every spinner item in
 the already-installed `ProdXCapabilityActivity`; no clean build, ROM flash, or
 kernel work is required for that check.
+
+## 2026-07-15: All Capability Activity Checks Passed
+
+The user exercised every item in the installed `ProdXCapabilityActivity` and
+confirmed that all three displayed `PASS`:
+
+- Echo request (`prodx.test.noop.echo`)
+- Provider health (`prodx.test.noop.health`)
+- Synthetic observation (`prodx.test.noop.observation`)
+
+This completes the standalone safe capability-UI validation. These remain
+no-op/synthetic paths and do not yet prove boot-time service availability or a
+real AI-to-provider transaction.
+
+## 2026-07-15: I001D-Only ProdX Product Opt-In Implemented
+
+The next product-wiring audit found no existing ProdX entry in I001D makefiles.
+It also confirmed that the draft signature-permission XML uses placeholder
+sysconfig syntax and the empty privapp allowlist grants nothing. Neither file
+was added to the product.
+
+VM implementation:
+
+- Changed the base framework `config_prodxEnabled` default from `true` to
+  `false`, preventing unintentional startup on unrelated products.
+- Added `config_prodxEnabled=true` only to the I001D `FrameworksResOverlay`.
+- Added a `prebuilt_etc` module that installs
+  `/system/etc/permissions/android.software.prodx.xml`.
+- Declared the discoverable `android.software.prodx` software feature.
+- Added only that feature prebuilt to I001D `PRODUCT_PACKAGES`; the no-op test
+  provider and draft permission files remain excluded.
+
+Static validation:
+
+- The multi-tree patch passed `git apply --check` before application.
+- Framework and I001D repositories pass `git diff --check`.
+- The new Blueprint passes `bpfmt -d` with no diff.
+- Both changed XML files pass `xmllint`.
+- The refreshed mirrors contain 203 ProdX files and 72 managed-project
+  untracked files, both with zero SHA-256 mismatches.
+- No Android build was run by the agent.
+
+Next user validation:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-userdebug
+m prodx-system-feature.xml FrameworksResOverlay
+```
