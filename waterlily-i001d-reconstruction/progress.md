@@ -4584,3 +4584,11 @@ checkpoint locations and hashes, validated build/device outcomes, known dirty
 state and stale-record caveats, the pending SystemServer integration issue, and
 the safe next actions. The byte-exact VM checkpoint remains commit `a93d725`;
 the handoff document is committed separately on top of it.
+
+The handoff now explicitly states the present engineering objective and
+boundary: ProdX is being introduced as the governed in-OS capability layer for
+the future on-device AI. Framework contracts, service/provider skeletons,
+policy boundaries, build modules, and the no-op capability Activity exist and
+the targeted builds pass, but boot-time SystemServer integration, product
+wiring, full-ROM build/boot, real capability providers, and end-to-end
+AI-to-ProdX execution remain to be completed and validated.

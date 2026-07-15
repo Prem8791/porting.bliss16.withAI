@@ -5,6 +5,36 @@ Bliss Waterlily ASUS I001D reconstruction from another computer. The complete
 state description is in `TAKEOVER.md`; the chronological engineering record is
 in `waterlily-i001d-reconstruction/progress.md`.
 
+## Current point of our endeavour
+
+The project is introducing ProdX as an Android-native capability layer inside
+the OS so the future on-device AI can discover approved capabilities, request
+authorization, execute through controlled providers, observe results, and leave
+an auditable record. ProdX is intended to be the governed bridge between the AI
+and system/device functions, not merely a standalone application.
+
+Work has advanced beyond the inert repository skeleton:
+
+- internal framework contracts and Binder AIDL types exist under
+  `android.app.prodx`;
+- authority, grants, policy, registry, observation, broker, extension, audit,
+  provider SDK, permission, and SELinux boundaries have initial code/skeletons;
+- Soong modules, manifests, contract code, service code, test fixtures, and
+  multiple validation targets are present in `packages/modules/ProdX`;
+- a no-op provider Activity exposes capabilities in a spinner and executes the
+  selected test through a Go button, displaying the result in the same screen;
+- the contract-runtime build passes, and the API-36 test Activity APK has been
+  installed and launched on the ASUS I001D.
+
+This is still the integration/validation stage, not a finished OS feature. The
+test Activity currently demonstrates safe no-op/synthetic capability paths.
+ProdX is not yet proven end-to-end as a boot-started service in a complete
+flashed ROM, and real AI/device actions are not yet enabled. Before calling it
+an in-OS working capability runtime, the SystemServer startup integration must
+be corrected, required modules and permissions must be wired into the product,
+SELinux and lifecycle behavior must pass validation, a complete ROM must build
+and boot, and the on-device AI-to-ProdX-to-provider flow must be tested.
+
 ## Git repository
 
 ```text
@@ -146,8 +176,11 @@ no-op echo, provider health, and synthetic observation checks.
    the displayed result.
 4. Correctly integrate the pending SystemServer service-start code, preserving
    unrelated VM modifications.
-5. Hand the next targeted build command to the user and append the result to
-   `progress.md`.
+5. Wire only the approved ProdX modules, feature declarations, permissions, and
+   policy into the I001D product, then validate the smallest relevant target.
+6. Hand each build command to the user and append its result to `progress.md`.
+7. After targeted gates pass, build/flash the ROM and validate the real
+   AI-to-ProdX capability path on-device.
 
 To reinstall and launch the saved APK from Windows PowerShell:
 
