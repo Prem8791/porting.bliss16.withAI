@@ -17,6 +17,121 @@ index 4b6753824..6fac4a683 100644
  /**
   * [sched_setscheduler(2)](https://man7.org/linux/man-pages/man2/sched_setscheduler.2.html)
 
+project external/XMP-Toolkit-SDK/
+diff --git a/Android.bp b/Android.bp
+index cce5062..d6d43b6 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -14,6 +14,7 @@ license {
+ }
+ 
+ cc_library {
++    vendor_available: true,
+     name: "zuid_md5",
+     host_supported: true,
+     sdk_version: "current",
+@@ -35,6 +36,7 @@ cc_library {
+ }
+ 
+ cc_library {
++    vendor_available: true,
+     name: "xmp_toolkit_sdk",
+     host_supported: true,
+     sdk_version: "current",
+
+project external/google-highway/
+diff --git a/Android.bp b/Android.bp
+index 56cc9bf5..ebf0cc17 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -16,6 +16,7 @@ license {
+ }
+ 
+ cc_library {
++    vendor_available: true,
+     name: "libhwy",
+     host_supported: true,
+     sdk_version: "current",
+
+project external/skia/
+diff --git a/Android.bp b/Android.bp
+index 2eed822b2b..55c4870cbe 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -1134,6 +1134,7 @@ gensrcs {
+ }
+ 
+ cc_library_static {
++    vendor_available: true,
+     name: "libskia_skcms",
+     host_supported: true,
+     sdk_version: "current",
+
+project frameworks/base/
+diff --git a/core/java/android/content/Context.java b/core/java/android/content/Context.java
+index c5031b4e675d..f80fc7056617 100644
+--- a/core/java/android/content/Context.java
++++ b/core/java/android/content/Context.java
+@@ -8813,4 +8813,18 @@ public abstract class Context {
+     public void closeSystemDialogs() {
+         throw new RuntimeException("Not implemented. Must override in a subclass.");
+     }
++
++    /**
++     * ProdX authority service.
++     *
++     * @hide
++     */
++    public static final String PRODX_AUTHORITY_SERVICE = "prodx_authority";
++
++    /**
++     * ProdX grant administration service.
++     *
++     * @hide
++     */
++    public static final String PRODX_GRANT_ADMIN_SERVICE = "prodx_grant_admin";
+ }
+diff --git a/core/res/res/values/config.xml b/core/res/res/values/config.xml
+index 4e2fc3e2b1b3..561f7fe67eba 100644
+--- a/core/res/res/values/config.xml
++++ b/core/res/res/values/config.xml
+@@ -7770,4 +7770,5 @@
+     <integer name="config_qsTileColumnsMax">6</integer>
+     <integer name="config_qsTileQqsRowsMax">3</integer>
+     <integer name="config_qsTileQsRowsMax">5</integer>
++    <bool name="config_prodxEnabled">true</bool>
+ </resources>
+diff --git a/services/java/com/android/server/SystemServer.java b/services/java/com/android/server/SystemServer.java
+index e3523b5b3825..f6853a593433 100644
+--- a/services/java/com/android/server/SystemServer.java
++++ b/services/java/com/android/server/SystemServer.java
+@@ -3826,3 +3826,25 @@ public final class SystemServer implements Dumpable {
+     }
+ 
+ }
++
++    // ProdX Authority Service
++    if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_PRODX, 0)) {
++        try {
++            Slog.i(TAG, "ProdX Authority Service");
++            prodxAuthority = new ProdXAuthorityService(context);
++            ServiceManager.addService(Context.PRODX_AUTHORITY_SERVICE, prodxAuthority);
++        } catch (Throwable e) {
++            Slog.wtf(TAG, "Failed to start ProdX Authority Service: " + e);
++        }
++    }
++
++    // ProdX Grant Admin Service
++    if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_PRODX, 0)) {
++        try {
++            Slog.i(TAG, "ProdX Grant Admin Service");
++            prodxGrantAdmin = new ProdXGrantAdminService(context);
++            ServiceManager.addService(Context.PRODX_GRANT_ADMIN_SERVICE, prodxGrantAdmin);
++        } catch (Throwable e) {
++            Slog.wtf(TAG, "Failed to start ProdX Grant Admin Service: " + e);
++        }
++    }
+
 project prebuilts/build-tools/
 diff --git a/path/darwin-x86/date b/path/darwin-x86/date
 deleted file mode 120000

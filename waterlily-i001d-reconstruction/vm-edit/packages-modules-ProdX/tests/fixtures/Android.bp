@@ -1,0 +1,6 @@
+java_library {
+    name: "prodx-test-fixtures",
+    srcs: ["src/**/*.kt"],
+    static_libs: ["prodx-contract-runtime"],
+    sdk_version: "system_current",
+}

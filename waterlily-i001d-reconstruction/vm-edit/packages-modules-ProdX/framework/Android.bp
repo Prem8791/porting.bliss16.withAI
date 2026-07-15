@@ -1,0 +1,27 @@
+package {
+    default_visibility: [
+        ":__subpackages__",
+        "//system/tools/aidl/build",
+        "//packages/modules/ProdX/tests/contract",
+        "//packages/modules/ProdX/tests/unit",
+        "//packages/modules/ProdX/tests/integration",
+        "//packages/modules/ProdX/tests/security",
+        "//packages/modules/ProdX/tests/fuzz",
+        "//packages/modules/ProdX/tests/fixtures",
+        "//packages/modules/ProdX/tests/host",
+        "//packages/modules/ProdX/tests/device",
+        "//packages/modules/ProdX/service/audit",
+        "//packages/modules/ProdX/service/broker",
+        "//packages/modules/ProdX/service/observation",
+        "//packages/modules/ProdX/service/extension",
+        "//packages/modules/ProdX/sdk",
+        "//packages/modules/ProdX/providers/test",
+        "//packages/modules/ProdX/apex",
+    ],
+}
+
+java_library {
+    name: "prodx-contract-runtime",
+    srcs: ["contract/src/**/*.kt"],
+    sdk_version: "system_current",
+}

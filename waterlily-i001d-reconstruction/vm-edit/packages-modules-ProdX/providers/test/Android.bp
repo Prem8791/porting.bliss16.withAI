@@ -1,0 +1,9 @@
+android_app {
+    name: "ProdXNoOpTestProvider",
+    srcs: ["src/**/*.kt"],
+    static_libs: ["prodx-provider-sdk"],
+    sdk_version: "system_current",
+    min_sdk_version: "36",
+    target_sdk_version: "36",
+    certificate: "platform",
+}

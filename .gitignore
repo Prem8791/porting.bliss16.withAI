@@ -1,3 +1,6 @@
 # Reproducible source is tracked; interpreter caches are physical-state evidence only.
 **/__pycache__/
 **/*.py[cod]
+
+# Workstation-specific IDE metadata is not part of the reconstruction checkpoint.
+.idea/

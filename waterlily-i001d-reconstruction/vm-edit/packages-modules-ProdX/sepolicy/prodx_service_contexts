@@ -1,0 +1,2 @@
+prodx_authority              u:object_r:prodx_authority_service:s0
+prodx_grant_admin            u:object_r:prodx_authority_service:s0

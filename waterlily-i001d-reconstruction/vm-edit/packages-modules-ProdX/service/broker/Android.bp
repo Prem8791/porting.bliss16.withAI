@@ -1,0 +1,11 @@
+android_app {
+    name: "ProdXBrokerService",
+    srcs: ["src/**/*.kt"],
+    aidl: {
+        include_dirs: ["packages/modules/ProdX/service/broker/aidl"],
+    },
+    static_libs: ["prodx-contract-runtime"],
+    privileged: true,
+    sdk_version: "system_current",
+    certificate: "platform",
+}

@@ -1,0 +1,6 @@
+java_fuzz {
+    name: "prodx_contract_fuzzer",
+    srcs: [],
+    static_libs: ["prodx-contract-runtime"],
+    sdk_version: "system_current",
+}

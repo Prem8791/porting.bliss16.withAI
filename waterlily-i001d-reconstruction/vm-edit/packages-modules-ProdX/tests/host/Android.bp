@@ -1,0 +1,4 @@
+java_test_host {
+    name: "ProdXHostContractTests",
+    srcs: ["src/**/*.kt"],
+}

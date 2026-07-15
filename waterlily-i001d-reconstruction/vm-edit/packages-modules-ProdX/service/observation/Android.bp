@@ -1,0 +1,11 @@
+android_app {
+    name: "ProdXObservationService",
+    srcs: ["src/**/*.kt"],
+    aidl: {
+        include_dirs: ["packages/modules/ProdX/service/observation/aidl"],
+    },
+    static_libs: ["prodx-contract-runtime"],
+    privileged: true,
+    sdk_version: "system_current",
+    certificate: "platform",
+}
