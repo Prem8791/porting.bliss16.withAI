@@ -10,7 +10,7 @@ The corresponding source mirrors are:
 
 - `../vm-edit/packages-modules-ProdX/`: all 203 files in the standalone ProdX
   module tree;
-- `../vm-edit/managed-repo-untracked/`: all 72 untracked files beneath managed
+- `../vm-edit/managed-repo-untracked/`: all 74 untracked files beneath managed
   projects, preserving their Android-root-relative paths; and
 - `../artifacts/ProdXNoOpTestProvider-api36-20260715.apk`: the rebuilt API-36
   capability test APK.

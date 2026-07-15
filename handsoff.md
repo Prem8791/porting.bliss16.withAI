@@ -41,7 +41,8 @@ boot, and the on-device AI-to-ProdX-to-provider flow must be tested.
 ```text
 Remote: https://github.com/Prem8791/porting.bliss16.withAI.git
 Branch: main
-VM checkpoint commit: a93d725
+Initial full VM checkpoint: a93d725
+Current continuation point: origin/main
 ```
 
 On the new PC:
@@ -107,7 +108,7 @@ The Git checkpoint contains three complementary forms of VM state:
   of all managed-project untracked files;
 - `waterlily-i001d-reconstruction/vm-edit/packages-modules-ProdX/`: the exact
   standalone 203-file ProdX tree; and
-- `waterlily-i001d-reconstruction/vm-edit/managed-repo-untracked/`: all 72
+- `waterlily-i001d-reconstruction/vm-edit/managed-repo-untracked/`: all 74
   untracked files beneath Repo-managed projects, preserving Android-root paths.
 
 The standalone test APK is saved at:
@@ -121,14 +122,14 @@ Important checkpoint hashes:
 
 ```text
 Repo manifest:  ebdce4ba5ebff4d7b2269f13f94884f63572f70b3a86f1304107010a75da1da4
-Repo status:    04e287ae15ba629de513244186253c606ba63eac6794ab6c7e71ab9da71e37e5
+Repo status:    6de42d0acf46674e5c811438d4176d68fdde171b04e7177c327ed40af5320961
 Tracked patch:  2e830fdca62824e1c7d609f15b75e727ce3e6998f1eb48284f0c309fe525981f
-Porcelain list: 535c166c92ce4875a4b9aaad394bf2a3c23536053b269939048d9c3e05d6322a
+Porcelain list: e111361468491be962de56f9b059e3e15c77d23d9a40166af59fdabd6db2d540
 ProdX hashes:   5c5bf55242b003e2aac05aa40ecae74d4dbbc52e54796995525b982312ce97fb
-Untracked tgz:  ecc70ed6492f61b7a8965d2e76d76909ba58e58bb21291c83a04aaa354bbacf6
+Untracked tgz:  30e2b0dd8ef87c7259b6fa49ddbe002f13660527596ce350b5ea71372c71d0e9
 ```
 
-The source mirrors were verified after download: 203/203 ProdX files and 72/72
+The source mirrors were verified after download: 203/203 ProdX files and 74/74
 managed-project untracked files matched their VM SHA-256 values.
 
 ## Current validated state

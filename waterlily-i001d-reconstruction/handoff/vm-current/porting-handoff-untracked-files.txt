@@ -31,9 +31,11 @@ frameworks/base/core/java/android/app/prodx/ProdXPolicyDecision.java
 frameworks/base/core/java/android/app/prodx/ProdXProviderManifest.aidl
 frameworks/base/core/java/android/app/prodx/ProdXProviderManifest.java
 frameworks/base/core/java/android/app/prodx/ProdXRegistryEntry.aidl
+frameworks/base/core/java/android/app/prodx/ProdXRegistryEntry.java
 frameworks/base/core/java/android/app/prodx/ProdXRegistryGeneration.aidl
 frameworks/base/core/java/android/app/prodx/ProdXRegistryGeneration.java
 frameworks/base/core/java/android/app/prodx/ProdXRegistrySnapshot.aidl
+frameworks/base/core/java/android/app/prodx/ProdXRegistrySnapshot.java
 frameworks/base/core/java/android/app/prodx/ProdXSubscriptionLease.aidl
 frameworks/base/core/java/android/app/prodx/ProdXSubscriptionLease.java
 frameworks/base/core/java/android/app/prodx/ProdXTransactionReference.aidl

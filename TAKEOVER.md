@@ -56,23 +56,23 @@ The recoverable 2026-07-15 VM checkpoint is in
 - `porting-handoff-repo-porcelain.txt`: exact tracked and untracked paths in
   eight dirty managed projects.
 - `porting-handoff-repo-diff.patch`: complete tracked uncommitted patch.
-- `porting-handoff-untracked-files.tar.gz`: contents of all 72 untracked files
+- `porting-handoff-untracked-files.tar.gz`: contents of all 74 untracked files
   inside managed projects, with path list and SHA-256 manifest alongside it.
 - `porting-handoff-prodx-files.sha256`: all 203 standalone ProdX files.
-- `porting-handoff-framework-prodx-files.sha256`: the 41 framework contract
+- `porting-handoff-framework-prodx-files.sha256`: the 43 framework contract
   files under `android/app/prodx`.
 
 Recorded SHA-256 values:
 
 ```text
 manifest:     ebdce4ba5ebff4d7b2269f13f94884f63572f70b3a86f1304107010a75da1da4
-repo status:  fd9648da3bbf9431d9736e986c65eb6a72864a481a7ccd1a72ba44031bc4bde3
+repo status:  6de42d0acf46674e5c811438d4176d68fdde171b04e7177c327ed40af5320961
 repo diff:    2e830fdca62824e1c7d609f15b75e727ce3e6998f1eb48284f0c309fe525981f
-porcelain:    535c166c92ce4875a4b9aaad394bf2a3c23536053b269939048d9c3e05d6322a
+porcelain:    e111361468491be962de56f9b059e3e15c77d23d9a40166af59fdabd6db2d540
 ProdX list:   5c5bf55242b003e2aac05aa40ecae74d4dbbc52e54796995525b982312ce97fb
-framework:    d43f6879773ca9818aa8a5a972773552a79d233c47396b1cd311130672c40f9a
-untracked:    c4ee42406ed1ed0759adfdd3972c9c130fb8ab5ddecb5f7458ea42430c8d4f9d
-untracked tgz:ecc70ed6492f61b7a8965d2e76d76909ba58e58bb21291c83a04aaa354bbacf6
+framework:    b1385ccb222c6cafb7e61c607fe77cfd8eb0dfee775656c5da38c9b83f32345a
+untracked:    078ca0bebccb32a4b4c6c011d932106fc3f0f0cb2be8d10715d1fff2fe8e8b15
+untracked tgz:30e2b0dd8ef87c7259b6fa49ddbe002f13660527596ce350b5ea71372c71d0e9
 test APK:     d4b699b9e052892904a3375fa3584fbb6bccb094404e5ed14f9f4b4f0020f85a
 ```
 

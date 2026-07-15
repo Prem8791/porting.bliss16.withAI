@@ -40,9 +40,11 @@ project frameworks/base/                        (*** NO BRANCH ***)
  --	core/java/android/app/prodx/ProdXProviderManifest.aidl
  --	core/java/android/app/prodx/ProdXProviderManifest.java
  --	core/java/android/app/prodx/ProdXRegistryEntry.aidl
+ --	core/java/android/app/prodx/ProdXRegistryEntry.java
  --	core/java/android/app/prodx/ProdXRegistryGeneration.aidl
  --	core/java/android/app/prodx/ProdXRegistryGeneration.java
  --	core/java/android/app/prodx/ProdXRegistrySnapshot.aidl
+ --	core/java/android/app/prodx/ProdXRegistrySnapshot.java
  --	core/java/android/app/prodx/ProdXSubscriptionLease.aidl
  --	core/java/android/app/prodx/ProdXSubscriptionLease.java
  --	core/java/android/app/prodx/ProdXTransactionReference.aidl

@@ -4762,3 +4762,41 @@ source build/envsetup.sh
 lunch bliss_I001D-userdebug
 m services selinux_policy
 ```
+
+## 2026-07-15: Missing Registry Parcelable Pair Implemented
+
+The permission/services validation reached full framework Turbine compilation
+and failed because generated `IProdXAuthority.java` could not resolve
+`ProdXRegistrySnapshot`. Inspection found that both `ProdXRegistrySnapshot.aidl`
+and `ProdXRegistryEntry.aidl` existed, but neither had the required backing Java
+`Parcelable` class. An exhaustive audit confirmed that these were the only two
+ProdX parcelable declarations missing Java implementations.
+
+VM implementation:
+
+- Added immutable hidden `ProdXRegistryEntry`, binding a capability descriptor,
+  provider manifest, and current availability.
+- Added immutable hidden `ProdXRegistrySnapshot`, containing registry
+  generation, an immutable entry list, previous snapshot hash, and root hash.
+- Implemented matching Parcel constructors, `CREATOR`s, getters,
+  `describeContents()`, and `writeToParcel()` methods for both.
+- Used typed nested parcelables and defensive immutable list copies.
+
+Static validation:
+
+- Every ProdX `parcelable` AIDL declaration now has a same-named Java backing
+  class.
+- `frameworks/base` passes `git diff --check`.
+- Both new source files are owned by the Android checkout user.
+- Refreshed mirrors verify 203/203 standalone ProdX files and 74/74 managed
+  untracked files with zero SHA-256 mismatches.
+- No Android build was run by the agent.
+
+Retry the same validation; no clean is required:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-userdebug
+m services selinux_policy
+```
