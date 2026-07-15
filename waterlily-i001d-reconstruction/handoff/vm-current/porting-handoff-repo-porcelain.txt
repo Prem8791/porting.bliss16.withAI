@@ -8,6 +8,7 @@ project external/skia
  M Android.bp
 project frameworks/base
  M core/java/android/content/Context.java
+ M core/res/AndroidManifest.xml
  M core/res/res/values/config.xml
  M services/java/com/android/server/SystemServer.java
 ?? core/java/android/app/prodx/IProdXAuthority.aidl
@@ -88,6 +89,7 @@ project prebuilts/build-tools
  D path/linux-x86/date
  D path/linux-x86/tar
 project system/sepolicy
+ M private/service_contexts
 ?? private/prodx_compat.te
 ?? public/prodx_attribute.te
 ?? public/prodx_service.te

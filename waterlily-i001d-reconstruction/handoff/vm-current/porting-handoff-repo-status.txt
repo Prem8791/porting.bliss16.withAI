@@ -49,6 +49,7 @@ project frameworks/base/                        (*** NO BRANCH ***)
  --	core/java/android/app/prodx/ProdXTransactionReference.java
  --	core/java/android/app/prodx/package-info.java
  -m	core/java/android/content/Context.java
+ -m	core/res/AndroidManifest.xml
  -m	core/res/res/values/config.xml
  --	data/etc/com.android.prodx.privapp_allowlist.xml
  --	data/etc/com.android.prodx.signature_permissions.xml
@@ -89,5 +90,6 @@ project prebuilts/build-tools/                  (*** NO BRANCH ***)
  -d	path/linux-x86/tar
 project system/sepolicy/                        (*** NO BRANCH ***)
  --	private/prodx_compat.te
+ -m	private/service_contexts
  --	public/prodx_attribute.te
  --	public/prodx_service.te

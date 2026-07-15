@@ -66,13 +66,13 @@ Recorded SHA-256 values:
 
 ```text
 manifest:     ebdce4ba5ebff4d7b2269f13f94884f63572f70b3a86f1304107010a75da1da4
-repo status:  04e287ae15ba629de513244186253c606ba63eac6794ab6c7e71ab9da71e37e5
-repo diff:    abe955a0228989808bfba250eb6a9c31f6a2145e1f182a586b82d2dc3c90e400
-porcelain:    e869b8ec3639837538d288028b25047a21e1252b558718192662f126a192a4f7
+repo status:  fd9648da3bbf9431d9736e986c65eb6a72864a481a7ccd1a72ba44031bc4bde3
+repo diff:    2e830fdca62824e1c7d609f15b75e727ce3e6998f1eb48284f0c309fe525981f
+porcelain:    535c166c92ce4875a4b9aaad394bf2a3c23536053b269939048d9c3e05d6322a
 ProdX list:   5c5bf55242b003e2aac05aa40ecae74d4dbbc52e54796995525b982312ce97fb
 framework:    d43f6879773ca9818aa8a5a972773552a79d233c47396b1cd311130672c40f9a
-untracked:    7b79edcd1223b48a6c3aa21e79670b0f27a813b9a5588898dca67c61f4a09c82
-untracked tgz:5f9452e943af8687f11211b0b9066a8c46aca9612a43aeabe0bba2e44cb2066f
+untracked:    c4ee42406ed1ed0759adfdd3972c9c130fb8ab5ddecb5f7458ea42430c8d4f9d
+untracked tgz:ecc70ed6492f61b7a8965d2e76d76909ba58e58bb21291c83a04aaa354bbacf6
 test APK:     d4b699b9e052892904a3375fa3584fbb6bccb094404e5ed14f9f4b4f0020f85a
 ```
 
@@ -111,7 +111,7 @@ On the original workstation, parent `git status` reports the kernel submodule as
 
 ## Current next action
 
-The corrected ProdX SystemServer lifecycle integration passed `m services`, and
-all three `ProdXCapabilityActivity` spinner checks passed on-device. Validate
-the I001D-only enablement overlay and `android.software.prodx` feature prebuilt
-with the targeted product build in `progress.md`. Do not flash yet.
+SystemServer, all three Activity checks, and the I001D feature/overlay targets
+have passed. Validate the new hidden signature-permission enforcement and
+canonical service labels with the targeted `services` and `selinux_policy`
+build in `progress.md`. Do not flash yet.

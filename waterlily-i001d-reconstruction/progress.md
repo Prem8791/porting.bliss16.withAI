@@ -4699,3 +4699,66 @@ source build/envsetup.sh
 lunch bliss_I001D-userdebug
 m prodx-system-feature.xml FrameworksResOverlay
 ```
+
+## 2026-07-15: I001D ProdX Feature and Overlay Build Passed
+
+The user ran the targeted product-wiring validation:
+
+```text
+[100% 17/17] ... FrameworksResOverlay.apk
+#### build completed successfully (04:56 (mm:ss)) ####
+```
+
+Post-build VM verification confirmed:
+
+- `/system/etc/permissions/android.software.prodx.xml` exists in the product
+  output and has SHA-256
+  `249a5b411ae756cb2cde5481b10c1b943a61ebc58179076b53fe50756a831744`.
+- `/vendor/overlay/FrameworksResOverlay.apk` exists in product output.
+- The reported `KEY_GESTURES` override message was non-fatal; both requested
+  targets completed successfully.
+
+The I001D-only runtime opt-in and software-feature discovery path are now
+build-validated. They are not yet boot-validated.
+
+## 2026-07-15: ProdX Hidden Permissions and Binder Enforcement Implemented
+
+The next security slice replaced reliance on draft sysconfig permissions with
+real hidden platform declarations and least-privilege checks. The unpackaged
+draft XML files remain inert and were not added to the product.
+
+VM implementation:
+
+- Declared five `signature` permissions in the framework manifest:
+  `PRODX_AUTHORITY`, `PRODX_BROKER`, `PRODX_AUDIT_READ`, `PRODX_ADMIN`, and
+  `PRODX_CONFIRMATION`.
+- Gated ordinary authority queries/evaluation with `PRODX_AUTHORITY`.
+- Gated authorization minting with `PRODX_BROKER`.
+- Gated mode changes, emergency disable, and all grant administration with
+  `PRODX_ADMIN`.
+- Replaced the standalone grant-admin service's `MANAGE_USERS` placeholder with
+  `PRODX_ADMIN`.
+- Added canonical `service_contexts` labels for `prodx_authority` and
+  `prodx_grant_admin`, both using `prodx_authority_service`.
+- Corrected the pre-existing root ownership of `ProdXGrantAdminService.java` so
+  the Android checkout owner can maintain it.
+
+Static validation:
+
+- The framework manifest is well-formed and contains each permission exactly
+  once.
+- Framework and system/sepolicy repositories pass `git diff --check`.
+- Both Binder service names are labeled exactly once.
+- All 15 authority/grant operations have an explicit permission check.
+- Refreshed mirrors verify 203/203 ProdX files and 72/72 managed-project
+  untracked files with zero SHA-256 mismatches.
+- No Android build was run by the agent.
+
+Next user validation:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-userdebug
+m services selinux_policy
+```

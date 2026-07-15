@@ -49,7 +49,7 @@ public class ProdXGrantAdminService extends IProdXGrantAdmin.Stub {
 
     private void enforceAdminPermission() {
         mContext.enforceCallingPermission(
-            android.Manifest.permission.MANAGE_USERS,  // placeholder; PRODX_ADMIN will replace this
+            "android.permission.PRODX_ADMIN",
             "ProdXGrantAdmin requires PRODX_ADMIN");
     }
 }

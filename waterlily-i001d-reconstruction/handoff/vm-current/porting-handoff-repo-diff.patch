@@ -91,6 +91,37 @@ index c5031b4e675d..f80fc7056617 100644
 +     */
 +    public static final String PRODX_GRANT_ADMIN_SERVICE = "prodx_grant_admin";
  }
+diff --git a/core/res/AndroidManifest.xml b/core/res/AndroidManifest.xml
+index 1bc73861a410..cd7df5b39957 100644
+--- a/core/res/AndroidManifest.xml
++++ b/core/res/AndroidManifest.xml
+@@ -962,6 +962,26 @@
+     <permission android:name="com.libremobileos.permission.START_FREEFORM"
+                 android:protectionLevel="signature|privileged" />
+ 
++    <!-- @hide Allows a platform-signed component to query and evaluate ProdX capabilities. -->
++    <permission android:name="android.permission.PRODX_AUTHORITY"
++                android:protectionLevel="signature" />
++
++    <!-- @hide Allows the platform-signed ProdX broker to mint execution authorizations. -->
++    <permission android:name="android.permission.PRODX_BROKER"
++                android:protectionLevel="signature" />
++
++    <!-- @hide Allows a platform-signed component to read the ProdX audit ledger. -->
++    <permission android:name="android.permission.PRODX_AUDIT_READ"
++                android:protectionLevel="signature" />
++
++    <!-- @hide Allows a platform-signed administrator to change ProdX state and grants. -->
++    <permission android:name="android.permission.PRODX_ADMIN"
++                android:protectionLevel="signature" />
++
++    <!-- @hide Allows a platform-signed component to complete ProdX confirmations. -->
++    <permission android:name="android.permission.PRODX_CONFIRMATION"
++                android:protectionLevel="signature" />
++
+     <!-- ====================================================================== -->
+     <!-- Permissions for accessing user's calendar                              -->
+     <!-- ====================================================================== -->
 diff --git a/core/res/res/values/config.xml b/core/res/res/values/config.xml
 index 4e2fc3e2b1b3..27749bb70aeb 100644
 --- a/core/res/res/values/config.xml
@@ -181,3 +212,18 @@ index c6b4b1f..0000000
 @@ -1 +0,0 @@
 -../../linux-x86/bin/toybox
 \ No newline at end of file
+
+project system/sepolicy/
+diff --git a/private/service_contexts b/private/service_contexts
+index 84304c065..dfb3824ee 100644
+--- a/private/service_contexts
++++ b/private/service_contexts
+@@ -410,6 +410,8 @@ protolog_configuration                    u:object_r:protolog_configuration_serv
+ print                                     u:object_r:print_service:s0
+ processinfo                               u:object_r:processinfo_service:s0
+ procstats                                 u:object_r:procstats_service:s0
++prodx_authority                           u:object_r:prodx_authority_service:s0
++prodx_grant_admin                         u:object_r:prodx_authority_service:s0
+ profcollectd                              u:object_r:profcollectd_service:s0
+ radio.phonesubinfo                        u:object_r:radio_service:s0
+ radio.phone                               u:object_r:radio_service:s0

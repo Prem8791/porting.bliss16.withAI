@@ -122,10 +122,10 @@ Important checkpoint hashes:
 ```text
 Repo manifest:  ebdce4ba5ebff4d7b2269f13f94884f63572f70b3a86f1304107010a75da1da4
 Repo status:    04e287ae15ba629de513244186253c606ba63eac6794ab6c7e71ab9da71e37e5
-Tracked patch:  abe955a0228989808bfba250eb6a9c31f6a2145e1f182a586b82d2dc3c90e400
-Porcelain list: e869b8ec3639837538d288028b25047a21e1252b558718192662f126a192a4f7
+Tracked patch:  2e830fdca62824e1c7d609f15b75e727ce3e6998f1eb48284f0c309fe525981f
+Porcelain list: 535c166c92ce4875a4b9aaad394bf2a3c23536053b269939048d9c3e05d6322a
 ProdX hashes:   5c5bf55242b003e2aac05aa40ecae74d4dbbc52e54796995525b982312ce97fb
-Untracked tgz:  5f9452e943af8687f11211b0b9066a8c46aca9612a43aeabe0bba2e44cb2066f
+Untracked tgz:  ecc70ed6492f61b7a8965d2e76d76909ba58e58bb21291c83a04aaa354bbacf6
 ```
 
 The source mirrors were verified after download: 203/203 ProdX files and 72/72
@@ -142,6 +142,9 @@ managed-project untracked files matched their VM SHA-256 values.
 - `m prodx-contract-runtime` passed 6127/6127 in 14:39.
 - `m services` passed 1089/1089 in 1:50 with the corrected ProdX SystemServer
   lifecycle registration.
+- `m prodx-system-feature.xml FrameworksResOverlay` passed 17/17 in 4:56. The
+  feature XML landed in `/system/etc/permissions` and the overlay APK in
+  `/vendor/overlay`.
 - `m ProdXNoOpTestProvider` passed 9/9 in 18 seconds after pinning the APK to
   released API 36.
 - The API-36 APK installed on the connected ASUS I001D, and
@@ -167,9 +170,10 @@ passed on the connected ASUS I001D.
   through `FrameworksResOverlay` and includes the `android.software.prodx`
   feature XML. This product wiring is statically validated but awaits its
   targeted Soong/product build.
-- The draft signature-permission and privapp XML files are not packaged. They
-  are placeholders and must be replaced by reviewed platform permission
-  declarations and Binder enforcement before real providers are enabled.
+- The draft signature-permission and privapp XML files are not packaged. Five
+  reviewed hidden signature-only permissions now exist in the platform
+  manifest, and authority/grant Binder calls enforce least-privilege mappings.
+  This security slice awaits `services` and `selinux_policy` build validation.
 - Six build-tools `date`/`tar` symlinks are deleted in the VM checkpoint. Do not
   recreate or discard them without first understanding why the VM needed that
   state.
@@ -183,10 +187,10 @@ passed on the connected ASUS I001D.
    porcelain inventory before making changes.
 3. Preserve the successful three-capability Activity result and `m services`
    checkpoint while moving into product wiring.
-4. Run the handed-off targeted build for the I001D overlay and ProdX feature
-   prebuilt; address only the first relevant failure.
-5. Replace the draft permission placeholders with reviewed hidden platform
-   permissions and enforce them at each Binder boundary before real providers.
+4. Run the handed-off `services` and `selinux_policy` build for the permission
+   enforcement and canonical Binder service labels.
+5. Remove or replace the still-unpackaged draft permission placeholders after
+   the real platform declarations and policy pass their build gates.
 6. Hand each build command to the user and append its result to `progress.md`.
 7. After targeted gates pass, build/flash the ROM and validate the real
    AI-to-ProdX capability path on-device.
