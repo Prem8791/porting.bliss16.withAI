@@ -4800,3 +4800,189 @@ source build/envsetup.sh
 lunch bliss_I001D-userdebug
 m services selinux_policy
 ```
+
+## 2026-07-16: ProdX Framework Bool Java Symbol Fixed
+
+The user's next build failed while compiling `SystemServer.java` because
+`com.android.internal.R.bool` did not contain `config_prodxEnabled`.
+
+Live VM analysis confirmed:
+
+- `frameworks/base/core/res/res/values/config.xml` defines
+  `config_prodxEnabled=false`.
+- The I001D `FrameworksResOverlay` defines the product override as `true`.
+- `frameworks/base/core/res/res/values/symbols.xml` had no matching
+  `<java-symbol>` declaration — the root cause.
+- The generated `framework-res/android_common/R.txt` also had no
+  `config_prodxEnabled` entry.
+- A Bliss no-RRO compile-time overlay at
+  `vendor/bliss/overlay/no-rro/frameworks/base/core/res/res/values/config.xml`
+  replaces the base `config.xml` entirely; it was also missing the bool.
+  (Not the primary cause for the `R.bool` issue, but fixed as well.)
+
+VM implementation:
+
+- Added `<java-symbol type="bool" name="config_prodxEnabled" />` to
+  `frameworks/base/core/res/res/values/symbols.xml`.
+- Also added `<bool name="config_prodxEnabled">false</bool>` to the Bliss
+  no-RRO overlay so the resource is present if the overlay is active.
+
+Build validation:
+
+```text
+[100% 337/337] //frameworks/base/services:services install services.jar.prof [common]
+#### build completed successfully (04:46 (mm:ss)) ####
+```
+
+## 2026-07-15: ProdX Compat Mapping Missing
+
+The next `m services selinux_policy` retry failed in
+`system/sepolicy/treble_sepolicy_tests_for_release` because the new ProdX
+public types were not present in the latest compatibility mapping bucket
+(`private/compat/202504/202504.cil`).
+
+Required VM fix:
+
+- Add `typeattributeset` entries for the ProdX public types in
+  `system/sepolicy/private/compat/202504/202504.cil`:
+  - `prodx_audit`
+  - `prodx_authority_service`
+  - `prodx_authorization_file`
+  - `prodx_broker`
+  - `prodx_extension`
+  - `prodx_observation`
+  - `prodx_observation_queue_file`
+  - `prodx_registry_file`
+
+Next user validation:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-userdebug
+m services selinux_policy
+```
+
+## 2026-07-15: Public Service Type Declaration Corrected
+
+The `m services selinux_policy` retry failed because
+`system/sepolicy/public/prodx_service.te` declared
+`system_service_type` in a public policy file. That attribute is not available
+in this scope, so the type declaration was narrowed to the binder service
+manager type only.
+
+VM implementation:
+
+- Updated `system/sepolicy/public/prodx_service.te` to declare
+  `prodx_authority_service` as `service_manager_type` only.
+
+Next user validation:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-userdebug
+m services selinux_policy
+```
+
+## 2026-07-15: ProdX Neverallow Syntax Corrected
+
+The next `m services selinux_policy` retry reached `plat_sepolicy.cil` and
+failed while parsing `private/prodx_compat.te`. The draft rules used Binder's
+`call` permission with `service_manager`, although this policy class exposes
+only `add`, `find`, and `list`. Three file isolation rules also used an invalid
+wildcard in the class position.
+
+VM implementation:
+
+- Removed the nonexistent `call` permission from both `service_manager` rules.
+- Kept the intended service lookup/add restrictions with the valid `find` and
+  `add` permissions.
+- Replaced each wildcard file class with `dir_file_class_set`, the platform
+  macro covering directories and file-like object classes.
+- Refreshed the local managed-untracked mirror of `prodx_compat.te`.
+
+Static validation:
+
+- Confirmed the platform `service_manager` access vector contains exactly
+  `add`, `find`, and `list`.
+- Confirmed `dir_file_class_set` is defined by the platform global macros.
+- The patch applied cleanly and the resulting seven rules were inspected on
+  the VM. No Android build was run by the agent.
+
+Retry the same validation; no clean is required:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-userdebug
+m services selinux_policy
+```
+
+## 2026-07-15: ProdX 33.0 Compat Bucket Patched
+
+The `treble_sepolicy_tests_33.0` failure showed the same ProdX public types
+were missing from the `private/compat/33.0/33.0.cil` bucket used by that
+compatibility test.
+
+VM implementation:
+
+- Added `typeattributeset` mappings for all eight ProdX public types in
+  `system/sepolicy/private/compat/33.0/33.0.cil`.
+
+Static validation:
+
+- Confirmed the new `prodx_*_33_0` mappings were appended to the end of the
+  compat file on the VM.
+- No Android build was run by the agent.
+
+## 2026-07-16: Platform-Vendor genfscon Conflict Resolved
+
+The ProdX SELinux policy retry (`m services selinux_policy`) failed at the
+precompiled sepolicy step with a conflicting `genfscon` rule for
+`sysfs /class/typec` (USB-C port):
+
+- **Platform** (`system/sepolicy/compat/plat_sepolicy_genfs_202604.cil:3`):
+  assigned `sysfs_typec`.
+- **Vendor** (`device/qcom/sepolicy_vndr/sm8150/generic/vendor/common/genfs_contexts`):
+  assigned `vendor_sysfs_usb_c` (Qualcomm's proprietary type).
+
+I001D uses Qualcomm's `vendor_hal_usb_qti`, not the generic `hal_usb`, so the
+platform type offers no advantage on this device. The conflicting genfscon line
+was removed from `system/sepolicy/compat/plat_sepolicy_genfs_202604.cil`.
+
+Build validation:
+
+```text
+[100% 19/19] //system/sepolicy:sepolicy_test generate sepolicy_test [common]
+#### build completed successfully (51 seconds) ####
+```
+
+`m services selinux_policy` now passes.
+
+## 2026-07-16: FOD Overlay Rebuild, Forklift Checkpoint
+
+The user requested an analysis-only pass on the three changes made that morning:
+1. SELinux build fix (genfscon conflict, 202504/33.0 compat buckets)
+2. Fingerprint HAL speed (pthread async, removed concurrent_queue, removed task_profiles)
+3. FOD overlay position (config_udfps_sensor_props [539, 2045, 95])
+
+The FOD position was confirmed already correct in the committed baseline
+(`f749734`). A trailing `'` typo was found in
+`device/asus/I001D/bliss_I001D.mk:39`:
+`PRODUCT_RELEASE_CONFIG_MAPS := build/release/release_config_map.textproto'`
+which caused the Android 16 `release_config.mk` to find zero releases, breaking
+`lunch`. Fixed with `sed`. A fresh `m FrameworksResOverlay` build then succeeded.
+
+Built overlay downloaded to:
+- `artifacts/FrameworksResOverlay-20260716.apk` (12709 bytes)
+
+Current VM dirty state:
+- `device/asus/I001D`: 7 modified files (fingerprint HAL, bliss_I001D.mk,
+  FrameworksResOverlay config.xml with ProdX opt-in)
+- `device/asus/sm8150-common`: 3 modified files (msmnile.mk, overlay, proprietary-files)
+- `frameworks/base`: 41 untracked ProdX files + 4 modified core files
+- `bionic`, `external/XMP-Toolkit-SDK`, `external/google-highway`,
+  `external/skia` have `-m` (local) modifications
+
+VM manifest captured at `artifacts/vm-manifest-20260716.xml` (284627 bytes).
