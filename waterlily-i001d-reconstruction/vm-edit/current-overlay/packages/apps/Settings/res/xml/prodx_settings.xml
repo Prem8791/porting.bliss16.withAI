@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="prodx_mode"
+        android:entries="@array/prodx_mode_entries"
+        android:entryValues="@array/prodx_mode_values"
+        android:title="@string/prodx_mode_title" />
+
+    <Preference
+        android:key="prodx_health"
+        android:selectable="false"
+        android:title="@string/prodx_health_title" />
+
+    <Preference
+        android:key="prodx_registry_generation"
+        android:selectable="false"
+        android:title="@string/prodx_registry_generation_title" />
+
+    <Preference
+        android:key="prodx_providers"
+        android:selectable="false"
+        android:title="@string/prodx_providers_title" />
+
+    <Preference
+        android:key="prodx_grants"
+        android:selectable="false"
+        android:title="@string/prodx_grants_title" />
+
+    <Preference
+        android:key="prodx_quarantine"
+        android:selectable="false"
+        android:title="@string/prodx_quarantine_title" />
+
+    <Preference
+        android:key="prodx_audit_history"
+        android:selectable="false"
+        android:title="@string/prodx_audit_history_title" />
+
+    <Preference
+        android:key="prodx_learning_unavailable"
+        android:selectable="false"
+        android:summary="@string/prodx_unavailable_p0_summary"
+        android:title="@string/prodx_learning_title" />
+
+    <Preference
+        android:key="prodx_extensions_unavailable"
+        android:selectable="false"
+        android:summary="@string/prodx_unavailable_p0_summary"
+        android:title="@string/prodx_extensions_title" />
+
+    <Preference
+        android:key="prodx_emergency_disable"
+        android:summary="@string/prodx_emergency_disable_summary"
+        android:title="@string/prodx_emergency_disable_title" />
+</PreferenceScreen>

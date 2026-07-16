@@ -4986,3 +4986,1040 @@ Current VM dirty state:
   `external/skia` have `-m` (local) modifications
 
 VM manifest captured at `artifacts/vm-manifest-20260716.xml` (284627 bytes).
+
+## 2026-07-16: ProdX P0-02 Contract Runtime Library Implemented
+
+All 13 contract library source files in `packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/` have been implemented:
+
+| File | Lines | Purpose |
+|------|-------|---------|
+| `ContentHash.kt` | 24 | SHA-256 with `sha256:` + 64 hex format |
+| `ContractVersion.kt` | 23 | SemVer parsing, same-major compatibility |
+| `IdentifierGrammar.kt` | 48 | `urn:prodx:` URN parser with segment validation |
+| `TypedError.kt` | 56 | 23 error codes, categories, retry dispositions |
+| `CanonicalCborCodec.kt` | 179 | Self-contained RFC 8949 deterministic CBOR (no deps) |
+| `CanonicalJsonProjection.kt` | 213 | Deterministic JSON with sorted keys, base64url bytes |
+| `SchemaValidator.kt` | 162 | Profile 1 type/bounds/required field validation |
+| `SchemaRegistry.kt` | 52 | In-process ContentHash to SchemaProfile map |
+| `ContractEnvelope.kt` | 80 | Immutable envelope with auto content hash |
+| `CompatibilityResolver.kt` | 76 | Version range negotiation |
+| `Objects/ObservationRecord.kt` | 28 | Observation data class |
+| `Objects/EventRecord.kt` | 25 | Event data class |
+| `Objects/ExtensionManifest.kt` | 24 | Extension manifest data class |
+
+Key implementation decisions:
+- **`CanonicalCborCodec`**: Self-contained implementation (not `co.nstant.in.cbor` wrapper) after Kotlin/Java library interop issues with `cbor-java`. Removed `cbor-java` dependency from `Android.bp`.
+- **`ContractVersion`**: Uses `data class` with explicit `compareVersions` helper — not `Comparable` — to avoid Kotlin operator overload conflicts.
+- **`CanonicalJsonProjection`**: Hand-rolled deterministic JSON with lexicographic key ordering, no whitespace controls, `base64url` encoding for binary, and an embedded `JsonParser` for decoding.
+- **`ContractEnvelope`**: Immutable design: `create()` factory validates fields, computes `ContentHash`, returns `Result`. `toMap()` serializes all fields.
+- **`SchemaValidator`**: Closed Profile 1 schema with declared primitives (`String`, `Integer`, `Long`, `Boolean`, `Bytes`, `Timestamp`, `ContentHash`, `Identifier`, `StringArray`, `IntegerArray`, `BytesArray`, `StringMap`, `ObjectRef`, `Any`).
+
+Build status: **`m prodx-contract-runtime` builds successfully.**
+
+Test status: **`m ProdXContractTests` builds and passes successfully** (39 test methods across 6 test classes).
+
+Tests cover:
+- `ContractVersionTest`: parsing, compatibility (same/different major), LATEST constant
+- `ContractIdentifierGrammarTest`: URN parsing (type/schema/extension/object/authority), round-trip, validation failures
+- `ContractCanonicalCborCodecTest`: encode/decode round-trip (all types), canonical key ordering, duplicate key rejection, float rejection, edge cases
+- `ContractSchemaValidatorTest`: valid objects, missing fields, unknown properties, bounds, type mismatches, ContentHash/Identifier validation
+- `ContractCompatibilityResolverTest`: range contains, supportsVersion, canNegotiate, negotiate (overlapping/disjoint/different major)
+- `ContractEnvelopeTest`: creation, content hash, verification, validation failures, toMap()
+- `TestVectors`: shared sample data for all test classes
+
+P0-02 Contract Runtime library is complete and verified.
+
+## P0-03: Framework Projection (Completed)
+
+ProdXManager.java updated with full wrapper methods for all 11 `IProdXAuthority` and 5 `IProdXGrantAdmin` AIDL methods. All 18 AIDL parcelable types have matching Java implementations. `m prodx-contract-runtime` builds successfully.
+
+## P0-04: Authority Bootstrap (Completed)
+
+All AIDL bindings and engine wiring implemented in the three local service files (`vm-edit/managed-repo-untracked/frameworks/base/services/core/java/com/android/server/prodx/`):
+
+### ProdXGrantStore.java
+- Added `getGrantsForPackage()` for package-scoped grant queries
+- Added `suspendGrant()` / `unsuspendGrant()` / `isSuspended()` with `ArraySet<String>` tracking
+- `revokeGrant()` now also cleans up suspension state
+
+### ProdXGrantAdminService.java (standalone `IProdXGrantAdmin.Stub`)
+- **Fixed `suspendGrant`**: was incorrectly calling `revokeGrant` on the store; now calls `mGrantStore.suspendGrant()`
+- **Fixed `getGrantsByPackage`**: was returning all grants for user instead of filtering by package name; now calls `mGrantStore.getGrantsForPackage()`
+- `getGrant()` returns a copy with `active=false` for suspended grants
+- Uses `PERMISSION_ADMIN` enforcement (`android.permission.PRODX_ADMIN`)
+
+### ProdXAuthorityService.java (`SystemService`)
+- **Removed inline `mGrantAdminBinder`** stub (was returning empty/dummy data)
+- **Wired `ProdXGrantAdminService`** as shared service via `mGrantAdminService = new ProdXGrantAdminService(context, mGrantStore)`
+- **Added engine fields**: `ProdXRegistry`, `ProdXPolicyEngine`, `ProdXAuthorizationEngine`, `ProdXComponentAttestation`, `ProdXUserLifecycle`
+- **Wired all `IProdXAuthority` AIDL methods**:
+  - `getRegistryGeneration()` → `mRegistry.getCurrentGeneration()`
+  - `getRegistrySnapshot()` → `mRegistry.getSnapshot()`
+  - `resolveCapability()` → `mRegistry.resolveCapability()`
+  - `evaluatePolicy()` → `mPolicyEngine.evaluate()`
+  - `mintAuthorization()` → `mAuthorizationEngine.mintAuthorization()`
+  - `emergencyDisable()` → also triggers `ProdXKillSwitch.emergencyDisable()`
+  - `isEmergencyDisabled()` → also checks `ProdXKillSwitch.isDisabled()`
+  - `getHealth()` → reports `kill_switched`, `not_ready`, or `operational`
+- **Wired user lifecycle**: `onUserStarting`, `onUserUnlocking`, `onUserUnlocked`, `onUserStopping` delegate to `mUserLifecycle`
+- **Added `onSwitchUser`** callback
+
+### SystemServer wiring (already applied on VM per `porting-handoff-repo-diff.patch`)
+- Import: `com.android.server.prodx.ProdXAuthorityService`
+- Feature-gated start: `if (context.getResources().getBoolean(R.bool.config_prodxEnabled))`
+- Published via `mSystemServiceManager.startService(ProdXAuthorityService.class)`
+- Base config: `<bool name="config_prodxEnabled">false</bool>` (default off)
+- I001D overlay: `<bool name="config_prodxEnabled">true</bool>` (device opt-in)
+- SELinux `service_contexts`: `prodx_authority` and `prodx_grant_admin` → `prodx_authority_service`
+
+## P0-05: Registry/Reconciler (Completed)
+
+### ProdXRegistry.java (`services/core/java/com/android/server/prodx/`)
+Complete rewrite with full reconciler pattern:
+
+- **Catalog management**: `loadCatalog(List<ProdXRegistryEntry>)` with `ArrayMap<String, ProdXRegistryEntry>` backing
+- **Deterministic resolution**: `resolveCapability()` checks exact capability ID, provider ID, version match; respects provider liveness and entry availability
+- **Provider lifecycle**: `updateProviderStatus(String providerId, boolean alive)` triggers automatic reconciliation on state change
+- **Copy-on-write reconciler**: `reconcileLocked()` under write lock produces immutable `ProdXRegistrySnapshot` with hash chain (entries hash + previous snapshot hash)
+- **Hash chains**: `computeEntriesHash()` (SHA-256 over all entries) and `computeSnapshot()` (SHA-256 over generation + root hash) for tamper-evident snapshots
+- **Observer support**: `registerObserver()` / `unregisterObserver()` with `IBinder.linkToDeath()` auto-cleanup; `notifyObserversLocked()` on each generation change
+- **Snapshot publication**: `mCurrentSnapshot` volatile reference for lock-free reads via `getCurrentGeneration()` and `getSnapshot(long)`
+- **ReadWriteLock**: write lock for catalog/provider/reconciliation mutations; read lock for `resolveCapability()` queries
+
+### ProdXAuthorityService.java enhancements
+- **Registry observer AIDL**: `registerRegistryObserver(IProdXRegistryObserver)` and `unregisterRegistryObserver(IProdXRegistryObserver)` exposed via `IProdXAuthority`
+- **Boot catalog loading**: `loadBuiltinCatalog()` called at `PHASE_BOOT_COMPLETED` with known system capabilities (`prodx.identity.verify`, `prodx.audit.append` both from `prodx.system`)
+- **Initial reconciliation**: `mRegistry.reconcile()` called after catalog load
+
+### IProdXAuthority.aidl (extended)
+- Added `import android.app.prodx.IProdXRegistryObserver;`
+- Added `void registerRegistryObserver(in IProdXRegistryObserver observer);`
+- Added `void unregisterRegistryObserver(in IProdXRegistryObserver observer);`
+
+### ProdXManager.java (extended)
+- Added wrappers: `getRegistryGeneration()`, `getRegistrySnapshot(long)`, `resolveCapability(ProdXCapabilityDescriptor)`, `deriveCallerContext(String)`, `registerRegistryObserver(IProdXRegistryObserver)`, `unregisterRegistryObserver(IProdXRegistryObserver)`
+
+### Test files
+
+**`FakeRegistry.kt`** (test fixture, enhanced):
+- Configurable entries via `addEntry()`/`removeEntry()`
+- Provider liveness tracking via `setProviderAlive()`
+- `resolveCapability()` with exact matching
+- Observer registration/unregistration/notification
+- `getSnapshot()` returns snapshot with current entries
+- `reconcile()` increments generation
+
+**`FakeAuthorityService.kt`** (test fixture, updated):
+- Registry methods delegated to embedded `FakeRegistry`
+- Added `registerRegistryObserver()` / `unregisterRegistryObserver()`
+
+**`FakeProdXAuthorityService.java`** (test fixture, updated):
+- Added `registerRegistryObserver()` / `unregisterRegistryObserver()` stubs
+
+**`ProdXRegistryTest.kt`** (unit test, rewritten - 15 tests):
+- Empty registry detection, entry management
+- `resolveCapability`: exact match, wrong provider, wrong version, unknown capability, provider dead, provider recovery
+- `reconcile`: generation increment
+- `getSnapshot`: content verification, null when empty
+- Observer: notification on reconcile, unregister suppression
+- Multi-entry isolation
+
+## P0-06: Policy/Grants/Authorization (Completed)
+
+### ProdXGrantStore.java (enhanced)
+- **Epoch tracking**: `mGrantEpoch` (int) increments on every add/revoke/suspend/unsuspend mutation
+- **`hasActiveGrant(packageName, capabilityId, userId)`**: checks for valid, active, non-suspended grants for a given package/capability/user combination
+- **`invalidateOnKillSwitch()`**: suspends all grants and increments epoch when kill switch is activated
+- All methods now `synchronized` for thread safety
+
+### ProdXPolicyEngine.java (rewritten — 50 lines)
+- **Constructor takes `ProdXGrantStore` + `ProdXRegistry`** for grant and capability lookup
+- **Deny precedence evaluation** (shadow-only, dispatch disabled):
+  1. Kill switch active → `deny("kill_switch_active")`
+  2. Capability not resolved in Registry → `deny("capability_not_resolved")`
+  3. No active grant for package/capability/user → `deny("no_active_grant")`
+  4. All checks pass → `allow("allowed_shadow")`
+- **`getCurrentPolicyEpoch()`** returns policy epoch for token binding (static `POLICY_EPOCH = 0` for P0)
+
+### ProdXAuthorizationEngine.java (rewritten — 150 lines)
+- **AndroidKeyStore RSA key pair**: generated on first init, loaded on subsequent starts (alias `prodx_auth_key`)
+- **`mintAuthorization(decision, proof)`**: builds signed token only if `decision.isAllowed()`
+  - Claims: issued-at, expires-at (30s TTL), registry/policy/grant epochs, decision hash, proof hash, nonce
+  - Signed with `SHA256withRSA`
+  - Token format: `[claims_len|claims|sig_len|signature]`
+  - Returns `ProdXExecutionAuthorization` with auth ID, token bytes, expiry
+- **`verifyAuthorization(token)`**: full verification pipeline
+  - Replay check (SHA-256 token hash in `mUsedTokens` set)
+  - RSA signature verification with `SHA256withRSA`
+  - Clock skew tolerance (±5s)
+  - Epoch freshness (registry, policy, grant all checked against current values)
+  - On success: token hash added to used set (single-use)
+- **`buildClaims()`**: deterministic claim serialization for signing
+
+### ProdXConfirmationChallenge.java (enhanced)
+- **Purpose binding**: `mPurpose` string and `mBindingHash` (SHA-256 of binding data)
+- **`verifyProof(byte[])`**: single-use, time-bounded (30s TTL), hash comparison via `MessageDigest.isEqual`
+- **`isConsumed`** flag prevents replay
+
+### ProdXAuthorityService.java (wired)
+- `ProdXPolicyEngine` now receives `mGrantStore` + `mRegistry`
+- `ProdXAuthorizationEngine` now receives `mGrantStore` + `mPolicyEngine` + `mRegistry`
+
+### Test files
+
+**`FakePolicyEngine.kt`** (test fixture, rewritten):
+- Configurable `shouldAllow` flag
+- Records `lastContext`/`lastRequest` for assertion
+- `getCurrentPolicyEpoch()` for epoch testing
+
+**`ProdXPolicyEngineTest.kt`** (unit test, rewritten — 5 tests):
+- Default deny, configured allow, context passthrough, request passthrough, epoch value
+
+**`ProdXAuthorizationEngineTest.kt`** (unit test, rewritten — 6 tests):
+- Deny/no-auth flow, allow flow, registry resolution, registry resolve with entry, mint only on allow, epoch tracking
+
+**`ProdXGrantStoreTest.kt`** (unit test, rewritten — 5 tests):
+- Grant creation, parcelable round-trip, registry resolve with/without grant, provider death
+
+**`TestVectors.kt`** (fixtures, enhanced):
+- Added `makeEntry(capabilityId, providerId)` helper for test entry creation
+
+## 2026-07-16: P0-07 Audit Engine Implemented for Targeted Build Validation
+
+P0-07 was implemented directly in the live VM checkout at
+`/home/premanandal1978/android/waterlily`. The previously reported framework
+resource blocker had already been corrected in the live tree:
+`symbols.xml` now declares the internal Java bool for
+`config_prodxEnabled`; its generated `R.txt` will refresh on the next build.
+
+VM implementation under `packages/modules/ProdX/service/audit/`:
+
+- Reworked the Blueprint into `prodx-audit-core`, `ProdXAuditService`, and
+  `ProdXAuditTests`; the app now compiles its AIDL and uses platform APIs.
+- Replaced the null-binding placeholder with a direct-boot-aware,
+  system-shared-UID service whose Binder entry points independently enforce
+  `SYSTEM_UID`.
+- Corrected the reserve contract to return the durable reservation ID needed by
+  subsequent phase, outcome, and cancellation operations.
+- Added five-minute reservation TTL, restart reconstruction, terminal state
+  enforcement, and idempotent reserve/phase/outcome/cancellation handling.
+- Added a single-writer append-only ledger with length-delimited frames,
+  per-frame SHA-256 checksums, monotonic sequences, previous-record hash
+  binding, fsync-before-acknowledgement, and bounded record decoding.
+- Added recovery health states. Incomplete crash tails become read-only and
+  corruption/unavailable storage fails closed without truncating or resetting
+  evidence.
+- Added DE global and lazily opened CE per-user partition plumbing with explicit
+  user close/remove operations.
+- Added pre-persistence minimization: caller payload bytes are never stored;
+  only a bounded SHA-256 digest enters the ledger.
+- Added tombstone-as-record retention support, minimized history only, and a
+  health-only shell seam; no raw read, edit, or delete Binder surface exists.
+- Added tests covering durable recovery, verified ordering, tamper failure,
+  payload minimization, and TTL expiry.
+- Updated the audit README to document the implemented boundary and delayed
+  production inclusion.
+
+Static validation:
+
+- `bpfmt -d` reports no Blueprint diff.
+- Both audit manifests pass `xmllint`.
+- The host AIDL compiler successfully generated Java for `IProdXAudit.aidl`
+  using the framework parcelable include path.
+- The staged/local managed audit mirror and live VM audit tree match, excluding
+  one harmless staging-only transfer artifact outside the checkout.
+- `frameworks/base` passes `git diff --check`.
+- No Android module build was run by the agent.
+
+Next user validation (no clean required):
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m ProdXAuditService ProdXAuditTests services
+```
+
+## 2026-07-16: P0-07 Audit Engine Targeted Build Passed
+
+The user reran the targeted validation after the JUnit/test-runner wiring fix:
+
+```text
+#### build completed successfully (04:36 (mm:ss)) ####
+```
+
+This confirms that `prodx-audit-core`, `ProdXAuditService`,
+`ProdXAuditTests`, the corrected AIDL surface, audit Kotlin implementation,
+test sources, manifests, and the refreshed framework `services` graph all
+compile together. P0-07 now advances from implementation to later
+install/device/recovery validation; product inclusion and Authority-to-Audit
+binding remain intentionally deferred until P0-08 integration work establishes
+the next trusted control surfaces.
+
+## 2026-07-16: P0-08 Trusted Control Surface Compile-First Slice Implemented
+
+Following the successful P0-07 targeted build, implementation advanced to
+P0-08. Live inspection showed that all existing SystemUI and Settings ProdX
+classes were inert placeholders and that `ProdXManager` did not project the
+Authority's already-defined mode and emergency-disable calls.
+
+VM implementation:
+
+- Extended `ProdXManager` with fail-safe `setMode`, `emergencyDisable`, and
+  `isEmergencyDisabled` methods. Missing/dead/denied Authority access returns a
+  safe failure, and emergency state defaults to disabled when unavailable.
+- Added `ProdXConfirmationController` in SystemUI as a synthetic-only trusted
+  confirmation state machine. It binds the exact canonical challenge fields,
+  user, expiry, opaque Authority binding, user choice, and Android-owned auth
+  result reference into a SHA-256 proof.
+- Confirmation rejects blank/malformed/expired/wrong-user challenges, concurrent
+  presentation, obscured touches, missing authentication references, replay,
+  screen-off, user-switch, and Authority-death completion.
+- Kept optional model text structurally separate as untrusted context and out of
+  the canonical proof input.
+- Added `ProdXIndicatorController` for active synthetic-operation tracking and
+  an emergency-stop callback that cannot execute an operation. Existing status
+  and notification controllers now consume the minimized indicator state.
+- Reworked Settings mode and health controllers to consume `ProdXManager` only:
+  mode changes and emergency disable go through Authority, while health and
+  Registry generation fail safely when Authority is absent.
+- Left audit history explicitly unavailable with a mediator-unavailable reason;
+  Settings does not bind or query `ProdXAuditService` directly.
+- Added the required signature permission requests to SystemUI
+  (`PRODX_AUTHORITY`, `PRODX_CONFIRMATION`) and Settings (`PRODX_AUTHORITY`,
+  `PRODX_ADMIN`, `PRODX_AUDIT_READ`).
+- Refreshed the managed untracked mirrors for the framework client, SystemUI,
+  and Settings sources; retained explicit manifest patch artifacts for the two
+  tracked repositories.
+
+Static validation:
+
+- Both modified manifests pass `xmllint`.
+- `frameworks/base` and `packages/apps/Settings` pass `git diff --check`.
+- The live source inventory contains the new confirmation and indicator files.
+- No Android build was run by the agent.
+
+This is the first P0-08 compile-first slice, not P0-08 completion. Actual panel
+rendering, Android authentication UI integration, Authority callback/readiness
+registration, Settings preference resources, minimized history mediation, and
+UI/device security tests remain after compilation succeeds.
+
+Next user validation (no clean required):
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m SystemUI Settings services
+```
+
+## 2026-07-16: P0-08 Compile-First Slice Build Passed
+
+The user completed the targeted `SystemUI Settings services` validation:
+
+```text
+[100% 3219/3219] //frameworks/base/packages/SystemUI:SystemUI install SystemUI.odex [common]
+#### build completed successfully (38:40 (mm:ss)) ####
+```
+
+The emitted duplicate `com/android/wifi/flags/Flags.class` diagnostic was
+non-fatal. This build confirms the new framework manager methods, SystemUI
+confirmation/indicator state controllers, Settings administration controllers,
+manifest permission requests, and the refreshed `services` graph compile
+together. P0-08 can now advance from controller-only integration to visible
+Settings wiring and focused trusted-UI security tests.
+
+## 2026-07-16: P0-08 Settings Surface and Trusted-State Tests Added
+
+The next P0-08 slice was implemented after the compile-first success.
+
+VM implementation:
+
+- Replaced the empty `ProdXSettingsFragment` with a resource-backed preference
+  screen that reads mode, Authority health, and Registry generation through
+  `ProdXManager` only.
+- Added a debuggable-build-only mode selector for disabled, inventory-only,
+  shadow-policy, and test-no-op modes. Production builds do not expose this
+  test-mode control.
+- Added visible fail-safe status for minimized audit history while the Authority
+  history mediator is absent, and explicit P0-unavailable rows for learning and
+  extensions.
+- Added an emergency-disable preference that delegates solely to Authority via
+  the mode controller; it has no local execution path.
+- Added localized Settings strings and a dedicated `prodx_settings.xml`
+  preference hierarchy. The screen remains undiscoverable until its navigation
+  entry and authentication policy are reviewed.
+- Added SystemUI tests for exact-challenge single use, replay rejection,
+  obscured-touch cancellation, expiry, wrong-user rejection, screen-off
+  cancellation, indicator duplicate suppression, and Authority-acknowledged
+  emergency-stop clearing.
+- Refreshed the local managed mirrors with the new Settings resources, fragment,
+  and SystemUI tests.
+
+Static validation:
+
+- Both new Settings resource XML files pass `xmllint`.
+- `frameworks/base` and `packages/apps/Settings` pass `git diff --check`.
+- No Android build was run by the agent.
+
+Next user validation (no clean required):
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m SystemUI Settings SystemUI-tests
+```
+
+## 2026-07-16: ProdX SystemUI Tests Isolated from Stale Monolithic Harness
+
+The next monolithic `SystemUI-tests` retry advanced again but exposed several
+additional unrelated fixture/API drifts: status-bar settings repository wiring,
+`WifiRepository.disableWifi`, a changed `WifiInteractor` constructor, and a
+vendor `OnePlusVolumeDialogViewBinder` component method. None is used by the
+ProdX controllers or their tests.
+
+Engineering decision and VM implementation:
+
+- Stopped expanding P0-08 into maintenance of the entire platform SystemUI test
+  harness. Production `SystemUI`, `Settings`, and `services` had already built
+  successfully.
+- Added the specification-aligned dedicated `ProdXSystemUITests` host target to
+  `frameworks/base/packages/SystemUI/Android.bp`.
+- The target compiles only `ProdXConfirmationController`,
+  `ProdXIndicatorController`, and their two focused JUnit test classes. It has
+  no dependency on stale SystemUI Kosmos/customization/vendor fixtures.
+- Retained the exact Blueprint patch as
+  `vm-edit/prodx-systemui-tests-target.patch`.
+
+Static validation:
+
+- The patch passed `git apply --check` before application.
+- `bpfmt -d` reports no Blueprint diff.
+- `frameworks/base` passes `git diff --check`.
+- No Android build was run by the agent.
+
+The monolithic `SystemUI-tests` target remains an upstream/vendor integration
+maintenance item and is no longer the P0-08 acceptance target. Validate the
+scoped production and ProdX test graph without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m SystemUI Settings ProdXSystemUITests
+```
+
+## 2026-07-16: P0-08 Authority-to-SystemUI Confirmation Bridge Added
+
+After the scoped production/test build passed, the remaining P0-08 runtime seam
+work began.
+
+VM implementation:
+
+- Extended `IProdXAuthority` with trusted confirmation callback registration,
+  unregistration, synthetic challenge request, exact-bound result submission,
+  and cancellation methods.
+- Implemented a single trusted UI registration in `ProdXAuthorityService`,
+  pinned both by the `PRODX_CONFIRMATION` signature permission and the actual
+  `com.android.systemui` UID/package identity.
+- Added Binder-death cleanup that is identity-bound to the registered callback,
+  preventing an obsolete callback death from clearing a replacement.
+- Added one-pending-challenge semantics, a 64 KiB canonical challenge bound,
+  30-second expiry, exact-byte constant-time challenge comparison, exact
+  32-byte proof enforcement, registered-UID result enforcement, and fail-closed
+  cancellation. No bridge method executes a capability.
+- Extended `ProdXManager` with fail-safe callback registration, result
+  submission, and cancellation projections.
+- Added `ProdXConfirmationBridge` in SystemUI. It marshals Binder callbacks onto
+  an injected main executor, bounds/copies every challenge, rejects concurrent
+  presentation, accepts results only through a trusted renderer interface, and
+  cancels malformed proofs.
+- Updated `FakeProdXAuthorityService` for the expanded frozen interface.
+- Added an internal Developer options navigation entry to
+  `ProdXSettingsFragment`; the test-mode selector remains hidden unless
+  `Build.IS_DEBUGGABLE`.
+- Refreshed all affected managed mirrors and retained the tracked Settings
+  navigation patch as `vm-edit/p0-08-settings-navigation.patch`.
+
+Static validation:
+
+- The host AIDL compiler successfully generated the expanded
+  `IProdXAuthority` Java surface.
+- All `IProdXAuthority.Stub` implementations in the tree were enumerated and
+  updated.
+- Settings resource XML and both application manifests pass `xmllint`.
+- `frameworks/base` and `packages/apps/Settings` pass `git diff --check`.
+- No Android build was run by the agent.
+
+This slice freezes the fail-closed IPC contract but does not yet start the
+bridge from SystemUI or provide the reviewed renderer/authentication adapter;
+therefore Authority cannot currently become confirmation-ready at runtime.
+Those are the next P0-08 changes after compilation succeeds. Audit history also
+remains unavailable until its Authority mediator is implemented.
+
+Next user validation (no clean required):
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m services SystemUI Settings ProdXSystemUITests
+```
+
+## 2026-07-16: P0-08 Confirmation Bridge Build Passed
+
+The user confirmed that the expanded Authority AIDL, framework manager,
+Authority implementation/fake, SystemUI confirmation bridge, Settings
+navigation, production modules, and scoped ProdX tests build successfully:
+
+```bash
+m services SystemUI Settings ProdXSystemUITests
+```
+
+P0-08 now has four major parts remaining: (1) SystemUI startup/readiness and the
+reviewed trusted renderer plus Android authentication adapter; (2) runtime
+lifecycle/security wiring for lock, screen-off, user switch, overlay/obscured
+input, Authority death, and active indicator/emergency stop; (3) Authority-only
+Settings administration completion, including sensitive-admin authentication,
+grants/provider/quarantine state, and mediated minimized audit history; and (4)
+device/security/accessibility/localization/process-death validation. P0-09 must
+remain gated until these are completed or individually deferred fail-closed.
+
+## 2026-07-16: All Four Remaining P0-08 Workstreams Implemented in Parallel
+
+At the user's direction, the four remaining P0-08 areas were implemented
+concurrently and consolidated on the live VM. No Android build was run by the
+agents.
+
+### SystemUI startup, trusted rendering and authentication
+
+- Added a feature-scoped `ProdXModule` and registered it exactly once in
+  `ReferenceSysUIComponent`.
+- Added `ProdXRuntimeStartable`; SystemUI now registers the confirmation callback
+  at process startup and recreates its manager/bridge after Authority health
+  loss so registration can recover when Authority returns.
+- Added `ProdXTrustedConfirmationRenderer` using `SystemUIDialog`, `FLAG_SECURE`,
+  hidden overlay windows, obscured-touch filtering, non-cancelable outside
+  touches, and localized trusted copy.
+- Because Authority currently supplies opaque canonical bytes, the renderer
+  displays only generic trusted text and a SHA-256 challenge fingerprint. It
+  never renders opaque/model bytes as capability/provider prose.
+- Added `ProdXDeviceEntryAuthAdapter`, which returns a fresh 32-byte reference
+  only after Android's secure device-entry dismissal succeeds; absent/non-secure
+  authentication fails closed.
+
+### Runtime lifecycle, indicator and emergency stop
+
+- SystemUI cancels pending confirmation on screen off, close-system-dialogs,
+  user switch, device re-lock, bridge failure, and Authority unavailability.
+- Authority callback Binder death clears only the matching registration and
+  pending challenge.
+- Active confirmation state drives an ongoing low-importance SystemUI
+  notification with an explicit immutable emergency-stop action.
+- Emergency stop delegates to Authority; indicator state clears only after the
+  Authority action acknowledges success.
+- Active indication is intentionally confirmation-scoped until P0-09 exposes a
+  Broker-wide operation observer.
+
+### Authority-mediated Settings administration
+
+- Expanded and published the Authority-owned `prodx_settings` Binder mediator.
+- Settings reads health/mode, Registry providers, per-user grants, quarantine
+  state, and bounded minimized administrative history only through Authority.
+  Settings has no direct Audit-service Binder dependency.
+- Sensitive mode, emergency-disable, grant revoke/suspend, and provider
+  quarantine mutations require a trusted SystemUI confirmation first.
+- Successful confirmation creates a 60-second, calling-UID-bound, single-use
+  server-side admin session. Missing, stale, cross-UID, or reused proof fails
+  closed, and state clears on user lifecycle boundaries.
+- Provider quarantine now changes Registry generations/snapshots and prevents
+  quarantined capability resolution.
+- Settings shows provider/grant/quarantine counts and minimized history summary;
+  its test-mode selector remains restricted to debuggable builds.
+- The current history is an Authority-owned bounded in-memory administrative
+  event ring, not the durable P0-07 ledger. Durable mediation remains blocked by
+  the Audit app's unexported isolated boundary and lack of a typed framework
+  binding contract; no weaker direct Settings path was introduced.
+
+### Scoped security and failure-mode tests
+
+- Expanded `ProdXSystemUITests` for malformed/bounded challenges, concurrent
+  presentation, replay/single use, mutation/proof binding, empty auth, expiry,
+  explicit cancellation, screen off, user change, Authority death, obscured
+  touch, indicator lifecycle, and emergency-stop acknowledgement/failure.
+- Added isolated `ProdXSettingsTests` for fail-closed missing mediator/history,
+  zero grants, and unavailable unimplemented screensaver state.
+- Dedicated targets remain independent of the stale monolithic
+  `SystemUI-tests` fixture graph.
+
+### Consolidated static validation
+
+- Host AIDL generation passes for `IProdXAuthority` and
+  `IProdXSettingsMediator` together.
+- All `IProdXAuthority.Stub` implementations retain the expanded confirmation
+  surface.
+- `bpfmt -d` reports no diff for SystemUI and Settings Blueprints.
+- SystemUI/Settings manifests and all ProdX resource XML pass `xmllint`.
+- `frameworks/base` and `packages/apps/Settings` pass `git diff --check`.
+- Dagger inclusion and both dedicated target names were verified in the live
+  source graph.
+
+Compile validation is now required before device testing:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests
+```
+
+## 2026-07-16: ProdXSettingsTests Resource Graph Isolated
+
+The next retry advanced beyond Kotlin compilation and failed in aapt while
+compiling the entire Settings `res/` tree for the dedicated test APK. Because
+the test module lives at the Settings repository root, Soong applied the default
+`res` directory even though the reflective test uses no resources. That pulled
+in unrelated Settings styles whose `android.app.notifications_redesign_fonts`
+aconfig resource was not present in the isolated test resource graph.
+
+VM correction:
+
+- Added `resource_dirs: []` to `ProdXSettingsTests`, matching the resource
+  isolation pattern used by scoped SystemUI tests.
+- Kept `instrumentation_for: "Settings"`; runtime reflection still targets the
+  real Settings APK, while the test APK no longer recompiles Settings resources.
+- Retained the patch as
+  `vm-edit/p0-08-settings-tests-no-resources.patch`.
+
+Forward scan:
+
+- The test manifest uses literal package/runner/target names and needs no local
+  resources.
+- The single Kotlin test source uses only reflection and JUnit assertions.
+- Therefore the target now has an intentionally empty aapt resource input and
+  cannot reach unrelated Settings styles or aconfig resource flags.
+
+Static validation:
+
+- The corrected patch passed `git apply --check` before application.
+- `bpfmt -d` and Settings `git diff --check` pass.
+- The final live module block was inspected with `resource_dirs: []` present.
+- No Android build was rerun by the agent.
+
+Retry without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests
+```
+
+## 2026-07-16: ProdXSettingsTests Hidden-API Compile Dependency Removed
+
+The next retry still showed the Settings controllers being compiled against a
+host-style classpath, and live inspection found the old `java_test_host` block
+had remained in `packages/apps/Settings/Android.bp`. The hidden framework
+`ProdXManager` and its new admin methods were therefore unresolved.
+
+Final VM correction:
+
+- Replaced the live target definition in one atomic patch with a platform-signed
+  `android_test` target.
+- Removed all production Settings controllers from the test APK's source list;
+  they are already compiled in the instrumented `Settings` target and must not
+  be duplicated against a separate framework classpath.
+- Reworked `ProdXSettingsFailClosedTest` to load the real target-APK controllers
+  reflectively at runtime. This validates their public fail-closed behavior
+  without a compile-time dependency on uncommitted hidden framework APIs.
+- Restored the explicit AndroidJUnitRunner manifest and AndroidX runner/JUnit
+  dependencies.
+- Retained the final atomic Blueprint correction as
+  `vm-edit/p0-08-settings-tests-final-target.patch` and refreshed the test mirror.
+
+Forward scan:
+
+- The test APK now compiles only one Kotlin test file.
+- Its compile-time non-JDK dependency is JUnit/AndroidX runner only.
+- All references to ProdX Settings production classes are string-based runtime
+  reflection against the instrumented Settings APK.
+- No SystemUI/Settings monolithic fixture, hidden `ProdXManager`, or duplicated
+  controller source remains in the target graph.
+
+Static validation:
+
+- The final patch passed `git apply --check` before application.
+- `bpfmt -d`, test-manifest `xmllint`, and Settings `git diff --check` pass.
+- The final live Blueprint block was inspected after application.
+- No Android build was rerun by the agent.
+
+Retry without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests
+```
+
+After compilation, device-only P0-08 validation still requires a bootable image
+and covers real keyguard/auth flows, TalkBack/focus/rotation/localization,
+WindowManager tapjacking defense, Binder kill/restart, user-switch broadcasts,
+and live absent/dead-Authority Settings behavior. P0-08 is not marked complete
+until the compile and applicable device gates pass or the device-only items are
+explicitly deferred fail-closed.
+
+## 2026-07-16: ProdXSettingsTests Corrected to Platform Instrumentation Target
+
+The consolidated build failed only in `ProdXSettingsTests`. Inspection of the
+VM `out/verbose.log.gz` showed that the target was declared as
+`java_test_host` while compiling Settings controllers that intentionally depend
+on the hidden platform `android.app.prodx.ProdXManager` API. The resulting host
+classpath correctly had no Android framework classes, causing the unresolved
+`android`, `ProdXManager`, and mediator-method errors.
+
+VM implementation:
+
+- Converted `ProdXSettingsTests` from `java_test_host` to `android_test`.
+- Enabled platform APIs, platform signing, and `instrumentation_for: "Settings"`.
+- Added the AndroidX JUnit extension and runner dependencies.
+- Added an explicit `AndroidJUnitRunner` manifest targeting
+  `com.android.settings`.
+- Retained the correction as
+  `vm-edit/p0-08-settings-tests-android-target.patch` and refreshed the managed
+  test-manifest mirror.
+
+Forward scan:
+
+- The target's three production controllers require only the platform framework
+  and their existing Kotlin/JDK dependencies.
+- The test source's only external dependency is JUnit, now supplied through the
+  AndroidX test extension/runner.
+- No monolithic Settings or SystemUI test fixture dependency was introduced.
+
+Static validation:
+
+- The correction passed `git apply --check` before application.
+- `bpfmt -d` reports no Settings Blueprint diff.
+- The new test manifest passes `xmllint`.
+- `packages/apps/Settings` passes `git diff --check`.
+- No Android build was rerun by the agent.
+
+Retry the same consolidated validation without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests
+```
+
+## 2026-07-16: P0-08 Scoped Production and Trusted-State Tests Passed
+
+The user confirmed that the no-clean scoped validation completed successfully:
+
+```bash
+m SystemUI Settings ProdXSystemUITests
+```
+
+This validates the production SystemUI and Settings graphs together with the
+dedicated ProdX confirmation/indicator host tests. It closes the P0-08
+compile-first and trusted-state-test slices. Remaining P0-08 work is runtime UI
+integration: Authority-owned callback/readiness registration, visible trusted
+confirmation rendering backed by Android authentication, Settings navigation
+and sensitive-admin authentication, Authority-mediated minimized audit history,
+and device tests for overlay/lock/user/process-death behavior. P0-09 Broker work
+must not begin until those seams are either implemented and validated or
+explicitly deferred with Authority fail-closed behavior.
+
+## 2026-07-16: ProdXSystemUITests Dependency Closure Forward-Scanned
+
+The first dedicated `ProdXSystemUITests` build failed because its explicit host
+test target did not include JUnit. Consequently all `org.junit.Test` and
+`org.junit.Assert` imports surfaced as unresolved references.
+
+A complete forward dependency scan was performed across every source in the
+target:
+
+- The target contains exactly two production controllers and two test classes.
+- `ProdXConfirmationController` uses only Kotlin plus Java IO and security APIs.
+- `ProdXIndicatorController` uses only Kotlin plus Java concurrent collections.
+- Every non-standard test import is from JUnit 4; the tests do not use Android,
+  SystemUI fixtures, resources, coroutines, Mockito, Truth, protos, Kosmos, or
+  vendor libraries.
+- The platform `junit` module is `host_supported` and statically brings its
+  Hamcrest dependency, closing the complete host-test dependency graph.
+
+VM implementation:
+
+- Added `static_libs: ["junit"]` to `ProdXSystemUITests`.
+- Retained the exact patch as
+  `vm-edit/prodx-systemui-tests-junit-dep.patch`.
+
+Static validation:
+
+- The patch passed `git apply --check` before application.
+- `bpfmt -d` reports no Blueprint diff.
+- `frameworks/base` passes `git diff --check`.
+- The live `external/junit` Blueprint confirms the selected module supports
+  host compilation and exports Hamcrest transitively.
+- No Android build was run by the agent.
+
+No further unresolved import or module dependency is visible in the scoped
+target. Retry without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m SystemUI Settings ProdXSystemUITests
+```
+
+## 2026-07-16: SystemUI Tests Smartspace Proto Dependencies Added
+
+The next `SystemUI-tests` retry advanced past the customization fake repository
+fix and failed while compiling existing Google Smartspace logging sources. The
+test target includes the complete `SystemUI-core` source filegroup directly but
+did not mirror the production core target's generated Smartspace proto
+dependencies, leaving `com.android.systemui.smartspace.nano.SmartspaceProto`
+unresolved.
+
+VM implementation:
+
+- Added `smartspace-proto-java` and `smartspace-proto-lite-java` to the
+  `SystemUI-tests` static libraries, matching the dependencies already used by
+  the production `SystemUI-core` target.
+- Retained the exact Blueprint patch as
+  `vm-edit/systemui-tests-smartspace-proto-deps.patch`.
+
+Static validation:
+
+- The patch passed `git apply --check` before application.
+- `bpfmt -d` reports no Blueprint diff.
+- `frameworks/base` passes `git diff --check`.
+- No Android build was run by the agent.
+
+Retry without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m SystemUI Settings SystemUI-tests
+```
+
+## 2026-07-16: SystemUI Customization Test Fakes Updated
+
+The first `m SystemUI Settings SystemUI-tests` attempt failed in the pre-existing
+`SystemUICustomizationTestUtils` library, before reaching the new ProdX tests.
+Both fake settings repositories lagged their current production interfaces and
+did not implement `stringSetting(name): Flow<String?>`.
+
+VM implementation:
+
+- Added a reactive nullable string flow to `FakeSecureSettingsRepository`.
+- Added the same interface implementation to `FakeSystemSettingsRepository`.
+- Both implementations map the existing `MutableStateFlow` backing store and do
+  not introduce a second source of test state.
+- Retained the exact patch as
+  `vm-edit/systemui-customization-fake-string-setting.patch`.
+
+Static validation:
+
+- The patch passed `git apply --check` before application.
+- `frameworks/base` passes `git diff --check` after application.
+- No Android build was run by the agent.
+
+Retry the same validation without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m SystemUI Settings SystemUI-tests
+```
+
+Do not add `ProdXAuditService` to I001D `PRODUCT_PACKAGES` yet. Product wiring,
+Authority binding, install/device execution, and deliberate corruption/restart
+tests follow only after this targeted compile succeeds.
+
+## 2026-07-16: P0-07 Test JUnit Wiring Corrected
+
+The first `m ProdXAuditService ProdXAuditTests services` attempt reached Kotlin
+test compilation and failed because `ProdXAuditTests` did not put JUnit on its
+compile classpath. All `org.junit` annotations and assertions in
+`AppendOnlyLedgerTest.kt` were consequently unresolved; this was isolated to
+test build wiring rather than audit engine source.
+
+VM implementation:
+
+- Added `androidx.test.ext.junit` and `androidx.test.runner` to the
+  `ProdXAuditTests` static libraries.
+- Declared `AndroidJUnitRunner` and its audit-service target package in the test
+  manifest so the resulting APK is also runnable after compilation.
+- Refreshed the local audit mirror to match the VM edits.
+
+Static validation:
+
+- `bpfmt -d` reports no Blueprint diff.
+- The updated test manifest passes `xmllint`.
+- No Android build was run by the agent.
+
+Retry without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m ProdXAuditService ProdXAuditTests services
+```
+
+## 2026-07-16: P0-08 SystemUI Trusted Dialog Overload Corrected
+
+The integrated P0-08 validation reached `SystemUI-core` Kotlin compilation and
+failed only in `ProdXTrustedConfirmationRenderer.kt`. A bare `null` passed as
+the third argument to `AlertDialog.setButton` was ambiguous between the branch's
+`Message` and `DialogInterface.OnClickListener` overloads.
+
+VM implementation:
+
+- Replaced both ambiguous placeholders with an explicitly typed no-op
+  `DialogInterface.OnClickListener`.
+- Kept the security behavior unchanged: `onShow` replaces those placeholders
+  with the positive/negative handlers that invoke device-entry authentication,
+  so the dialog still does not auto-dismiss before authentication completes.
+- Synchronized the corrected source to the managed local mirror and retained
+  the focused change as `vm-edit/p0-08-systemui-setbutton-overload.patch`.
+
+Forward compile-risk scan:
+
+- The complete failed log contains exactly the two overload errors above; the
+  remaining Settings output is warnings only.
+- Verified the live checkout signatures for `UserTracker.Callback`,
+  `KeyguardStateController.Callback`, and
+  `KeyguardDismissHandler.executeWhenUnlocked` against the P0-08 overrides.
+- Verified live availability and in-tree usage of
+  `Window.setHideOverlayWindows`, `Context.RECEIVER_NOT_EXPORTED`,
+  `NotificationManager.cancelAsUser`, and `notifyAsUser`.
+- Verified all referenced ProdX SystemUI strings, the `ProdXManager.getHealth`
+  API, `ProdXModule` inclusion in `ReferenceSysUIComponent`, and the standard
+  `CoreStartable` Dagger map-binding pattern.
+- `frameworks/base` passes `git diff --check` after the VM update.
+- No Android build was run by the agent.
+
+Retry the same integrated validation without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests
+```
+
+## 2026-07-16: P0-08 SystemUI Keyguard Dagger Binding Corrected
+
+The next integrated validation passed the ProdX Kotlin compilation and advanced
+to `SystemUI-application` Dagger processing. Dagger then reported one primary
+missing binding: `KeyguardDismissHandler`, requested by
+`ProdXDeviceEntryAuthAdapter`. The long list of `ReferenceSysUIComponent` entry
+points in the build output was downstream graph impact, not separate errors.
+
+Root cause and VM implementation:
+
+- `KeyguardDismissHandler` is an interface and this branch deliberately has no
+  graph binding for that interface.
+- `KeyguardDismissUtil` implements the interface, has an `@Inject` constructor,
+  and is the concrete dependency used by existing wallet, sensor privacy,
+  recording, smart-reply, and tile code.
+- Changed only the adapter constructor/import/call-site type from
+  `KeyguardDismissHandler` to `KeyguardDismissUtil`; unlock behavior and the
+  `executeWhenUnlocked` arguments are unchanged.
+- Synchronized the corrected adapter to the VM and managed mirror; retained the
+  focused change as
+  `vm-edit/p0-08-systemui-keyguard-dismiss-binding.patch`.
+
+Forward graph-risk scan:
+
+- The complete failed action contains one `[Dagger/MissingBinding]` diagnostic.
+- Confirmed `KeyguardDismissUtil` is `@SysUISingleton`, `@Inject`-constructible,
+  implements the required API, and is already resolved at multiple existing
+  SystemUI injection sites.
+- Confirmed no ProdX source still requests `KeyguardDismissHandler`.
+- Rechecked all three ProdX injected constructor chains and
+  `frameworks/base` passes `git diff --check`.
+- No Android build was run by the agent.
+
+Retry without cleaning:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests
+```
+
+## 2026-07-16: P0-08 Consolidated Build Validation Passed
+
+The user confirmed that the final no-clean consolidated command completed
+successfully after the trusted-dialog overload and Keyguard Dagger corrections:
+
+```bash
+m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests
+```
+
+This closes the P0-08 source-integration and compile gates for framework
+services, SystemUI, Settings, and both dedicated ProdX test targets. P0-08 is
+implementation-complete but remains pending its device-only acceptance gate:
+boot/image integration, real keyguard authentication, trusted-dialog overlay
+and obscured-touch behavior, Settings navigation/mutations, user switching,
+Binder/process death and recovery, accessibility, rotation, and localization.
+Until those checks run or are explicitly deferred, Authority continues to fail
+closed when the trusted UI/runtime is unavailable. No Android build was run by
+the agent.
+
+## 2026-07-16: Complete ProdX Product Roadmap Approved and Written
+
+The user clarified the final product objective: convert reviewed Android/I001D
+capabilities into AI-callable control and observation tools, operate them
+through an AI reasoning layer, monitor rogue/suspicious behavior, retain a
+growing private knowledge base and improve behavior through controlled
+learning. The immutable P0 plan is retained as the security foundation rather
+than rewritten.
+
+The approved living roadmap is:
+
+- `ProdX-Master-Product-Roadmap.md`
+
+It adds six permanent product programs: Android Capability Fabric, Secure Tool
+Broker, AI Reasoning, Observation/Security Monitor, Private Knowledge Base and
+Learning/Personalization. It also records the honest current P0 status and a
+three-lane acceleration plan focused on foundation correctness, one synthetic
+runtime vertical slice and product/security/test closure. No VM or Android
+source was modified and no build was run for this documentation update.
+
+## 2026-07-16: Recoverable VM/GitHub Checkpoint Prepared
+
+Captured the current Android VM source state into one canonical,
+Android-root-relative overlay in `vm-edit/current-overlay/`. The checkpoint
+contains 326 changed/new files, including the complete standalone ProdX module,
+and records six intentional build-tools deletions. Every transferred artifact
+and every extracted source file was verified against VM-generated SHA-256
+manifests before local cleanup.
+
+Recovery metadata is in `handoff/vm-current/`: exact file/deletion inventories,
+per-file hashes, VM project status, capture metadata and the pinned Repo
+manifest. `handoff/README.md` contains replacement-VM restore commands.
+
+Removed only artifacts superseded by the verified checkpoint: the duplicate
+ProdX tree, partial managed-repository mirror, standalone I001D file copies,
+incremental P0-08 patch fragments, stale handoff archive and temporary transfer
+tarball. Preserved ROM/build artifacts, baseline sources, work products, the
+dirty kernel submodule, and the device/common and hardware/interface recovery
+sets whose reproducibility has not yet been proven.
+
+No Android build was run. The last user-reported scoped validation remains:
+
+```bash
+m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests
+```

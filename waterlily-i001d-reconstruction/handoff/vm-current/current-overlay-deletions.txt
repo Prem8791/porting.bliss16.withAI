@@ -1,0 +1,6 @@
+prebuilts/build-tools/path/darwin-x86/date
+prebuilts/build-tools/path/darwin-x86/tar
+prebuilts/build-tools/path/linux-arm64/date
+prebuilts/build-tools/path/linux-arm64/tar
+prebuilts/build-tools/path/linux-x86/date
+prebuilts/build-tools/path/linux-x86/tar

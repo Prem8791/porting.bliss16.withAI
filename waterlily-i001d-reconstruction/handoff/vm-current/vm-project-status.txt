@@ -1,0 +1,74 @@
+
+## bionic
+ M libc/include/sched.h
+
+## external/XMP-Toolkit-SDK
+ M Android.bp
+
+## external/google-highway
+ M Android.bp
+
+## external/skia
+ M Android.bp
+
+## frameworks/base
+ M core/java/android/content/Context.java
+ M core/res/AndroidManifest.xml
+ M core/res/res/values/config.xml
+ M core/res/res/values/symbols.xml
+ M packages/SystemUI/Android.bp
+ M packages/SystemUI/AndroidManifest.xml
+ M packages/SystemUI/customization/tests/utils/src/com/android/systemui/shared/settings/data/repository/FakeSecureSettingsRepository.kt
+ M packages/SystemUI/customization/tests/utils/src/com/android/systemui/shared/settings/data/repository/FakeSystemSettingsRepository.kt
+ M packages/SystemUI/src/com/android/systemui/dagger/ReferenceSysUIComponent.java
+ M services/java/com/android/server/SystemServer.java
+?? core/java/android/app/prodx/
+?? data/etc/com.android.prodx.privapp_allowlist.xml
+?? data/etc/com.android.prodx.signature_permissions.xml
+?? packages/SystemUI/res/values/prodx_strings.xml
+?? packages/SystemUI/src/com/android/systemui/prodx/
+?? packages/SystemUI/tests/src/com/android/systemui/prodx/
+?? services/core/java/com/android/server/prodx/
+
+## packages/apps/Settings
+ M Android.bp
+ M AndroidManifest.xml
+ M res/xml/development_settings.xml
+?? res/values/prodx_strings.xml
+?? res/xml/prodx_settings.xml
+?? src/com/android/settings/prodx/
+?? tests/prodx/
+
+## prebuilts/build-tools
+ D path/darwin-x86/date
+ D path/darwin-x86/tar
+ D path/linux-arm64/date
+ D path/linux-arm64/tar
+ D path/linux-x86/date
+ D path/linux-x86/tar
+
+## system/sepolicy
+ M compat/plat_sepolicy_genfs_202604.cil
+ M private/compat/202504/202504.cil
+ M private/compat/202504/202504.ignore.cil
+ M private/compat/33.0/33.0.cil
+ M private/service_contexts
+?? private/prodx_compat.te
+?? public/prodx_attribute.te
+?? public/prodx_domain.te
+?? public/prodx_file_types.te
+?? public/prodx_service.te
+
+## vendor/bliss
+ M overlay/no-rro/frameworks/base/core/res/res/values/config.xml
+
+## device/asus/I001D
+ M biometrics/BiometricsFingerprint.cpp
+ M biometrics/BiometricsFingerprint.h
+ M biometrics/android.hardware.biometrics.fingerprint@2.3-service.I001D.rc
+ M bliss_I001D.mk
+ M device.mk
+ M proprietary-files.txt
+ M rro_overlays/FrameworksResOverlay/res/values/config.xml
+
+## packages/modules/ProdX (standalone tree; all files captured)

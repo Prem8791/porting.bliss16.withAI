@@ -1,26 +1,49 @@
 # State handoff
 
-`vm-current/` records the exact recoverable Android VM state captured on
-2026-07-15. It includes the pinned Repo manifest, human-readable and porcelain
-status, the complete tracked patch, inventories and SHA-256 manifests for new
-files, and a compressed archive of every untracked file inside a managed Repo
-project.
+`vm-current/` and `../vm-edit/current-overlay/` are the canonical recovery
+checkpoint for the Android VM state captured on 2026-07-16.
 
-The corresponding source mirrors are:
+The overlay contains all 326 changed or new source files at their
+Android-root-relative paths, including the complete standalone
+`packages/modules/ProdX` tree. `vm-current/current-overlay-deletions.txt`
+records the six paths intentionally absent from the VM. The per-file SHA-256
+manifest is `vm-current/current-overlay.sha256`; the pinned Repo manifest,
+project status and capture metadata are stored beside it.
 
-- `../vm-edit/packages-modules-ProdX/`: all 203 files in the standalone ProdX
-  module tree;
-- `../vm-edit/managed-repo-untracked/`: all 74 untracked files beneath managed
-  projects, preserving their Android-root-relative paths; and
-- `../artifacts/ProdXNoOpTestProvider-api36-20260715.apk`: the rebuilt API-36
-  capability test APK.
+The checkpoint is intentionally source-only. It excludes build output,
+temporary transfer archives and superseded partial mirrors/patch fragments.
+The latest ROM and test APK remain under `../artifacts/`.
 
-The I001D device tree is outside the managed Repo status captured on this VM.
-Its current `device.mk` and `FrameworksResOverlay` config are mirrored as
-`../vm-edit/device-asus-I001D-device.mk` and
-`../vm-edit/device-asus-I001D-FrameworksResOverlay-config.xml`.
+## Restore onto a replacement VM
 
-`local-current/` records the physical workstation inventory and nested
-repository identities at the earlier Git checkpoint. The parent repository
-stores operational project files, pins upstream repositories as submodules,
-and stores the latest ROM using Git LFS.
+First create or sync a compatible Bliss Android 16 checkout. Use
+`vm-current/resolved-manifest.xml` to audit the exact project revisions used by
+this checkpoint. From the workstation repository root, upload the overlay and
+deletion list:
+
+```powershell
+gcloud compute scp --quiet --recurse waterlily-i001d-reconstruction/vm-edit/current-overlay premanandal1978@INSTANCE:/home/premanandal1978/current-overlay --project=PROJECT --zone=ZONE
+gcloud compute scp --quiet waterlily-i001d-reconstruction/handoff/vm-current/current-overlay-deletions.txt premanandal1978@INSTANCE:/home/premanandal1978/current-overlay-deletions.txt --project=PROJECT --zone=ZONE
+gcloud compute scp --quiet waterlily-i001d-reconstruction/handoff/vm-current/current-overlay.sha256 premanandal1978@INSTANCE:/home/premanandal1978/current-overlay.sha256 --project=PROJECT --zone=ZONE
+```
+
+Then apply them on the VM:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+cp -a /home/premanandal1978/current-overlay/. ./
+while IFS= read -r path; do rm -f -- "$path"; done \
+  < /home/premanandal1978/current-overlay-deletions.txt
+```
+
+Verify the restored files from the Android root:
+
+```bash
+cd /home/premanandal1978/android/waterlily
+sha256sum -c /home/premanandal1978/current-overlay.sha256
+```
+
+`local-current/` is the earlier workstation/nested-repository inventory.
+`../vm-edit/device-asus-sm8150-common/` and
+`../vm-edit/hardware-interfaces/` are retained recovery sets because they have
+not yet been proven reproducible from the pinned manifest.

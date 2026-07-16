@@ -1,0 +1,7 @@
+snapshot_utc=2026-07-16T13:29:05Z
+android_root=/home/premanandal1978/android/waterlily
+vm_instance=instance-20260710-230647
+project=customrom-501702
+zone=us-south1-a
+overlay_file_count=326
+deletion_count=6

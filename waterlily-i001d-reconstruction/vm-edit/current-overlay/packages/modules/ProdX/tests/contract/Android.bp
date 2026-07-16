@@ -1,0 +1,10 @@
+android_test {
+    name: "ProdXContractTests",
+    srcs: ["src/**/*.kt"],
+    static_libs: [
+        "prodx-contract-runtime",
+        "androidx.test.rules",
+    ],
+    sdk_version: "test_current",
+    test_suites: ["general-tests"],
+}
