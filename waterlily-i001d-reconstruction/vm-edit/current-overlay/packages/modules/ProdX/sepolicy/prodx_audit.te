@@ -1,3 +1,34 @@
 type prodx_audit, domain;
 type prodx_audit_exec, exec_type, file_type;
 init_daemon_domain(prodx_audit)
+
+# DESIGN SPECIFICATION — P0-13: prodx_audit allow rules
+#
+# ----------------------------------------------------------------------
+# FILE — CE and DE audit stores
+# ----------------------------------------------------------------------
+#   allow prodx_audit prodx_audit_de_file:dir create_dir_perms;
+#   allow prodx_audit prodx_audit_de_file:file create_file_perms;
+#   allow prodx_audit prodx_audit_ce_file:dir create_dir_perms;
+#   allow prodx_audit prodx_audit_ce_file:file create_file_perms;
+#
+# Rationale: Audit writes signed event records to both device-encrypted
+# (DE) and credential-encrypted (CE) stores.
+#
+# ----------------------------------------------------------------------
+# BINDER — inbound from Broker, outbound to Authority
+# ----------------------------------------------------------------------
+#   binder_use(prodx_authority)
+#   binder_call(prodx_audit, prodx_authority)
+#   binder_call(prodx_broker, prodx_audit)
+#
+# Rationale: Authority queries audit trails; Broker submits events.
+#
+# ----------------------------------------------------------------------
+# NEVERALLOW — write confinement
+# ----------------------------------------------------------------------
+#   neverallow prodx_audit { file_type -prodx_audit_de_file -prodx_audit_ce_file }:file write;
+#
+# Rationale: Audit must not write to any file outside its own stores.
+# This prevents tampering with other domain state.
+# ----------------------------------------------------------------------

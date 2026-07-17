@@ -1,3 +1,35 @@
 type prodx_broker, domain;
 type prodx_broker_exec, exec_type, file_type;
 init_daemon_domain(prodx_broker)
+
+# DESIGN SPECIFICATION — P0-13: prodx_broker allow rules
+#
+# ----------------------------------------------------------------------
+# BINDER — outbound calls to Authority and Audit
+# ----------------------------------------------------------------------
+#   binder_use(prodx_audit)
+#   binder_use(prodx_authority)
+#   binder_call(prodx_broker, prodx_audit)
+#   binder_call(prodx_broker, prodx_authority)
+#
+# Rationale: Broker forwards audit events from providers to Audit and
+# lease/authorization requests to Authority.
+#
+# ----------------------------------------------------------------------
+# FILE — checkpoint store
+# ----------------------------------------------------------------------
+#   allow prodx_broker prodx_broker_checkpoint_file:dir create_dir_perms;
+#   allow prodx_broker prodx_broker_checkpoint_file:file create_file_perms;
+#
+# Rationale: Broker persists runtime checkpoint state for crash recovery.
+#
+# ----------------------------------------------------------------------
+# NEVERALLOW — privilege-escalation fence
+# ----------------------------------------------------------------------
+#   neverallow prodx_broker { domain -prodx_audit -prodx_authority }:binder { call transfer };
+#
+#   neverallow prodx_broker self:capability { sys_admin sys_ptrace };
+#
+# Rationale: Broker must not binder-call arbitrary domains; must not
+# acquire admin/ptrace capabilities.
+# ----------------------------------------------------------------------

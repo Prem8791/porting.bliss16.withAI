@@ -1,6 +1,9 @@
 android_app {
     name: "ProdXNoOpTestProvider",
     srcs: ["src/**/*.kt"],
+    aidl: {
+        include_dirs: ["packages/modules/ProdX/sdk/aidl"],
+    },
     static_libs: ["prodx-provider-sdk"],
     sdk_version: "system_current",
     min_sdk_version: "36",

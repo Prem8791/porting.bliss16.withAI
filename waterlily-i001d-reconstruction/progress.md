@@ -6023,3 +6023,127 @@ No Android build was run. The last user-reported scoped validation remains:
 ```bash
 m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests
 ```
+
+## 2026-07-17: ProdX Broker Module — Program B Implementation Complete
+
+Implemented the Secure Tool Broker (Program B) in `packages/modules/ProdX/service/broker/`.
+All 8 source files, 1 AIDL, and 2 test files were replaced with full implementations:
+
+### Files changed (12 files):
+
+| File | Description |
+|------|-------------|
+| `service/broker/aidl/.../IProdXBroker.aidl` | Expanded to 8 methods: submit, cancel, getStatus, getResult, query, getPhase, getTimestamp, hasTransaction |
+| `service/broker/Android.bp` | Added `prodx-framework-api` dependency |
+| `service/broker/.../TransactionPhase.kt` | Extended from 5 to 8 phases: +FAILED, +CANCELLED, +TIMEOUT |
+| `service/broker/.../TransactionStateMachine.kt` | Deterministic state machine: rejects invalid transitions, tracks timestamps, idempotency map, active-count, snapshot/restore |
+| `service/broker/.../BrokerService.kt` | Full Binder service implementing IProdXBroker.Stub with authority binding, proposal validation, state machine orchestration, dispatch coordination, checkpoint recovery |
+| `service/broker/.../ProposalValidator.kt` | Schema-based validation via SchemaValidator, purpose/capabilityId format checks, dependency consistency |
+| `service/broker/.../ConfirmationCoordinator.kt` | IProdXAuthority binding for policy evaluation, challenge management, timeout handling |
+| `service/broker/.../ProviderDispatcher.kt` | ComponentName resolution, package/version/signature/UID verification, IProdXProvider Binder binding |
+| `service/broker/.../AuthorizationRevalidator.kt` | Expiry, audience, caller UID, registry/policy/grant epoch revalidation |
+| `service/broker/.../DependencyResolver.kt` | Topological sort with cycle detection, manifest-based dependency resolution |
+| `service/broker/.../BrokerCheckpointStore.kt` | In-memory + JSON file fallback, periodic flush, restore from file |
+| `service/broker/.../BrokerHealth.kt` | Operational status, active count, mode, uptime, last error, completed/failed counters |
+| `service/broker/.../BrokerShellCommand.kt` | Shell commands: list, health, cancel, dump, status |
+| `tests/fixtures/.../FakeBrokerService.kt` | Full IProdXBroker-like interface with state tracking, phase simulation, idempotency |
+| `tests/integration/.../ProdXBrokerIntegrationTest.kt` | 17 tests covering submit→query→cancel, invalid proposals, state machine transitions, dependency resolution, authorization revalidation, edge cases |
+| `tests/fixtures/Android.bp` | Added `prodx-framework-api` dependency |
+| `tests/integration/Android.bp` | Added `prodx-framework-api` dependency |
+
+### Key design properties:
+- **State machine**: `PROPOSAL → CONFIRMATION → AUTHORIZATION → DISPATCH → COMPLETION` with `FAILED`, `CANCELLED`, `TIMEOUT` as terminal sinks from any non-terminal phase; all invalid transitions rejected
+- **Transaction flow**: validation → authority context → policy/confirmation → authorization revalidation → provider dispatch → completion/checkpoint
+- **Provider resolution**: exact component/version/signature/UID match before binding
+- **Authorization binding**: caller UID, audience, expiry, registry/policy/grant epochs, nonce, proof
+- **Idempotency**: dedup by idempotencyKey across submit calls
+- **Recovery**: durable checkpoint store with file fallback; restore on service start
+- **Dispatch gated**: only `shadow`/`test_no_op` mode or `eng`/`userdebug` builds
+
+## 2026-07-17: ProdX SDK + NoOp Provider — Program A Implementation Complete
+
+Implemented the Android Capability Fabric (Program A) in `packages/modules/ProdX/sdk/` and `providers/test/`. All 7 SDK files upgraded from stubs, 2 new SDK files created, 5 NoOp provider files upgraded, 1 AIDL expanded.
+
+### SDK — 7 upgraded + 2 new (9 total):
+
+| File | Description |
+|------|-------------|
+| `sdk/aidl/.../IProdXProvider.aidl` | Expanded: executeCapability, cancelOperation, getCapabilityManifest |
+| `sdk/.../AuthorizationVerifier.kt` | Token decode/expiry/epoch/caller-UID verification, AuthorizationResult sealed class |
+| `sdk/.../ProviderContext.kt` | Extended with userId, callerUid, capabilityScope, cancellationToken, lifecycleState |
+| `sdk/.../CancellationToken.kt` | Timeout daemon, composed child-parent chain, listener registry |
+| `sdk/.../ProviderLifecycle.kt` | ERROR state added, transition table validation, listener callbacks |
+| `sdk/.../HealthReporter.kt` | HealthSeverity enum (OK-DEGRADED-WARNING-ERROR-CRITICAL), circular history buffer |
+| `sdk/.../AuditCorrelationHelper.kt` | CorrelationChain root/parent/child/depth, AuditContext builder |
+| `sdk/.../StructuredError.kt` | ErrorCategory (10), DomainCode (20 codes 0-500), recoveryHint per code |
+| `sdk/.../CapabilityManifest.kt` **(new)** | ProviderManifest with full capability declaration, RiskLevel enum, typed schemas |
+| `sdk/.../CapabilityInventory.kt` **(new)** | ConcurrentHashMap-backed provider registry with AtomicLong generation tracking |
+
+### NoOp Test Provider — 5 upgraded:
+
+| File | Description |
+|------|-------------|
+| `providers/test/.../NoOpTestProviderService.kt` | Real IProdXProvider.Stub Binder: executeCapability dispatches to NoOpCapabilities, cancelOperation, getCapabilityManifest |
+| `providers/test/.../NoOpCapability.kt` | Expanded with inputSchema, outputSchema, requiredPermission, riskLevel, description |
+| `providers/test/.../NoOpCapabilities.kt` | Typed JSON-like schemas per capability, executeWithResult returning structured maps, findById |
+| `providers/test/.../NoOpManifest.kt` | toProviderManifest() converting to SDK ProviderManifest |
+| `providers/test/.../SyntheticObservationSource.kt` | StructuredSyntheticRecord with sequence counter, generateEvent/generateStructuredRecord/generateBatch |
+
+## 2026-07-17: Observation + Security Monitor — Program D Implementation Complete
+
+Implemented the Observation Hub and Security Monitor (Program D) in `packages/modules/ProdX/service/observation/`. All 10 existing files upgraded from stubs, 3 new files created, 2 AIDL expanded.
+
+### AIDL (2 expanded):
+
+| File | Description |
+|------|-------------|
+| `observation/aidl/.../IProdXObservation.aidl` | Added consumeObservation, reportIncident, getIncidentTimeline, acknowledgeIncident |
+| `observation/aidl/.../IProdXSourceAdapter.aidl` | Added getLatestEvent, getEventStream |
+
+### Existing files — 10 upgraded:
+
+| File | Description |
+|------|-------------|
+| `ObservationService.kt` | Full Binder service implementing IProdXObservation.Stub, coordinates all subcomponents |
+| `LeaseManager.kt` | Time-limited leases with Authority Policy validation (max TTL/max leases per source), revoke/renew/expiry |
+| `SourceRegistry.kt` | Typed registration with AIDL/direct modes, type validation, source health checks |
+| `EventPipeline.kt` | Multi-stage pipeline: RECEIVE → VALIDATE → REDACT → QUEUE → DELIVER, gap detection |
+| `ObservationQueue.kt` | Bounded FIFO with configurable max size, 80% backpressure threshold, watermark tracking |
+| `RedactionPipeline.kt` | 11 built-in field-level rules per source type, consent token opt-in |
+| `ConsumerDeliveryManager.kt` | Lease-gated delivery with 3-attempt exponential backoff retry, dead consumer detection |
+| `BackpressureController.kt` | Sliding window rate limiter per source/consumer/global, gap markers on drops |
+| `HubHealth.kt` | Aggregated health: active leases/sources, queue depth, throughput, dropped count, uptime |
+| `HubShellCommand.kt` | Shell commands: list_sources, list_leases, health, inject_event, force_drain, reset |
+
+### New files — 3 created:
+
+| File | Description |
+|------|-------------|
+| `SecurityMonitor.kt` | Wraps RuleEngine; 8 default rules (rapid permission grant, overlay+accessibility combo, rapid app install, suspicious package, device admin escalation, abnormal event rate, credential pattern) |
+| `IncidentRecord.kt` | Incident data class: id, timestamp, severity (INFO-LOW-MEDIUM-HIGH-CRITICAL), description, confidence, provenance, recommended action, acknowledged flag |
+| `RuleEngine.kt` | Typed rules with RuleCondition sealed class (And/Or/Not/SequenceDetected/ThresholdExceeded/PatternMatch), deterministic evaluation |
+
+### Test files (2 updated):
+
+| File | Description |
+|------|-------------|
+| `FakeObservationHub.kt` | Real state tracking with all components wired |
+| `ProdXObservationIntegrationTest.kt` | 7 tests: lease→register→produce→consume, invalid lease, backpressure, incident detection, revocation, full pipeline |
+
+## 2026-07-17: P0-13 SEAndroid Policy Design Complete
+
+Designed complete SELinux policy for all ProdX service domains. All 7 sepolicy files updated with design specification comments.
+
+| File | Changes |
+|------|---------|
+| `prodx_broker.te` | Binder use/call to Audit/Authority; checkpoint file create; neverallow cross-domain binder & sys_admin/sys_ptrace |
+| `prodx_audit.te` | DE/CE audit store file perms; binder to Authority; neverallow write outside audit stores |
+| `prodx_observation.te` | Binder to Authority/Broker; queue file create; neverallow execute/self-assign lease |
+| `prodx_extension.te` | Cache file create; binder to Authority; neverallow write outside cache & execute/execmem |
+| `prodx_service_contexts` | Design entries for prodx_audit, prodx_broker, prodx_observation, prodx_extension services |
+| `prodx_file_contexts` **(new)** | 7 path-to-label assignments under /data/misc/prodx/ |
+| `Android.bp` | sepolicy{} Soong block referencing all .te sources + contexts |
+
+### Blockers before compilation:
+- Four binder service types must be declared in `system/sepolicy`: `prodx_audit_service`, `prodx_broker_service`, `prodx_observation_service`, `prodx_extension_service`
+- No `system/sepolicy` edits included — VM deployment needed
