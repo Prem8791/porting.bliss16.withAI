@@ -4,3 +4,6 @@
 
 # Workstation-specific IDE metadata is not part of the reconstruction checkpoint.
 .idea/
+
+# graphify - local-only cost tracking; graph artifacts are tracked
+graphify-out/cost.json

@@ -6,11 +6,17 @@ import android.app.prodx.ProdXProviderManifest;
 import android.app.prodx.ProdXRegistryEntry;
 import android.app.prodx.ProdXRegistryGeneration;
 import android.app.prodx.ProdXRegistrySnapshot;
+import android.content.Context;
+import android.os.Environment;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.ArrayMap;
 import android.util.ArraySet;
+import android.util.AtomicFile;
 import android.util.Slog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -24,6 +30,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class ProdXRegistry {
     private static final String TAG = "ProdXRegistry";
     private static final String HASH_ALGO = "SHA-256";
+    private static final String REGISTRY_FILE = "prodx_registry_snapshot";
 
     private final ArrayMap<String, ProdXRegistryEntry> mCatalog = new ArrayMap<>();
     private final ArrayMap<String, Boolean> mProviderAlive = new ArrayMap<>();
@@ -34,9 +41,46 @@ public class ProdXRegistry {
     private volatile ProdXRegistrySnapshot mCurrentSnapshot;
     private volatile long mGenerationId = 0;
     private String mPreviousSnapshotHash = "";
+    private AtomicFile mPersistentFile;
 
     public ProdXRegistry() {
-        Slog.i(TAG, "Registry initialized (empty)");
+        Slog.i(TAG, "Registry initialized (in-memory)");
+    }
+
+    public ProdXRegistry(Context context) {
+        File dir = new File(Environment.getDataSystemDirectory(), "prodx");
+        dir.mkdirs();
+        mPersistentFile = new AtomicFile(new File(dir, REGISTRY_FILE));
+        loadPersistedLocked();
+        Slog.i(TAG, "Registry initialized (persistent, generation=" + mGenerationId + ")");
+    }
+
+    private void loadPersistedLocked() {
+        if (mPersistentFile == null) return;
+        try (FileInputStream fis = mPersistentFile.openRead()) {
+            byte[] data = new byte[fis.available()];
+            int read = fis.read(data);
+            if (read <= 0) return;
+            String content = new String(data, 0, read, StandardCharsets.UTF_8);
+            String[] lines = content.split("\n");
+            if (lines.length < 2) return;
+            mGenerationId = Long.parseLong(lines[0].trim());
+            mPreviousSnapshotHash = lines[1].trim();
+            Slog.i(TAG, "Restored registry: generation=" + mGenerationId);
+        } catch (Exception e) {
+            Slog.w(TAG, "No persisted registry state to restore", e);
+        }
+    }
+
+    private void persistLocked() {
+        if (mPersistentFile == null) return;
+        try (FileOutputStream fos = mPersistentFile.startWrite()) {
+            String content = mGenerationId + "\n" + mPreviousSnapshotHash + "\n";
+            fos.write(content.getBytes(StandardCharsets.UTF_8));
+            mPersistentFile.finishWrite(fos);
+        } catch (Exception e) {
+            Slog.e(TAG, "Failed to persist registry", e);
+        }
     }
 
     public void loadCatalog(List<ProdXRegistryEntry> entries) {
@@ -188,6 +232,7 @@ public class ProdXRegistry {
         mCurrentSnapshot = snapshot;
 
         Slog.i(TAG, "Generation " + mGenerationId + " published, root=" + rootHash);
+        persistLocked();
         notifyObserversLocked();
     }
 

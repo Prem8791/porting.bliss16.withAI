@@ -1,0 +1,2517 @@
+{
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/biometrics/BiometricsFingerprint.cpp": {
+    "mtime": 1783747453.2384036,
+    "ast_hash": "dfde28efca9a6ae4b33ee79c6981353d",
+    "semantic_hash": "dfde28efca9a6ae4b33ee79c6981353d"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/biometrics/BiometricsFingerprint.h": {
+    "mtime": 1783747453.2384036,
+    "ast_hash": "303523068d1105e1d5a66b2d1aa73cc0",
+    "semantic_hash": "303523068d1105e1d5a66b2d1aa73cc0"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/biometrics/concurrent_queue.h": {
+    "mtime": 1783747453.2442408,
+    "ast_hash": "cd50a2931c1155efeb5ae8b6d5abfe97",
+    "semantic_hash": "cd50a2931c1155efeb5ae8b6d5abfe97"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/biometrics/service.cpp": {
+    "mtime": 1783747453.2442408,
+    "ast_hash": "1fa50afb8955d9bccb9f8d4a4661b174",
+    "semantic_hash": "1fa50afb8955d9bccb9f8d4a4661b174"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/extract-files.sh": {
+    "mtime": 1783747453.2442408,
+    "ast_hash": "94cb1fb10a7d8fa6839fbb31b4250628",
+    "semantic_hash": "94cb1fb10a7d8fa6839fbb31b4250628"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/setup-makefiles.sh": {
+    "mtime": 1783747453.259264,
+    "ast_hash": "8eb8322c7006037843b7e9ef556f4623",
+    "semantic_hash": "8eb8322c7006037843b7e9ef556f4623"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/touch/GloveMode.cpp": {
+    "mtime": 1783747453.26027,
+    "ast_hash": "45be3146b92567d642537dbb5ed2f91d",
+    "semantic_hash": "45be3146b92567d642537dbb5ed2f91d"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/touch/GloveMode.h": {
+    "mtime": 1783747453.26027,
+    "ast_hash": "ff039b96691aae9cbcf94c6c4c2255d4",
+    "semantic_hash": "ff039b96691aae9cbcf94c6c4c2255d4"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/touch/TouchscreenGesture.cpp": {
+    "mtime": 1783747453.26027,
+    "ast_hash": "a55c6006d1d739ca2609b4f1727ac762",
+    "semantic_hash": "a55c6006d1d739ca2609b4f1727ac762"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/touch/TouchscreenGesture.h": {
+    "mtime": 1783747453.26027,
+    "ast_hash": "a1e0372830ce4ec952805982b9647fd1",
+    "semantic_hash": "a1e0372830ce4ec952805982b9647fd1"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/touch/service.cpp": {
+    "mtime": 1783747453.26027,
+    "ast_hash": "63a15e780e97ec3c5686db7e94efdd63",
+    "semantic_hash": "63a15e780e97ec3c5686db7e94efdd63"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/vibrator/Vibrator.cpp": {
+    "mtime": 1783747453.26027,
+    "ast_hash": "30935ce8dcd717fd28b007cc6b81d4d2",
+    "semantic_hash": "30935ce8dcd717fd28b007cc6b81d4d2"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/vibrator/Vibrator.h": {
+    "mtime": 1783747453.26027,
+    "ast_hash": "4bbadc6d7910612c841990582aee724e",
+    "semantic_hash": "4bbadc6d7910612c841990582aee724e"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/vibrator/service.cpp": {
+    "mtime": 1783747453.26027,
+    "ast_hash": "e3b0646f2c98473907a565151509ddc1",
+    "semantic_hash": "e3b0646f2c98473907a565151509ddc1"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/AsusParts.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "7489460d1fe5dcfad7c09abd9b035a86",
+    "semantic_hash": "7489460d1fe5dcfad7c09abd9b035a86"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/AsusPartsActivity.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "0e2d7f476fd2d850c6a3f413c0377898",
+    "semantic_hash": "0e2d7f476fd2d850c6a3f413c0377898"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/AsusPartsTileService.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "373b0a8699344fe42a354160ec3505ce",
+    "semantic_hash": "373b0a8699344fe42a354160ec3505ce"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/BootCompletedReceiver.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "65244144f013db6adddd738751d7cb94",
+    "semantic_hash": "65244144f013db6adddd738751d7cb94"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/FileUtils.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "0377012b530fbdc2f2484a0ce71d7f10",
+    "semantic_hash": "0377012b530fbdc2f2484a0ce71d7f10"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/doze/DozeService.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "da09515b2f9a5d4982f8c6b7d5305709",
+    "semantic_hash": "da09515b2f9a5d4982f8c6b7d5305709"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/doze/DozeSettingsActivity.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "435ff8983a2c6e9156b4268dcbe48729",
+    "semantic_hash": "435ff8983a2c6e9156b4268dcbe48729"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/doze/DozeSettingsFragment.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "0ce89f21fa9f3ba363efc3a8a864b858",
+    "semantic_hash": "0ce89f21fa9f3ba363efc3a8a864b858"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/doze/DozeUtils.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "0b3725d9540cfd87c2e5e16d23e8ca59",
+    "semantic_hash": "0b3725d9540cfd87c2e5e16d23e8ca59"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/doze/HandwaveSensor.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "a70ace9fc114357ee8825497ea749060",
+    "semantic_hash": "a70ace9fc114357ee8825497ea749060"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/doze/PickupSensor.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "ae4f476b95100393fd0b958ce8bb5cef",
+    "semantic_hash": "ae4f476b95100393fd0b958ce8bb5cef"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/doze/PocketSensor.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "a35651bfa26dd1410a0e414b55260fe2",
+    "semantic_hash": "a35651bfa26dd1410a0e414b55260fe2"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/preference/SystemSettingSwitchPreference.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "c849575811e2f3d57549d70d05796210",
+    "semantic_hash": "c849575811e2f3d57549d70d05796210"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/preference/SystemSettingsStore.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "fab117ca1994a7839795e7579c2f53fa",
+    "semantic_hash": "fab117ca1994a7839795e7579c2f53fa"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/touch/TouchGestureActivity.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "fde44341039139e511051502964005ed",
+    "semantic_hash": "fde44341039139e511051502964005ed"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/touch/TouchKeyHandler.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "951ce846e7347a139cde4a8de8471400",
+    "semantic_hash": "951ce846e7347a139cde4a8de8471400"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/touch/TouchscreenGestureConstants.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "71f099839e7bbad79da44ef6a547982a",
+    "semantic_hash": "71f099839e7bbad79da44ef6a547982a"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/touch/TouchscreenGestureSettings.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "09c79be3df014487f9b03a881a308d52",
+    "semantic_hash": "09c79be3df014487f9b03a881a308d52"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/util/ActionUtils.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "0654593b1ca2312358fb809cfd5ff922",
+    "semantic_hash": "0654593b1ca2312358fb809cfd5ff922"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/util/ResourceUtils.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "563bd06ded79e725cf5eb468eb91274e",
+    "semantic_hash": "563bd06ded79e725cf5eb468eb91274e"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/AsusParts/src/org/blissroms/settings/asusparts/util/Utils.java": {
+    "mtime": 1783747456.7139897,
+    "ast_hash": "985ad662c1a01c42b44d14bfd87e3dbb",
+    "semantic_hash": "985ad662c1a01c42b44d14bfd87e3dbb"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/extract-files.sh": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "50e1e3baa92debe0a1442bd597e1d783",
+    "semantic_hash": "50e1e3baa92debe0a1442bd597e1d783"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/gpt-utils/gpt-utils.cpp": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "e0340053195e093edb70a611861cce29",
+    "semantic_hash": "e0340053195e093edb70a611861cce29"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/gpt-utils/gpt-utils.h": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "d159b8cda731f4e957d4ce185bed81ae",
+    "semantic_hash": "d159b8cda731f4e957d4ce185bed81ae"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/gpt-utils/sparse_crc32.cpp": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "505f8e709ce227f5b694603490add32b",
+    "semantic_hash": "505f8e709ce227f5b694603490add32b"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/gpt-utils/sparse_crc32.h": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "144164f51cd14183b926315b79e7cb68",
+    "semantic_hash": "144164f51cd14183b926315b79e7cb68"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/init/etc/init.class_main.sh": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "962b2ebaac35fe41a53f12075417a2cf",
+    "semantic_hash": "962b2ebaac35fe41a53f12075417a2cf"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/init/etc/init.qcom.early_boot.sh": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "1addea6b22b5be47b3e59f45b13fcb92",
+    "semantic_hash": "1addea6b22b5be47b3e59f45b13fcb92"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/init/etc/init.qcom.post_boot.sh": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "6fa92f491b78f509b0ef4cfcc8dfeb38",
+    "semantic_hash": "6fa92f491b78f509b0ef4cfcc8dfeb38"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/init/etc/init.qcom.sh": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "898ca690180a515f8809be2a700ebee8",
+    "semantic_hash": "898ca690180a515f8809be2a700ebee8"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/init/etc/init.qti.chg_policy.sh": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "db04ba6806a9264b95dca39482e75c78",
+    "semantic_hash": "db04ba6806a9264b95dca39482e75c78"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/init/etc/init.qti.dcvs.sh": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "2476b79bda25674419acf304cd2fc4ed",
+    "semantic_hash": "2476b79bda25674419acf304cd2fc4ed"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/lights/Lights.cpp": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "3dcf24c9b8be0305ec3d08f2379eb8c3",
+    "semantic_hash": "3dcf24c9b8be0305ec3d08f2379eb8c3"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/lights/Lights.h": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "aa8267d4d3cea2e32fa55cf20eddce53",
+    "semantic_hash": "aa8267d4d3cea2e32fa55cf20eddce53"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/lights/main.cpp": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "9f4014b5e805a2616f824909826e2c80",
+    "semantic_hash": "9f4014b5e805a2616f824909826e2c80"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/setup-makefiles.sh": {
+    "mtime": 1783747456.7783246,
+    "ast_hash": "1401f425666c779b99d4020483869380",
+    "semantic_hash": "1401f425666c779b99d4020483869380"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/update-sha1sums.py": {
+    "mtime": 1783747456.7783246,
+    "ast_hash": "987f791117f550d1caffc99a61a7245f",
+    "semantic_hash": "987f791117f550d1caffc99a61a7245f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/bin/init.qti.chg_policy.sh": {
+    "mtime": 1783747510.1315103,
+    "ast_hash": "c1effdcc0625a4d8deb6a46e3812e497",
+    "semantic_hash": "c1effdcc0625a4d8deb6a46e3812e497"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/ak991x_dri_0.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "c93cf8411d1ff376c6c8e31674e5bce5",
+    "semantic_hash": "c93cf8411d1ff376c6c8e31674e5bce5"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/icm4x6xx_0.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "7fd7041f6e676bbc4ef79e5ef7870287",
+    "semantic_hash": "7fd7041f6e676bbc4ef79e5ef7870287"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/msmnile_ak991x_0.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "fa7de79ac5bf4a1c135419938f50b18c",
+    "semantic_hash": "fa7de79ac5bf4a1c135419938f50b18c"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/msmnile_icm4x6xx_0.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "a8072e167aea8d5c6d3c39dc5695ce02",
+    "semantic_hash": "a8072e167aea8d5c6d3c39dc5695ce02"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/msmnile_irq.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "877a84f0d256527cf1ef8379c407bd15",
+    "semantic_hash": "877a84f0d256527cf1ef8379c407bd15"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/msmnile_power_0.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "d3160bda3d90dd9758c65b3a8cdca20e",
+    "semantic_hash": "d3160bda3d90dd9758c65b3a8cdca20e"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_amd.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "f8f4ddd8ed20b2e03c8ee92a0a09ed41",
+    "semantic_hash": "f8f4ddd8ed20b2e03c8ee92a0a09ed41"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_amd_sw_disabled.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "5d2d5af52e23713a23a37b781bf60620",
+    "semantic_hash": "5d2d5af52e23713a23a37b781bf60620"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_amd_sw_enabled.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "86f82c7bf435ede0600033a36ff8a8f7",
+    "semantic_hash": "86f82c7bf435ede0600033a36ff8a8f7"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_aont.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "0a099f915baa0c1448be158d8ff1273d",
+    "semantic_hash": "0a099f915baa0c1448be158d8ff1273d"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_basic_gestures.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "dbc24030d8e244e2b3471df9368c2bf6",
+    "semantic_hash": "dbc24030d8e244e2b3471df9368c2bf6"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_bring_to_ear.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "29d61339b644f581ffbc9520105a4c8a",
+    "semantic_hash": "29d61339b644f581ffbc9520105a4c8a"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_ccd.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "c1ae965e27a4fe75a5e3088f51dbf827",
+    "semantic_hash": "c1ae965e27a4fe75a5e3088f51dbf827"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_ccd_v2_walk.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "cafaf7f76aae3fecc43cc63c73fca66a",
+    "semantic_hash": "cafaf7f76aae3fecc43cc63c73fca66a"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_ccd_v3_1_walk.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "a853a158862965e3bb9fb3bf28df4d4c",
+    "semantic_hash": "a853a158862965e3bb9fb3bf28df4d4c"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_ccd_v3_walk.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "396d59c7c1db17d14e878e83164f4357",
+    "semantic_hash": "396d59c7c1db17d14e878e83164f4357"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_cm.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "7e4228d7798a609ad63a41e1650d7445",
+    "semantic_hash": "7e4228d7798a609ad63a41e1650d7445"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_dae.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "41403af9e172974237d51cfdda9adb44",
+    "semantic_hash": "41403af9e172974237d51cfdda9adb44"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_device_orient.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "230052244c6dc49c33c6264f0e09aad6",
+    "semantic_hash": "230052244c6dc49c33c6264f0e09aad6"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_diag_filter.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "d1da0cdd2854949fbee292d28f5a4cb9",
+    "semantic_hash": "d1da0cdd2854949fbee292d28f5a4cb9"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_distance_bound.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "a1b75adea5c8d46d6005513f15cea0e5",
+    "semantic_hash": "a1b75adea5c8d46d6005513f15cea0e5"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_dpc.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "95da083f8a6cda92aeb364162c98cc0f",
+    "semantic_hash": "95da083f8a6cda92aeb364162c98cc0f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_facing.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "69427e36e24cd2383e6c1219c32aa71a",
+    "semantic_hash": "69427e36e24cd2383e6c1219c32aa71a"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_fmv.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "979e09cec4ca2b49ff2b6377683b15a6",
+    "semantic_hash": "979e09cec4ca2b49ff2b6377683b15a6"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_fmv_legacy.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "a63c9592577fbb653fd5b959b4e04c5b",
+    "semantic_hash": "a63c9592577fbb653fd5b959b4e04c5b"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_geomag_rv.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "0b282ea39f7d68718d88894a30fc95f8",
+    "semantic_hash": "0b282ea39f7d68718d88894a30fc95f8"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_gyro_cal.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "85802b1b962fc3b42af55dac4a863ce3",
+    "semantic_hash": "85802b1b962fc3b42af55dac4a863ce3"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_heart_rate.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "aec45b244a13bfc3055c092a1a8abfed",
+    "semantic_hash": "aec45b244a13bfc3055c092a1a8abfed"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_mag_cal.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "c20fa153a61f0f4f5a65b8b0d77e8d8f",
+    "semantic_hash": "c20fa153a61f0f4f5a65b8b0d77e8d8f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_mag_cal_legacy.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "b9dc91a9fd92bee09178cd1d5e905572",
+    "semantic_hash": "b9dc91a9fd92bee09178cd1d5e905572"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_multishake.json": {
+    "mtime": 1783747510.2668104,
+    "ast_hash": "7ef37d1416e8857676c0e8da1f16d91a",
+    "semantic_hash": "7ef37d1416e8857676c0e8da1f16d91a"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_pedometer.json": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "25fd8f1469e1c4f42127b9b0cb02cdee",
+    "semantic_hash": "25fd8f1469e1c4f42127b9b0cb02cdee"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_rmd.json": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "3533f882c5714c2c324ae96ce37d2df9",
+    "semantic_hash": "3533f882c5714c2c324ae96ce37d2df9"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_rotv.json": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "8aaf8b4023d4ac6e02c55dc90dae0370",
+    "semantic_hash": "8aaf8b4023d4ac6e02c55dc90dae0370"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_smd.json": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "eb47ef2b0b383108af1797be1a42ed9e",
+    "semantic_hash": "eb47ef2b0b383108af1797be1a42ed9e"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_tilt.json": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "0eeb540e56e3edd276a02ebcc439f3cd",
+    "semantic_hash": "0eeb540e56e3edd276a02ebcc439f3cd"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_tilt_sw_disabled.json": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "f4f8e53a2298d5c79c326905b1351955",
+    "semantic_hash": "f4f8e53a2298d5c79c326905b1351955"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_tilt_sw_enabled.json": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "3ab9a0ea1ca3e6dff5396fce76966ffb",
+    "semantic_hash": "3ab9a0ea1ca3e6dff5396fce76966ffb"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_tilt_to_wake.json": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "612609140efa09c26668898815e36237",
+    "semantic_hash": "612609140efa09c26668898815e36237"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/config/sns_wrist_pedo.json": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "e77234401f71b00df3613113dcc56517",
+    "semantic_hash": "e77234401f71b00df3613113dcc56517"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/bin/init.qti.qcv.sh": {
+    "mtime": 1783747501.0206628,
+    "ast_hash": "8e5c15323f60307b4d382495d7f28afd",
+    "semantic_hash": "8e5c15323f60307b4d382495d7f28afd"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/bin/qtigetprop": {
+    "mtime": 1783747501.0365505,
+    "ast_hash": "23b1c73e89c6125a7797a99570367954",
+    "semantic_hash": "23b1c73e89c6125a7797a99570367954"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/bin/qtisetprop": {
+    "mtime": 1783747501.0365505,
+    "ast_hash": "ab6e53d73e85a3ce65672c44b77e8e55",
+    "semantic_hash": "ab6e53d73e85a3ce65672c44b77e8e55"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/etc/ssg/ta_config.json": {
+    "mtime": 1783747501.1476736,
+    "ast_hash": "7fd909d30956bcff61026d229c045358",
+    "semantic_hash": "7fd909d30956bcff61026d229c045358"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/etc/ssg/tz_whitelist.json": {
+    "mtime": 1783747501.1476736,
+    "ast_hash": "4044f0ad85901658416590373078579e",
+    "semantic_hash": "4044f0ad85901658416590373078579e"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/0_initial.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "cdb329ad051412ff61cfd5de72d5c395",
+    "semantic_hash": "cdb329ad051412ff61cfd5de72d5c395"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/1_version_intro.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "ce3797ce42bf40601c85a34c84875f33",
+    "semantic_hash": "ce3797ce42bf40601c85a34c84875f33"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/2_version_add_wps_config.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "d5ea118f56d9bc5cc0e7c9b1eb4398c6",
+    "semantic_hash": "d5ea118f56d9bc5cc0e7c9b1eb4398c6"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/3_version_update_wps_config.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "22ee139fd0f731bf7d012095da927fe3",
+    "semantic_hash": "22ee139fd0f731bf7d012095da927fe3"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/4_version_update_ecc_table.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "ed73327f7e9bfe4eb7534b4f26f79689",
+    "semantic_hash": "ed73327f7e9bfe4eb7534b4f26f79689"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/5_version_update_ecc_table.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "74585aaae575933614bacf435adc4160",
+    "semantic_hash": "74585aaae575933614bacf435adc4160"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/6_version_update_ecc_table.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "0a80320f81e384a33a94759d40771ef3",
+    "semantic_hash": "0a80320f81e384a33a94759d40771ef3"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/7_version_update_ecc_table.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "6e0cc7e35d7a9d4d55ae024fb9d476ab",
+    "semantic_hash": "6e0cc7e35d7a9d4d55ae024fb9d476ab"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/8_version_update_ecc_table.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "c08f80223c673e461440ea7afb2e4f7f",
+    "semantic_hash": "c08f80223c673e461440ea7afb2e4f7f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_sm8150-common/proprietary/vendor/radio/qcril_database/upgrade/9_version_update_ecc_table.sql": {
+    "mtime": 1783747502.0437696,
+    "ast_hash": "83ae3665e361cfa06d9397e39554cd47",
+    "semantic_hash": "83ae3665e361cfa06d9397e39554cd47"
+  },
+  "waterlily-i001d-reconstruction/tools/build_hybrid_boot.py": {
+    "mtime": 1783900724.7094104,
+    "ast_hash": "515baf64e232287428e44c4233ed8d2b",
+    "semantic_hash": "515baf64e232287428e44c4233ed8d2b"
+  },
+  "waterlily-i001d-reconstruction/tools/debug_manifest.py": {
+    "mtime": 1783869981.9067492,
+    "ast_hash": "ebcc8b899590dafca8c17eab59ee3cd5",
+    "semantic_hash": "ebcc8b899590dafca8c17eab59ee3cd5"
+  },
+  "waterlily-i001d-reconstruction/tools/extract_boot_v2.py": {
+    "mtime": 1783870164.6436944,
+    "ast_hash": "fae22b72047d864c89429dcce239119e",
+    "semantic_hash": "fae22b72047d864c89429dcce239119e"
+  },
+  "waterlily-i001d-reconstruction/tools/extract_boot_v3.py": {
+    "mtime": 1783870256.1657135,
+    "ast_hash": "ccfcff0761cb9addb4aa60a4535d01b6",
+    "semantic_hash": "ccfcff0761cb9addb4aa60a4535d01b6"
+  },
+  "waterlily-i001d-reconstruction/tools/extract_payload.py": {
+    "mtime": 1783869820.7960455,
+    "ast_hash": "00c21ebfa6e78896a96b3b264dfb28d3",
+    "semantic_hash": "00c21ebfa6e78896a96b3b264dfb28d3"
+  },
+  "waterlily-i001d-reconstruction/tools/parse_payload.py": {
+    "mtime": 1783869925.1667962,
+    "ast_hash": "6eae6ba69849775ef30128ef40f4fca3",
+    "semantic_hash": "6eae6ba69849775ef30128ef40f4fca3"
+  },
+  "waterlily-i001d-reconstruction/tools/parse_payload2.py": {
+    "mtime": 1783869963.2004597,
+    "ast_hash": "4a5c93b8a49e410a7c4ecaaa7be6d447",
+    "semantic_hash": "4a5c93b8a49e410a7c4ecaaa7be6d447"
+  },
+  "waterlily-i001d-reconstruction/tools/parse_payload3.py": {
+    "mtime": 1783870033.576225,
+    "ast_hash": "ea6f2ecaf20447c03b6ed065cb3d90c9",
+    "semantic_hash": "ea6f2ecaf20447c03b6ed065cb3d90c9"
+  },
+  "waterlily-i001d-reconstruction/tools/patch_boot_ramdisk_property.py": {
+    "mtime": 1783902372.2924345,
+    "ast_hash": "a89b329e4e9a41941d8325b106ea3f20",
+    "semantic_hash": "a89b329e4e9a41941d8325b106ea3f20"
+  },
+  "waterlily-i001d-reconstruction/tools/scan_payload.py": {
+    "mtime": 1783869879.8149304,
+    "ast_hash": "08b95fd56ad46cc73a2736375c3739cc",
+    "semantic_hash": "08b95fd56ad46cc73a2736375c3739cc"
+  },
+  "waterlily-i001d-reconstruction/tools/update_metadata_pb2.py": {
+    "mtime": 1783870111.7592044,
+    "ast_hash": "2f9c42609a8933283ebb796ecb517bf4",
+    "semantic_hash": "2f9c42609a8933283ebb796ecb517bf4"
+  },
+  "waterlily-i001d-reconstruction/touch_aidl/GloveMode.cpp": {
+    "mtime": 1783749592.4744363,
+    "ast_hash": "8236adb7c1a3e442f38d299ceeda9d1a",
+    "semantic_hash": "8236adb7c1a3e442f38d299ceeda9d1a"
+  },
+  "waterlily-i001d-reconstruction/touch_aidl/GloveMode.h": {
+    "mtime": 1783749591.6987135,
+    "ast_hash": "5cc8d0f3e181cbacc2fd1199ffe729e3",
+    "semantic_hash": "5cc8d0f3e181cbacc2fd1199ffe729e3"
+  },
+  "waterlily-i001d-reconstruction/touch_aidl/TouchscreenGesture.cpp": {
+    "mtime": 1783749594.025075,
+    "ast_hash": "9f1126353d32fed89d88c42f485d4345",
+    "semantic_hash": "9f1126353d32fed89d88c42f485d4345"
+  },
+  "waterlily-i001d-reconstruction/touch_aidl/TouchscreenGesture.h": {
+    "mtime": 1783749593.2645779,
+    "ast_hash": "9f729845c9f0e8dfba3c7877f53d4133",
+    "semantic_hash": "9f729845c9f0e8dfba3c7877f53d4133"
+  },
+  "waterlily-i001d-reconstruction/touch_aidl/service.cpp": {
+    "mtime": 1783749594.7613552,
+    "ast_hash": "e5f793a416f762708b34f53e3eb0f232",
+    "semantic_hash": "e5f793a416f762708b34f53e3eb0f232"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/bionic/libc/include/sched.h": {
+    "mtime": 1783759408.0,
+    "ast_hash": "a8a813d5f466fc2ec8af36ecd3c1c467",
+    "semantic_hash": "a8a813d5f466fc2ec8af36ecd3c1c467"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/device/asus/I001D/biometrics/BiometricsFingerprint.cpp": {
+    "mtime": 1784160210.0,
+    "ast_hash": "8ebcef44d6dc67ea6f767378e12568a2",
+    "semantic_hash": "8ebcef44d6dc67ea6f767378e12568a2"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/device/asus/I001D/biometrics/BiometricsFingerprint.h": {
+    "mtime": 1784158635.0,
+    "ast_hash": "cc577bc617c3acae45ccb1033b06d7e0",
+    "semantic_hash": "cc577bc617c3acae45ccb1033b06d7e0"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXAuditRecord.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "755269cdc5760efe06098dfc68686009",
+    "semantic_hash": "755269cdc5760efe06098dfc68686009"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXCapabilityDescriptor.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "7652c04622481a8a1bbe1a70e07bc149",
+    "semantic_hash": "7652c04622481a8a1bbe1a70e07bc149"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXCapabilityError.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "80552fd787708edc7a3f936be6eef0fb",
+    "semantic_hash": "80552fd787708edc7a3f936be6eef0fb"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXCapabilityRequest.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "63a399106899fc77d7816c64868cf9a4",
+    "semantic_hash": "63a399106899fc77d7816c64868cf9a4"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXCapabilityResponse.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "d118bd3657cfba3147b7201653a8b29a",
+    "semantic_hash": "d118bd3657cfba3147b7201653a8b29a"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXExecutionAuthorization.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "fd722250498d4d5e0daef21b0f44457c",
+    "semantic_hash": "fd722250498d4d5e0daef21b0f44457c"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXExecutionContext.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "e74c49ecc2a8c34bded7afadf4cc3d98",
+    "semantic_hash": "e74c49ecc2a8c34bded7afadf4cc3d98"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXExtensionManifest.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "33c636db1004076ff4064c037bc56a19",
+    "semantic_hash": "33c636db1004076ff4064c037bc56a19"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXGrant.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "519749ee9f278d47a5cf89854ecfdc46",
+    "semantic_hash": "519749ee9f278d47a5cf89854ecfdc46"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXHealth.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "708bdc1f532e8f9abf6812c5498cdbd9",
+    "semantic_hash": "708bdc1f532e8f9abf6812c5498cdbd9"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXManager.java": {
+    "mtime": 1784199824.0,
+    "ast_hash": "f0d7d4ee4d87a47c6f1aab9c33b9e8e0",
+    "semantic_hash": "f0d7d4ee4d87a47c6f1aab9c33b9e8e0"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXMode.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "351089da5a9de4b502ebd437b8ae9816",
+    "semantic_hash": "351089da5a9de4b502ebd437b8ae9816"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXPolicyDecision.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "de8649da42627d6ed2edb1d6a624d6f0",
+    "semantic_hash": "de8649da42627d6ed2edb1d6a624d6f0"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXProviderManifest.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "3b8cf5700856d799ac496530c7cd9975",
+    "semantic_hash": "3b8cf5700856d799ac496530c7cd9975"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXRegistryEntry.java": {
+    "mtime": 1784115572.0,
+    "ast_hash": "4362be58bf3406eb31586c945db83e5f",
+    "semantic_hash": "4362be58bf3406eb31586c945db83e5f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXRegistryGeneration.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "d4ed1c00fcbb38fb70319103c2cc2f0c",
+    "semantic_hash": "d4ed1c00fcbb38fb70319103c2cc2f0c"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXRegistrySnapshot.java": {
+    "mtime": 1784115572.0,
+    "ast_hash": "49f2e30b4fe803e94aecbbcbedb1dfb7",
+    "semantic_hash": "49f2e30b4fe803e94aecbbcbedb1dfb7"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXSubscriptionLease.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "a167ec908e463df1a8feda31d71171cc",
+    "semantic_hash": "a167ec908e463df1a8feda31d71171cc"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/ProdXTransactionReference.java": {
+    "mtime": 1784040168.0,
+    "ast_hash": "f236ad44475133423ea58aa057681fc3",
+    "semantic_hash": "f236ad44475133423ea58aa057681fc3"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/app/prodx/package-info.java": {
+    "mtime": 1784080643.0,
+    "ast_hash": "b51e999825dde2153b1f4e9c93bfa9b3",
+    "semantic_hash": "b51e999825dde2153b1f4e9c93bfa9b3"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/core/java/android/content/Context.java": {
+    "mtime": 1784082348.0,
+    "ast_hash": "1e252411146ef07700ede93cb4c09fd2",
+    "semantic_hash": "1e252411146ef07700ede93cb4c09fd2"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/customization/tests/utils/src/com/android/systemui/shared/settings/data/repository/FakeSecureSettingsRepository.kt": {
+    "mtime": 1784193582.0,
+    "ast_hash": "f264ef0d63c7d4550c15f06c81cf1ee7",
+    "semantic_hash": "f264ef0d63c7d4550c15f06c81cf1ee7"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/customization/tests/utils/src/com/android/systemui/shared/settings/data/repository/FakeSystemSettingsRepository.kt": {
+    "mtime": 1784193582.0,
+    "ast_hash": "3e11562551e60ac49f7db6b8812714ba",
+    "semantic_hash": "3e11562551e60ac49f7db6b8812714ba"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/dagger/ReferenceSysUIComponent.java": {
+    "mtime": 1784199619.0,
+    "ast_hash": "bd0a406f58e3194b709f75ba08371d32",
+    "semantic_hash": "bd0a406f58e3194b709f75ba08371d32"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXAmbientDisplayController.kt": {
+    "mtime": 1784199550.0,
+    "ast_hash": "7d1833371ac9c04e524ce32976ceda5b",
+    "semantic_hash": "7d1833371ac9c04e524ce32976ceda5b"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXAuthAdapter.kt": {
+    "mtime": 1784204304.0,
+    "ast_hash": "9645d36d9ba9f08a61a165bd7e0dfe99",
+    "semantic_hash": "9645d36d9ba9f08a61a165bd7e0dfe99"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXConfirmationBridge.kt": {
+    "mtime": 1784199552.0,
+    "ast_hash": "658ac96edc1f5ec38f67d4f1c438d1fb",
+    "semantic_hash": "658ac96edc1f5ec38f67d4f1c438d1fb"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXConfirmationController.kt": {
+    "mtime": 1784199553.0,
+    "ast_hash": "fe6808ef4d46671a8d42056400eb2035",
+    "semantic_hash": "fe6808ef4d46671a8d42056400eb2035"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXIndicatorController.kt": {
+    "mtime": 1784199554.0,
+    "ast_hash": "f7448124d98b45c1ff1bdd2e88d73f7f",
+    "semantic_hash": "f7448124d98b45c1ff1bdd2e88d73f7f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXKeyguardMonitor.kt": {
+    "mtime": 1784199555.0,
+    "ast_hash": "1efb4dbed35e223146131714eb9a3ebd",
+    "semantic_hash": "1efb4dbed35e223146131714eb9a3ebd"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXModule.kt": {
+    "mtime": 1784199556.0,
+    "ast_hash": "0ebd96aa48774f24b2c0693b0830d7e4",
+    "semantic_hash": "0ebd96aa48774f24b2c0693b0830d7e4"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXNotificationController.kt": {
+    "mtime": 1784199557.0,
+    "ast_hash": "8f8884c7e0af1760f28b8af1ae8367c7",
+    "semantic_hash": "8f8884c7e0af1760f28b8af1ae8367c7"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXQuickSettingsTile.kt": {
+    "mtime": 1784199558.0,
+    "ast_hash": "1990005f0085e21bdb07b66abdfac67f",
+    "semantic_hash": "1990005f0085e21bdb07b66abdfac67f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXRuntimeStartable.kt": {
+    "mtime": 1784199790.0,
+    "ast_hash": "65cc988e2fb710dfbde94d2e2416c23c",
+    "semantic_hash": "65cc988e2fb710dfbde94d2e2416c23c"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXStatusBarController.kt": {
+    "mtime": 1784199559.0,
+    "ast_hash": "1b3da28a540326dabce934b26ea4e853",
+    "semantic_hash": "1b3da28a540326dabce934b26ea4e853"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/prodx/ProdXTrustedConfirmationRenderer.kt": {
+    "mtime": 1784203226.0,
+    "ast_hash": "01d15c11850867a4bb6d877a267305e9",
+    "semantic_hash": "01d15c11850867a4bb6d877a267305e9"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/tests/src/com/android/systemui/prodx/ProdXConfirmationControllerTest.kt": {
+    "mtime": 1784199448.0,
+    "ast_hash": "1aec67f68c3d73beae30faf7d4d255a8",
+    "semantic_hash": "1aec67f68c3d73beae30faf7d4d255a8"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/packages/SystemUI/tests/src/com/android/systemui/prodx/ProdXIndicatorControllerTest.kt": {
+    "mtime": 1784199449.0,
+    "ast_hash": "a153943d7ddda5de41812f55592d7fdd",
+    "semantic_hash": "a153943d7ddda5de41812f55592d7fdd"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXAuthorityService.java": {
+    "mtime": 1784199671.0,
+    "ast_hash": "5a420e8d2062eb1664bc63a0e0760e14",
+    "semantic_hash": "5a420e8d2062eb1664bc63a0e0760e14"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXAuthorityShellCommand.java": {
+    "mtime": 1784040255.0,
+    "ast_hash": "18f4eba642407672b2db9eb82f40e0a8",
+    "semantic_hash": "18f4eba642407672b2db9eb82f40e0a8"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXAuthorizationEngine.java": {
+    "mtime": 1784178030.0,
+    "ast_hash": "c747adb8f7d3b65f9b3d5fc8c65d97ad",
+    "semantic_hash": "c747adb8f7d3b65f9b3d5fc8c65d97ad"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXComponentAttestation.java": {
+    "mtime": 1784040255.0,
+    "ast_hash": "3a87c01f0fcdb1be7529753395bb743a",
+    "semantic_hash": "3a87c01f0fcdb1be7529753395bb743a"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXConfirmationChallenge.java": {
+    "mtime": 1784178046.0,
+    "ast_hash": "ed13d8be1d307f5a9a9d95828dd578a2",
+    "semantic_hash": "ed13d8be1d307f5a9a9d95828dd578a2"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXContextBuilder.java": {
+    "mtime": 1784040255.0,
+    "ast_hash": "10429d8229ceeff2053ad14d0dd73dfb",
+    "semantic_hash": "10429d8229ceeff2053ad14d0dd73dfb"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXGrantAdminService.java": {
+    "mtime": 1784176601.0,
+    "ast_hash": "4f07b7a82cddc5e0b1201ed90d0c5960",
+    "semantic_hash": "4f07b7a82cddc5e0b1201ed90d0c5960"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXGrantStore.java": {
+    "mtime": 1784178005.0,
+    "ast_hash": "f31d020e452a1af12b088e41bc0a71a2",
+    "semantic_hash": "f31d020e452a1af12b088e41bc0a71a2"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXKillSwitch.java": {
+    "mtime": 1784040255.0,
+    "ast_hash": "6308f2901a68b9fd6c415551dba926d3",
+    "semantic_hash": "6308f2901a68b9fd6c415551dba926d3"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXPolicyEngine.java": {
+    "mtime": 1784178013.0,
+    "ast_hash": "07dfbd72f308214e5ae32ad3b2c81fac",
+    "semantic_hash": "07dfbd72f308214e5ae32ad3b2c81fac"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXRegistry.java": {
+    "mtime": 1784199779.0,
+    "ast_hash": "1d44af72c162343af5018aa0b09a70d4",
+    "semantic_hash": "1d44af72c162343af5018aa0b09a70d4"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXSettingsMediatorService.java": {
+    "mtime": 1784199780.0,
+    "ast_hash": "880087e2ed424f079777bb40dd3db6f2",
+    "semantic_hash": "880087e2ed424f079777bb40dd3db6f2"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXTamperEvidentEpoch.java": {
+    "mtime": 1784040255.0,
+    "ast_hash": "36a568042b4ad72e99298f16fb22e728",
+    "semantic_hash": "36a568042b4ad72e99298f16fb22e728"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXUserLifecycle.java": {
+    "mtime": 1784040255.0,
+    "ast_hash": "8c29e5f3cdcc418d53a5b8bd20abf649",
+    "semantic_hash": "8c29e5f3cdcc418d53a5b8bd20abf649"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/testables/FakeProdXAuthorityService.java": {
+    "mtime": 1784196925.0,
+    "ast_hash": "15a53ab7270008a81209f6d059d2a471",
+    "semantic_hash": "15a53ab7270008a81209f6d059d2a471"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/java/com/android/server/SystemServer.java": {
+    "mtime": 1784111935.0,
+    "ast_hash": "502e6d334d15560c527a40de5fd8b593",
+    "semantic_hash": "502e6d334d15560c527a40de5fd8b593"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/apps/Settings/src/com/android/settings/prodx/ProdXAuditLogPreferenceController.kt": {
+    "mtime": 1784199734.0,
+    "ast_hash": "4fcb832c94303d42f8a4b5ce193046ba",
+    "semantic_hash": "4fcb832c94303d42f8a4b5ce193046ba"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/apps/Settings/src/com/android/settings/prodx/ProdXDeveloperOptionsFragment.kt": {
+    "mtime": 1784186623.0,
+    "ast_hash": "df2941489f29e0c5e80804a84782e81f",
+    "semantic_hash": "df2941489f29e0c5e80804a84782e81f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/apps/Settings/src/com/android/settings/prodx/ProdXGrantListPreferenceController.kt": {
+    "mtime": 1784199833.0,
+    "ast_hash": "6880145f65163d502f456121645ae887",
+    "semantic_hash": "6880145f65163d502f456121645ae887"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/apps/Settings/src/com/android/settings/prodx/ProdXHealthPreferenceController.kt": {
+    "mtime": 1784199558.0,
+    "ast_hash": "7a39e297865da0e0aed8d01a8f621039",
+    "semantic_hash": "7a39e297865da0e0aed8d01a8f621039"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/apps/Settings/src/com/android/settings/prodx/ProdXModePreferenceController.kt": {
+    "mtime": 1784199557.0,
+    "ast_hash": "f112c0141eb1e98099489370b922f86f",
+    "semantic_hash": "f112c0141eb1e98099489370b922f86f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/apps/Settings/src/com/android/settings/prodx/ProdXScreensaverPreferenceController.kt": {
+    "mtime": 1784186627.0,
+    "ast_hash": "046acbc5e237c3d9796a4e84e06fb903",
+    "semantic_hash": "046acbc5e237c3d9796a4e84e06fb903"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/apps/Settings/src/com/android/settings/prodx/ProdXSettingsFragment.kt": {
+    "mtime": 1784199560.0,
+    "ast_hash": "fa13cfbd40ab3450c55022215a1565df",
+    "semantic_hash": "fa13cfbd40ab3450c55022215a1565df"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/apps/Settings/tests/prodx/src/com/android/settings/prodx/ProdXSettingsFailClosedTest.kt": {
+    "mtime": 1784201071.0,
+    "ast_hash": "3e71b1be9e221fb765ed1c7ad5c059b5",
+    "semantic_hash": "3e71b1be9e221fb765ed1c7ad5c059b5"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/PROJECT-METADATA.json": {
+    "mtime": 1784032816.0,
+    "ast_hash": "040e957b9959c909968a8a0347d163f9",
+    "semantic_hash": "040e957b9959c909968a8a0347d163f9"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/apex/apex_manifest.json": {
+    "mtime": 1784040256.0,
+    "ast_hash": "f9848b1b243220267d5aba5b8f665f7c",
+    "semantic_hash": "f9848b1b243220267d5aba5b8f665f7c"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/CanonicalCborCodec.kt": {
+    "mtime": 1784173074.0,
+    "ast_hash": "9c69948fd98ab53c07fb92cda9897f39",
+    "semantic_hash": "9c69948fd98ab53c07fb92cda9897f39"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/CanonicalJsonProjection.kt": {
+    "mtime": 1784170631.0,
+    "ast_hash": "c150e2cbbd2c31a1916a8b99717450f4",
+    "semantic_hash": "c150e2cbbd2c31a1916a8b99717450f4"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/CompatibilityResolver.kt": {
+    "mtime": 1784170636.0,
+    "ast_hash": "09a8d5d96bd4c83c7e3cbb940f01a962",
+    "semantic_hash": "09a8d5d96bd4c83c7e3cbb940f01a962"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/ContentHash.kt": {
+    "mtime": 1784169276.0,
+    "ast_hash": "341f8717aace0183ecd0a11c41658715",
+    "semantic_hash": "341f8717aace0183ecd0a11c41658715"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/ContractEnvelope.kt": {
+    "mtime": 1784169353.0,
+    "ast_hash": "1c2dbb28bb9e804eef9e23be64e33be6",
+    "semantic_hash": "1c2dbb28bb9e804eef9e23be64e33be6"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/ContractVersion.kt": {
+    "mtime": 1784169278.0,
+    "ast_hash": "710eba9a130632d1fd0e76e3aa58e367",
+    "semantic_hash": "710eba9a130632d1fd0e76e3aa58e367"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/IdentifierGrammar.kt": {
+    "mtime": 1784169282.0,
+    "ast_hash": "400880778e1e06858762c8cda6e6cdca",
+    "semantic_hash": "400880778e1e06858762c8cda6e6cdca"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/Objects/EventRecord.kt": {
+    "mtime": 1784169362.0,
+    "ast_hash": "1da7d5cd77cd3defaa37c605b7f6843f",
+    "semantic_hash": "1da7d5cd77cd3defaa37c605b7f6843f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/Objects/ExtensionManifest.kt": {
+    "mtime": 1784169364.0,
+    "ast_hash": "33b50cdab0a43ad447c98810458187ee",
+    "semantic_hash": "33b50cdab0a43ad447c98810458187ee"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/Objects/ObservationRecord.kt": {
+    "mtime": 1784169360.0,
+    "ast_hash": "5843d8e4757ec53bb1daaf2ffc4201e0",
+    "semantic_hash": "5843d8e4757ec53bb1daaf2ffc4201e0"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/SchemaRegistry.kt": {
+    "mtime": 1784170638.0,
+    "ast_hash": "9017f6c64ca2c677283b2f3e00c3416f",
+    "semantic_hash": "9017f6c64ca2c677283b2f3e00c3416f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/SchemaValidator.kt": {
+    "mtime": 1784169338.0,
+    "ast_hash": "924a02ada4a9c1c53f95461e5a8fee13",
+    "semantic_hash": "924a02ada4a9c1c53f95461e5a8fee13"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/src/com/android/prodx/contract/TypedError.kt": {
+    "mtime": 1784169290.0,
+    "ast_hash": "094b97fc403138f78861b81a717d8858",
+    "semantic_hash": "094b97fc403138f78861b81a717d8858"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/providers/test/src/com/android/prodx/provider/test/NoOpCapabilities.kt": {
+    "mtime": 1784249281.5104332,
+    "ast_hash": "e9221c6a91b6043181841b741d51c696",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/providers/test/src/com/android/prodx/provider/test/NoOpCapability.kt": {
+    "mtime": 1784249274.4839027,
+    "ast_hash": "869ac649bef065aeed62b311dc475083",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/providers/test/src/com/android/prodx/provider/test/NoOpManifest.kt": {
+    "mtime": 1784249283.4499784,
+    "ast_hash": "49e51cb26a09e0e4a81a9660df9153bb",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/providers/test/src/com/android/prodx/provider/test/NoOpTestProviderService.kt": {
+    "mtime": 1784249299.8032024,
+    "ast_hash": "1f5a73d8c3481441f106047e44c13044",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/providers/test/src/com/android/prodx/provider/test/ProdXCapabilityActivity.kt": {
+    "mtime": 1784077906.0,
+    "ast_hash": "51c6c37bbee4073296d5c46a35da2895",
+    "semantic_hash": "51c6c37bbee4073296d5c46a35da2895"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/providers/test/src/com/android/prodx/provider/test/SyntheticObservationSource.kt": {
+    "mtime": 1784249288.4960468,
+    "ast_hash": "6ff2318366ba98f1e00e65bb0b7d2f6b",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/src/com/android/prodx/sdk/AuditCorrelationHelper.kt": {
+    "mtime": 1784249255.0669663,
+    "ast_hash": "5c389e2ea64cbe738e7a21415b102d7d",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/src/com/android/prodx/sdk/AuthorizationVerifier.kt": {
+    "mtime": 1784249238.1492596,
+    "ast_hash": "7f20eda08e05984a217e81b4d0ff003f",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/src/com/android/prodx/sdk/CancellationToken.kt": {
+    "mtime": 1784249243.9696317,
+    "ast_hash": "2bda6e82d12044734943ae1d3bdee083",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/src/com/android/prodx/sdk/HealthReporter.kt": {
+    "mtime": 1784249251.1912012,
+    "ast_hash": "0d403d9dde3e368aa1db9993fc60630f",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/src/com/android/prodx/sdk/ProviderContext.kt": {
+    "mtime": 1784249240.6298938,
+    "ast_hash": "a3fe56341783ea61be529abf2c33e47f",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/src/com/android/prodx/sdk/ProviderLifecycle.kt": {
+    "mtime": 1784249247.5142474,
+    "ast_hash": "d9fb959c4eece64ce44a4bb57c040a77",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/src/com/android/prodx/sdk/StructuredError.kt": {
+    "mtime": 1784249261.1553726,
+    "ast_hash": "d1ae5916aa04463a77e024087977ecf2",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/AppendOnlyLedger.kt": {
+    "mtime": 1784182894.0,
+    "ast_hash": "2d0f6f25f5ecdfb5b4bddd77243668d0",
+    "semantic_hash": "2d0f6f25f5ecdfb5b4bddd77243668d0"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/AuditHealth.kt": {
+    "mtime": 1784182895.0,
+    "ast_hash": "000acd61f851f96cd229f7c8a4d16ee4",
+    "semantic_hash": "000acd61f851f96cd229f7c8a4d16ee4"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/AuditService.kt": {
+    "mtime": 1784183162.0,
+    "ast_hash": "7e19dede6845696025083811d4264c07",
+    "semantic_hash": "7e19dede6845696025083811d4264c07"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/AuditShellCommand.kt": {
+    "mtime": 1784182898.0,
+    "ast_hash": "d3280d63141df1623d6765f9cb3cf8d9",
+    "semantic_hash": "d3280d63141df1623d6765f9cb3cf8d9"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/LedgerHashChain.kt": {
+    "mtime": 1784182900.0,
+    "ast_hash": "376b6d7e99fdb2a41e86b1a933c3cc5a",
+    "semantic_hash": "376b6d7e99fdb2a41e86b1a933c3cc5a"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/LedgerPartitionManager.kt": {
+    "mtime": 1784182902.0,
+    "ast_hash": "748b7a2816a1ccb7b448a74197f96cd7",
+    "semantic_hash": "748b7a2816a1ccb7b448a74197f96cd7"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/PrivacyRedactor.kt": {
+    "mtime": 1784182903.0,
+    "ast_hash": "59ac8285c32899f0a77e4d78f6f88131",
+    "semantic_hash": "59ac8285c32899f0a77e4d78f6f88131"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/RecoveryJournal.kt": {
+    "mtime": 1784182904.0,
+    "ast_hash": "50569ce6ee98588e858d63f43c502f07",
+    "semantic_hash": "50569ce6ee98588e858d63f43c502f07"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/RetentionManager.kt": {
+    "mtime": 1784182906.0,
+    "ast_hash": "67650f040c4f561f5c9b7bb8fe028c47",
+    "semantic_hash": "67650f040c4f561f5c9b7bb8fe028c47"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/src/com/android/prodx/runtime/audit/TransactionReservation.kt": {
+    "mtime": 1784182907.0,
+    "ast_hash": "24677fb300732ff6b1ed94e63f907553",
+    "semantic_hash": "24677fb300732ff6b1ed94e63f907553"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/tests/src/com/android/prodx/runtime/audit/AppendOnlyLedgerTest.kt": {
+    "mtime": 1784182934.0,
+    "ast_hash": "82f97d365db69955138d2dd153f702cb",
+    "semantic_hash": "82f97d365db69955138d2dd153f702cb"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/AuthorizationRevalidator.kt": {
+    "mtime": 1784249363.5169418,
+    "ast_hash": "ae0bf58c7c5ebdc7303e2131da712305",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/BrokerCheckpointStore.kt": {
+    "mtime": 1784249323.671716,
+    "ast_hash": "0e1a72ca7a9de1097f0a1dbbdfbc38a5",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/BrokerHealth.kt": {
+    "mtime": 1784249330.476698,
+    "ast_hash": "56bf598bcc9ee6b745faa2bbea639fe3",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/BrokerService.kt": {
+    "mtime": 1784249433.7468266,
+    "ast_hash": "1740247757dfa7fffa2b900c85028f89",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/BrokerShellCommand.kt": {
+    "mtime": 1784249409.2746425,
+    "ast_hash": "5f445d65c41496da867ef9a5d324ed9e",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/ConfirmationCoordinator.kt": {
+    "mtime": 1784249376.0975645,
+    "ast_hash": "c9a8cd9f2f338d2f3fb95fd66ceea9bb",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/DependencyResolver.kt": {
+    "mtime": 1784249352.4697754,
+    "ast_hash": "2bfd617669b5e5cf1eed49afe01cec59",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/ProposalValidator.kt": {
+    "mtime": 1784249342.323533,
+    "ast_hash": "d98391831e6b4d2da0cf54d02d70d7ae",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/ProviderDispatcher.kt": {
+    "mtime": 1784249396.1774845,
+    "ast_hash": "9cd0886f7cded050f66000bfb2eedc7e",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/TransactionPhase.kt": {
+    "mtime": 1784249299.857437,
+    "ast_hash": "432c83d6e80b3f086e37d902c914981c",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/src/com/android/prodx/runtime/broker/TransactionStateMachine.kt": {
+    "mtime": 1784249311.9033892,
+    "ast_hash": "1f058b22c0c5db0e89208d9508d0bcce",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/extension/src/com/android/prodx/runtime/extension/CandidateReport.kt": {
+    "mtime": 1784040332.0,
+    "ast_hash": "b9e4c74b9d7dfa69d8e12ccd0fd6746b",
+    "semantic_hash": "b9e4c74b9d7dfa69d8e12ccd0fd6746b"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/extension/src/com/android/prodx/runtime/extension/ExtensionHealth.kt": {
+    "mtime": 1784040332.0,
+    "ast_hash": "a9a26ec1e607625569f2791b6ffd67ed",
+    "semantic_hash": "a9a26ec1e607625569f2791b6ffd67ed"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/extension/src/com/android/prodx/runtime/extension/ExtensionService.kt": {
+    "mtime": 1784040332.0,
+    "ast_hash": "f6a805438242b3d7e573eb1f6f468ff2",
+    "semantic_hash": "f6a805438242b3d7e573eb1f6f468ff2"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/extension/src/com/android/prodx/runtime/extension/ExtensionShellCommand.kt": {
+    "mtime": 1784040332.0,
+    "ast_hash": "3b18b71a06badfee59c463076635c863",
+    "semantic_hash": "3b18b71a06badfee59c463076635c863"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/extension/src/com/android/prodx/runtime/extension/ManifestParser.kt": {
+    "mtime": 1784040332.0,
+    "ast_hash": "a37212f3f345e632ce5c1b9b8dc45f17",
+    "semantic_hash": "a37212f3f345e632ce5c1b9b8dc45f17"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/extension/src/com/android/prodx/runtime/extension/QuarantineStore.kt": {
+    "mtime": 1784040332.0,
+    "ast_hash": "2e76218051fa29aec053cb89cc5a43fe",
+    "semantic_hash": "2e76218051fa29aec053cb89cc5a43fe"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/extension/src/com/android/prodx/runtime/extension/SchemaVerifier.kt": {
+    "mtime": 1784040332.0,
+    "ast_hash": "35e817db254b26ffbb9ad31e072a44b4",
+    "semantic_hash": "35e817db254b26ffbb9ad31e072a44b4"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/extension/src/com/android/prodx/runtime/extension/SigningLineageVerifier.kt": {
+    "mtime": 1784040332.0,
+    "ast_hash": "9ea099e466e3d314004897c456a7e6b6",
+    "semantic_hash": "9ea099e466e3d314004897c456a7e6b6"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/BackpressureController.kt": {
+    "mtime": 1784249330.476698,
+    "ast_hash": "7406fbb03f0f4ca181585f7b3141dc20",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/ConsumerDeliveryManager.kt": {
+    "mtime": 1784249324.1606863,
+    "ast_hash": "15e8b2393681ea80cd3404dbc66acf54",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/EventPipeline.kt": {
+    "mtime": 1784249308.899897,
+    "ast_hash": "82900f73d5ec6f7e921f997ffe0bcaf3",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/HubHealth.kt": {
+    "mtime": 1784249338.3620214,
+    "ast_hash": "ed68adbf9a30b8971d6e587053e6cca9",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/HubShellCommand.kt": {
+    "mtime": 1784249427.3727324,
+    "ast_hash": "f8b938f63884fe3d6ef13000d215c83f",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/LeaseManager.kt": {
+    "mtime": 1784249286.7485602,
+    "ast_hash": "dd5939c5d1dba18a2ec9a5bdb8e074a2",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/ObservationQueue.kt": {
+    "mtime": 1784249297.5320053,
+    "ast_hash": "6c0e0ead4eb3e0d31939d4ddf5f1cae5",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/ObservationService.kt": {
+    "mtime": 1784249445.346366,
+    "ast_hash": "cb313ac6c1d7afbd2f014101e128892c",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/RedactionPipeline.kt": {
+    "mtime": 1784249432.9489658,
+    "ast_hash": "950e03cd82b79af4313fd3a7a3e61526",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/SourceRegistry.kt": {
+    "mtime": 1784249398.438097,
+    "ast_hash": "b8f67cd3f697605398c69a2730292398",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/contract/src/com/android/prodx/tests/contract/ContractCanonicalCborCodecTest.kt": {
+    "mtime": 1784174198.0,
+    "ast_hash": "0a5160d3d1e844608a78cbaa1b383c4a",
+    "semantic_hash": "0a5160d3d1e844608a78cbaa1b383c4a"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/contract/src/com/android/prodx/tests/contract/ContractCompatibilityResolverTest.kt": {
+    "mtime": 1784174210.0,
+    "ast_hash": "3da143708550cc527247ffa9aaa0cdca",
+    "semantic_hash": "3da143708550cc527247ffa9aaa0cdca"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/contract/src/com/android/prodx/tests/contract/ContractEnvelopeTest.kt": {
+    "mtime": 1784174215.0,
+    "ast_hash": "ddef526016bbd03f2d896a6572f0d716",
+    "semantic_hash": "ddef526016bbd03f2d896a6572f0d716"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/contract/src/com/android/prodx/tests/contract/ContractIdentifierGrammarTest.kt": {
+    "mtime": 1784174190.0,
+    "ast_hash": "3bf7108126f14ddcdec9b883268f9ca4",
+    "semantic_hash": "3bf7108126f14ddcdec9b883268f9ca4"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/contract/src/com/android/prodx/tests/contract/ContractSchemaValidatorTest.kt": {
+    "mtime": 1784174204.0,
+    "ast_hash": "4ac2868c78fa9d89196ca67608f620ab",
+    "semantic_hash": "4ac2868c78fa9d89196ca67608f620ab"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/contract/src/com/android/prodx/tests/contract/ContractVersionTest.kt": {
+    "mtime": 1784174185.0,
+    "ast_hash": "5c22ec54a5549392b3884710e5e11c3d",
+    "semantic_hash": "5c22ec54a5549392b3884710e5e11c3d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/device/src/com/android/prodx/tests/device/ProdXDeviceSideTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "952c7889b9e16c83663b570bfb5e3cdf",
+    "semantic_hash": "952c7889b9e16c83663b570bfb5e3cdf"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fixtures/src/com/android/prodx/tests/fixtures/FakeAuditService.kt": {
+    "mtime": 1784040333.0,
+    "ast_hash": "5877a8a63e0298298bdf9ef99231900a",
+    "semantic_hash": "5877a8a63e0298298bdf9ef99231900a"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fixtures/src/com/android/prodx/tests/fixtures/FakeAuthorityService.kt": {
+    "mtime": 1784040333.0,
+    "ast_hash": "026cca8e96ba0dd5d4e3ee6d96f4b60d",
+    "semantic_hash": "026cca8e96ba0dd5d4e3ee6d96f4b60d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fixtures/src/com/android/prodx/tests/fixtures/FakeBrokerService.kt": {
+    "mtime": 1784249446.7756236,
+    "ast_hash": "35c8c13b87bd698ad6847ee56f89b300",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fixtures/src/com/android/prodx/tests/fixtures/FakeObservationHub.kt": {
+    "mtime": 1784249446.253117,
+    "ast_hash": "671e0fa2b0f2e72af1cc5fb9b3d7f49e",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fixtures/src/com/android/prodx/tests/fixtures/FakePolicyEngine.kt": {
+    "mtime": 1784040333.0,
+    "ast_hash": "ab0046a00979ccf7e7316d3bacfc0907",
+    "semantic_hash": "ab0046a00979ccf7e7316d3bacfc0907"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fixtures/src/com/android/prodx/tests/fixtures/FakeRegistry.kt": {
+    "mtime": 1784040333.0,
+    "ast_hash": "2b48c213d7f4c679c8b1eff3d44698c1",
+    "semantic_hash": "2b48c213d7f4c679c8b1eff3d44698c1"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fixtures/src/com/android/prodx/tests/fixtures/TestVectors.kt": {
+    "mtime": 1784174219.0,
+    "ast_hash": "89fb262289fa222b0f67e641d0e4d65d",
+    "semantic_hash": "89fb262289fa222b0f67e641d0e4d65d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fuzz/src/com/android/prodx/tests/fuzz/ProdXFuzzParcelables.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "517a535981ed1463bd2da473d2d86a47",
+    "semantic_hash": "517a535981ed1463bd2da473d2d86a47"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fuzz/src/com/android/prodx/tests/fuzz/ProdXFuzzServiceApi.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "af8e258fc82cb1763b2b264b6ec4a0f8",
+    "semantic_hash": "af8e258fc82cb1763b2b264b6ec4a0f8"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/host/src/com/android/prodx/tests/host/ProdXHostSideTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "fe1cb8a34e1858a7bcad2e138130e87a",
+    "semantic_hash": "fe1cb8a34e1858a7bcad2e138130e87a"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/integration/src/com/android/prodx/tests/integration/ProdXAuditIntegrationTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "18ac246c5f497110d35d43b30fe0d1ef",
+    "semantic_hash": "18ac246c5f497110d35d43b30fe0d1ef"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/integration/src/com/android/prodx/tests/integration/ProdXAuthorityIntegrationTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "94879e4d03ce0b6cd09e034754eeccce",
+    "semantic_hash": "94879e4d03ce0b6cd09e034754eeccce"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/integration/src/com/android/prodx/tests/integration/ProdXBrokerIntegrationTest.kt": {
+    "mtime": 1784249477.6835444,
+    "ast_hash": "2058e8a5d6d6339275b7b6adf8cd24de",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/integration/src/com/android/prodx/tests/integration/ProdXExtensionIntegrationTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "647b6e4597b01b4e10e9a011e056ac9d",
+    "semantic_hash": "647b6e4597b01b4e10e9a011e056ac9d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/integration/src/com/android/prodx/tests/integration/ProdXGrantAdminIntegrationTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "61e7ed08995806096a2bfaed49f1f120",
+    "semantic_hash": "61e7ed08995806096a2bfaed49f1f120"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/integration/src/com/android/prodx/tests/integration/ProdXObservationIntegrationTest.kt": {
+    "mtime": 1784249417.5137286,
+    "ast_hash": "3562611e89891ca72ed3ec9bfa58acc7",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/BASELINE-MANIFEST.json": {
+    "mtime": 1784031925.0,
+    "ast_hash": "15972f270094d622ad9d676df1e97191",
+    "semantic_hash": "15972f270094d622ad9d676df1e97191"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/security/src/com/android/prodx/tests/security/ProdXAuthorizationBoundaryTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "83b93fcab5e6fa292046a2b02a521a58",
+    "semantic_hash": "83b93fcab5e6fa292046a2b02a521a58"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/security/src/com/android/prodx/tests/security/ProdXPermissionEnforcementTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "9a53c962be55cd77bfdb312ab817ded7",
+    "semantic_hash": "9a53c962be55cd77bfdb312ab817ded7"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/security/src/com/android/prodx/tests/security/ProdXSELinuxTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "b99a37222af6b7c74afdd1700a51851b",
+    "semantic_hash": "b99a37222af6b7c74afdd1700a51851b"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/security/src/com/android/prodx/tests/security/ProdXSideChannelLeakTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "d8268515a8e352bcd437b102670fe858",
+    "semantic_hash": "d8268515a8e352bcd437b102670fe858"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/unit/src/com/android/prodx/tests/unit/ProdXAuthorizationEngineTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "d301c7310b35870d90b82460cb881e7d",
+    "semantic_hash": "d301c7310b35870d90b82460cb881e7d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/unit/src/com/android/prodx/tests/unit/ProdXGrantStoreTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "1a6ef942887ae127b35beff07926f48e",
+    "semantic_hash": "1a6ef942887ae127b35beff07926f48e"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/unit/src/com/android/prodx/tests/unit/ProdXKillSwitchTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "a531419737885dfe9c63094081f398f5",
+    "semantic_hash": "a531419737885dfe9c63094081f398f5"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/unit/src/com/android/prodx/tests/unit/ProdXModeTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "72a75ab2c9f2f943f378074ca30ac72d",
+    "semantic_hash": "72a75ab2c9f2f943f378074ca30ac72d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/unit/src/com/android/prodx/tests/unit/ProdXParcelableTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "2f5641d97aaa02a3f16d7f94b060cf97",
+    "semantic_hash": "2f5641d97aaa02a3f16d7f94b060cf97"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/unit/src/com/android/prodx/tests/unit/ProdXPolicyEngineTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "e124879c0ef22e7652e7256e79a4c7e3",
+    "semantic_hash": "e124879c0ef22e7652e7256e79a4c7e3"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/unit/src/com/android/prodx/tests/unit/ProdXRegistryTest.kt": {
+    "mtime": 1784040388.0,
+    "ast_hash": "3d24911cae3ae607a5720e98b6fbff95",
+    "semantic_hash": "3d24911cae3ae607a5720e98b6fbff95"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/hardware-interfaces/LegacyCameraProviderImpl_2_5.cpp": {
+    "mtime": 1783929182.926149,
+    "ast_hash": "0bcff8ca86ecb130b6463c880427806d",
+    "semantic_hash": "0bcff8ca86ecb130b6463c880427806d"
+  },
+  "waterlily-i001d-reconstruction/work/AudioFX/activity/ActivityMusic.java": {
+    "mtime": 1783946326.6165004,
+    "ast_hash": "17d771833328326f35266639d40f1c33",
+    "semantic_hash": "17d771833328326f35266639d40f1c33"
+  },
+  "waterlily-i001d-reconstruction/work/AudioFX/service/AudioFxService.java": {
+    "mtime": 1783946327.3603613,
+    "ast_hash": "6573827604824b20ee72edea665cf63f",
+    "semantic_hash": "6573827604824b20ee72edea665cf63f"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/ATMS_decoded.java": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "73e82db8582952a8cc524efd95f85b13",
+    "semantic_hash": "73e82db8582952a8cc524efd95f85b13"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/RecentTasks_decoded.java": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "1ca460f32cd1a5a54863eb8ffe13d51f",
+    "semantic_hash": "1ca460f32cd1a5a54863eb8ffe13d51f"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/TaskPersister_decoded.java": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "f6f4837afd60180e2886577bfe1ca147",
+    "semantic_hash": "f6f4837afd60180e2886577bfe1ca147"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/build.gradle.kts": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "532c31f7629c16c58593b633086a2883",
+    "semantic_hash": "532c31f7629c16c58593b633086a2883"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/aosp/java/com/home/launcher/service/QuickStepService.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "e38039d1096368002d8bba09df658708",
+    "semantic_hash": "e38039d1096368002d8bba09df658708"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/aosp/java/com/home/launcher/system/platform/PlatformRecentTasksBackend.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "73a26902970d24c26ea2a31698fafe6b",
+    "semantic_hash": "73a26902970d24c26ea2a31698fafe6b"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/aosp/java/com/home/launcher/task/RecentTasksRepository.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "ef21e4bb2c93934dcdddc1308c3dc22c",
+    "semantic_hash": "ef21e4bb2c93934dcdddc1308c3dc22c"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/MainActivity.kt": {
+    "mtime": 1783946580.3407278,
+    "ast_hash": "d4b2bb0d473422057663014aac286985",
+    "semantic_hash": "d4b2bb0d473422057663014aac286985"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/adapter/RecentAppsAdapter.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "320b70551b927f73a8679bddfada50dc",
+    "semantic_hash": "320b70551b927f73a8679bddfada50dc"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/animation/MorphConfig.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "7492471c4dbfa1cab992a0a6257d01d0",
+    "semantic_hash": "7492471c4dbfa1cab992a0a6257d01d0"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/animation/MorphingEngine.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "99116482e55230436fd05fa906c8ec73",
+    "semantic_hash": "99116482e55230436fd05fa906c8ec73"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/animation/SpringInterpolator.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "bd87ecf6a380010c5f559bccc4a05a01",
+    "semantic_hash": "bd87ecf6a380010c5f559bccc4a05a01"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/data/AppIndex.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "17b837e4b54bebf35bc7f71db25f9467",
+    "semantic_hash": "17b837e4b54bebf35bc7f71db25f9467"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/data/SystemStatsProvider.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "dc8028fbded58cc8470ddf69bf090f57",
+    "semantic_hash": "dc8028fbded58cc8470ddf69bf090f57"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/task/RecentTask.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "168b5e2b5e700455a174f61024c64725",
+    "semantic_hash": "168b5e2b5e700455a174f61024c64725"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/task/RecentTasksBackend.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "552fa16d6aefc0f097d2bb55be7c0c31",
+    "semantic_hash": "552fa16d6aefc0f097d2bb55be7c0c31"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/task/RecentTasksRepository.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "e29b87148a732b1e21cfb628a5444b57",
+    "semantic_hash": "e29b87148a732b1e21cfb628a5444b57"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/task/TaskListenerRegistration.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "3a7efa4125a12797b41090d12b78b2ed",
+    "semantic_hash": "3a7efa4125a12797b41090d12b78b2ed"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/ui/AppListOverlay.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "6a65c10d65e3db06b4318cb7ef56394f",
+    "semantic_hash": "6a65c10d65e3db06b4318cb7ef56394f"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/app/src/main/java/com/home/launcher/ui/SystemStatsBar.kt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "e9e859192e9f82347b3e9937a280cd04",
+    "semantic_hash": "e9e859192e9f82347b3e9937a280cd04"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/build.gradle.kts": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "18921a9bacce25c5a267bdce1a8fa30e",
+    "semantic_hash": "18921a9bacce25c5a267bdce1a8fa30e"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/hidden-api-probe/build.gradle.kts": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "9bd19ead103d176090836c881e496244",
+    "semantic_hash": "9bd19ead103d176090836c881e496244"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/hidden-api-probe/src/main/java/com/home/hiddenapiprobe/ProbeActivity.java": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "642ce7c917dd17838c66e316be8c8852",
+    "semantic_hash": "642ce7c917dd17838c66e316be8c8852"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/settings.gradle.kts": {
+    "mtime": 1783946469.6198456,
+    "ast_hash": "686de8e5cb52fb99aa8d666b615d7265",
+    "semantic_hash": "686de8e5cb52fb99aa8d666b615d7265"
+  },
+  "waterlily-i001d-reconstruction/work/Recorder/SoundRecorderService.kt": {
+    "mtime": 1783946328.1032362,
+    "ast_hash": "a6b332a51432c7c08fc429e3a2837025",
+    "semantic_hash": "a6b332a51432c7c08fc429e3a2837025"
+  },
+  "waterlily-i001d-reconstruction/work/boringssl/cbs_compat.c": {
+    "mtime": 1783946330.3891656,
+    "ast_hash": "ea0c85595ff012f0b3013800cb27588a",
+    "semantic_hash": "ea0c85595ff012f0b3013800cb27588a"
+  },
+  "waterlily-i001d-reconstruction/work/dng_sdk/dng_xmp_sdk.cpp": {
+    "mtime": 1783946962.521609,
+    "ast_hash": "cc17166d9a5dacf5e07fc5bd38f4b96a",
+    "semantic_hash": "cc17166d9a5dacf5e07fc5bd38f4b96a"
+  },
+  ".agents/instructions.md": {
+    "mtime": 1783754252.504778,
+    "ast_hash": "8fd728a9319562e8254fed95812fe0aa",
+    "semantic_hash": "8fd728a9319562e8254fed95812fe0aa"
+  },
+  "AGENTS.md": {
+    "mtime": 1784248201.6915526,
+    "ast_hash": "613007c7127ebcd05cf014f028478904",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1784036242.0558586,
+    "ast_hash": "ceb0447966dd8592dac6ca0789b9b3e7",
+    "semantic_hash": "ceb0447966dd8592dac6ca0789b9b3e7"
+  },
+  "TAKEOVER.md": {
+    "mtime": 1784116159.84663,
+    "ast_hash": "cd93c99757bc61a5bcf1c2d202f82271",
+    "semantic_hash": "cd93c99757bc61a5bcf1c2d202f82271"
+  },
+  "handsoff.md": {
+    "mtime": 1784116160.630505,
+    "ast_hash": "50b717dc2b984ccf33c821ef28bd6b02",
+    "semantic_hash": "50b717dc2b984ccf33c821ef28bd6b02"
+  },
+  "waterlily-i001d-reconstruction/ProdX-Master-Product-Roadmap.md": {
+    "mtime": 1784208768.883907,
+    "ast_hash": "bc70b0d2508936b7414b2cfd27c26fea",
+    "semantic_hash": "bc70b0d2508936b7414b2cfd27c26fea"
+  },
+  "waterlily-i001d-reconstruction/artifacts/ProdX-P0-02-Engineering-Design-Review-20260714.md": {
+    "mtime": 1784039350.5816936,
+    "ast_hash": "5465afd2c9e2ad3be55285d1c682f04d",
+    "semantic_hash": "5465afd2c9e2ad3be55285d1c682f04d"
+  },
+  "waterlily-i001d-reconstruction/artifacts/ProdX-P0-02-Implementation-Mapping-20260714.md": {
+    "mtime": 1784039693.9924767,
+    "ast_hash": "177ec0d91ad20ec71142395e0be10fe3",
+    "semantic_hash": "177ec0d91ad20ec71142395e0be10fe3"
+  },
+  "waterlily-i001d-reconstruction/artifacts/ProdX-P0-Runtime-Implementation-Specification-20260714.md": {
+    "mtime": 1784029432.9968538,
+    "ast_hash": "ceb30bff3f4a7fe97cd279737d097ee0",
+    "semantic_hash": "ceb30bff3f4a7fe97cd279737d097ee0"
+  },
+  "waterlily-i001d-reconstruction/artifacts/ProdX-Runtime-Contract-Specification-20260714.md": {
+    "mtime": 1784027629.785724,
+    "ast_hash": "0a42a6a0b2c967c1982432d427d9100c",
+    "semantic_hash": "0a42a6a0b2c967c1982432d427d9100c"
+  },
+  "waterlily-i001d-reconstruction/artifacts/ProdX-Runtime-Skeleton-Specification-20260714.md": {
+    "mtime": 1784028796.2057307,
+    "ast_hash": "a1061864e7e984f7161195d48294b2c6",
+    "semantic_hash": "a1061864e7e984f7161195d48294b2c6"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/README.md": {
+    "mtime": 1783747453.2384036,
+    "ast_hash": "9405a273f6f9c90ea31399f8d4deff12",
+    "semantic_hash": "9405a273f6f9c90ea31399f8d4deff12"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_I001D/proprietary-files.txt": {
+    "mtime": 1783747453.2492263,
+    "ast_hash": "63a1b7ed907db71c3bebacff72b7fb43",
+    "semantic_hash": "63a1b7ed907db71c3bebacff72b7fb43"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/configs/public.libraries.txt": {
+    "mtime": 1783747456.7301054,
+    "ast_hash": "9e4ff46729dadd6f03e3f22297980f30",
+    "semantic_hash": "9e4ff46729dadd6f03e3f22297980f30"
+  },
+  "waterlily-i001d-reconstruction/baseline/device_asus_sm8150-common/proprietary-files.txt": {
+    "mtime": 1783747456.7622192,
+    "ast_hash": "e0d14e1532270b9489003be8f1084b4c",
+    "semantic_hash": "e0d14e1532270b9489003be8f1084b4c"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/audio_tuning_mixer.txt": {
+    "mtime": 1783747510.1794205,
+    "ast_hash": "95ee51d5277111c28ae2c1447c9c7f39",
+    "semantic_hash": "95ee51d5277111c28ae2c1447c9c7f39"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/camera/camxoverridesettings.txt": {
+    "mtime": 1783747510.1794205,
+    "ast_hash": "03035aa36f17a323433713ac0ac289f2",
+    "semantic_hash": "03035aa36f17a323433713ac0ac289f2"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm1.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "c16a70b9cac53598ecf94ee96abb5e34",
+    "semantic_hash": "c16a70b9cac53598ecf94ee96abb5e34"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm10.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42",
+    "semantic_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm11.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42",
+    "semantic_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm12.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42",
+    "semantic_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm13.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "9e489464aee871c752db118edd74e7ce",
+    "semantic_hash": "9e489464aee871c752db118edd74e7ce"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm14.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "9e489464aee871c752db118edd74e7ce",
+    "semantic_hash": "9e489464aee871c752db118edd74e7ce"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm15.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "9e489464aee871c752db118edd74e7ce",
+    "semantic_hash": "9e489464aee871c752db118edd74e7ce"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm16.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "bf3992499dce283368f1a74337293771",
+    "semantic_hash": "bf3992499dce283368f1a74337293771"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm17.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "e21a5ec05d0ab62f30993e59b3ab5e72",
+    "semantic_hash": "e21a5ec05d0ab62f30993e59b3ab5e72"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm18.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "5cc751e73e1761b5fc657ef5f1a76563",
+    "semantic_hash": "5cc751e73e1761b5fc657ef5f1a76563"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm19.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "71f794a290ba3c2d9a6f8c833fac8fd9",
+    "semantic_hash": "71f794a290ba3c2d9a6f8c833fac8fd9"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm2.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "c16a70b9cac53598ecf94ee96abb5e34",
+    "semantic_hash": "c16a70b9cac53598ecf94ee96abb5e34"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm20.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "95e653eaea129f4e15c6c72be3abae5b",
+    "semantic_hash": "95e653eaea129f4e15c6c72be3abae5b"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm21.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "23aeb5c574c04fb135ad9fb249bbbe16",
+    "semantic_hash": "23aeb5c574c04fb135ad9fb249bbbe16"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm3.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "c16a70b9cac53598ecf94ee96abb5e34",
+    "semantic_hash": "c16a70b9cac53598ecf94ee96abb5e34"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm4.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "2ea2b2a003f7771edf63998d3f60a3fb",
+    "semantic_hash": "2ea2b2a003f7771edf63998d3f60a3fb"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm5.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "99d45c080f91cb2ad29fb4bc86dbdd5f",
+    "semantic_hash": "99d45c080f91cb2ad29fb4bc86dbdd5f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm6.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "e0b98c66fda53805fa59231e75144bb8",
+    "semantic_hash": "e0b98c66fda53805fa59231e75144bb8"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm7.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "63fda59cddd4b0fad0d9dbda902d28c7",
+    "semantic_hash": "63fda59cddd4b0fad0d9dbda902d28c7"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm8.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "fc26954052a35139f8b62671e350d51f",
+    "semantic_hash": "fc26954052a35139f8b62671e350d51f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr1/inParm9.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "feb88abd9be825fd494373954718f49a",
+    "semantic_hash": "feb88abd9be825fd494373954718f49a"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm1.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "c16a70b9cac53598ecf94ee96abb5e34",
+    "semantic_hash": "c16a70b9cac53598ecf94ee96abb5e34"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm10.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42",
+    "semantic_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm11.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42",
+    "semantic_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm12.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42",
+    "semantic_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm13.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "e9c446c7cec05d35278312d386de3fce",
+    "semantic_hash": "e9c446c7cec05d35278312d386de3fce"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm14.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "e9c446c7cec05d35278312d386de3fce",
+    "semantic_hash": "e9c446c7cec05d35278312d386de3fce"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm15.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "e9c446c7cec05d35278312d386de3fce",
+    "semantic_hash": "e9c446c7cec05d35278312d386de3fce"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm16.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "3013a5cbbe5c7fba4f2dbfaa45968e24",
+    "semantic_hash": "3013a5cbbe5c7fba4f2dbfaa45968e24"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm17.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "94c930f16a95ef3d399289fdbfacc2ac",
+    "semantic_hash": "94c930f16a95ef3d399289fdbfacc2ac"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm18.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "5347b4e3a96427e80c649b694e7f323a",
+    "semantic_hash": "5347b4e3a96427e80c649b694e7f323a"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm19.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "71f794a290ba3c2d9a6f8c833fac8fd9",
+    "semantic_hash": "71f794a290ba3c2d9a6f8c833fac8fd9"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm2.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "c16a70b9cac53598ecf94ee96abb5e34",
+    "semantic_hash": "c16a70b9cac53598ecf94ee96abb5e34"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm20.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "95e653eaea129f4e15c6c72be3abae5b",
+    "semantic_hash": "95e653eaea129f4e15c6c72be3abae5b"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm21.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "23aeb5c574c04fb135ad9fb249bbbe16",
+    "semantic_hash": "23aeb5c574c04fb135ad9fb249bbbe16"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm3.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "c16a70b9cac53598ecf94ee96abb5e34",
+    "semantic_hash": "c16a70b9cac53598ecf94ee96abb5e34"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm4.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "2ea2b2a003f7771edf63998d3f60a3fb",
+    "semantic_hash": "2ea2b2a003f7771edf63998d3f60a3fb"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm5.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "99d45c080f91cb2ad29fb4bc86dbdd5f",
+    "semantic_hash": "99d45c080f91cb2ad29fb4bc86dbdd5f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm6.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "e0b98c66fda53805fa59231e75144bb8",
+    "semantic_hash": "e0b98c66fda53805fa59231e75144bb8"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm7.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "63fda59cddd4b0fad0d9dbda902d28c7",
+    "semantic_hash": "63fda59cddd4b0fad0d9dbda902d28c7"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm8.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "fc26954052a35139f8b62671e350d51f",
+    "semantic_hash": "fc26954052a35139f8b62671e350d51f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_1/inParm9.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "feb88abd9be825fd494373954718f49a",
+    "semantic_hash": "feb88abd9be825fd494373954718f49a"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm1.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "c16a70b9cac53598ecf94ee96abb5e34",
+    "semantic_hash": "c16a70b9cac53598ecf94ee96abb5e34"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm10.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42",
+    "semantic_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm11.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42",
+    "semantic_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm12.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42",
+    "semantic_hash": "dd7655c4a0e2f748700dcc5ff0cc8d42"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm13.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "e9c446c7cec05d35278312d386de3fce",
+    "semantic_hash": "e9c446c7cec05d35278312d386de3fce"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm14.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "e9c446c7cec05d35278312d386de3fce",
+    "semantic_hash": "e9c446c7cec05d35278312d386de3fce"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm15.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "e9c446c7cec05d35278312d386de3fce",
+    "semantic_hash": "e9c446c7cec05d35278312d386de3fce"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm16.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "3013a5cbbe5c7fba4f2dbfaa45968e24",
+    "semantic_hash": "3013a5cbbe5c7fba4f2dbfaa45968e24"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm17.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "94c930f16a95ef3d399289fdbfacc2ac",
+    "semantic_hash": "94c930f16a95ef3d399289fdbfacc2ac"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm18.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "5347b4e3a96427e80c649b694e7f323a",
+    "semantic_hash": "5347b4e3a96427e80c649b694e7f323a"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm19.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "71f794a290ba3c2d9a6f8c833fac8fd9",
+    "semantic_hash": "71f794a290ba3c2d9a6f8c833fac8fd9"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm2.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "c16a70b9cac53598ecf94ee96abb5e34",
+    "semantic_hash": "c16a70b9cac53598ecf94ee96abb5e34"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm20.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "95e653eaea129f4e15c6c72be3abae5b",
+    "semantic_hash": "95e653eaea129f4e15c6c72be3abae5b"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm21.txt": {
+    "mtime": 1783747510.243021,
+    "ast_hash": "23aeb5c574c04fb135ad9fb249bbbe16",
+    "semantic_hash": "23aeb5c574c04fb135ad9fb249bbbe16"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm3.txt": {
+    "mtime": 1783747510.258778,
+    "ast_hash": "c16a70b9cac53598ecf94ee96abb5e34",
+    "semantic_hash": "c16a70b9cac53598ecf94ee96abb5e34"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm4.txt": {
+    "mtime": 1783747510.258778,
+    "ast_hash": "2ea2b2a003f7771edf63998d3f60a3fb",
+    "semantic_hash": "2ea2b2a003f7771edf63998d3f60a3fb"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm5.txt": {
+    "mtime": 1783747510.258778,
+    "ast_hash": "99d45c080f91cb2ad29fb4bc86dbdd5f",
+    "semantic_hash": "99d45c080f91cb2ad29fb4bc86dbdd5f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm6.txt": {
+    "mtime": 1783747510.258778,
+    "ast_hash": "e0b98c66fda53805fa59231e75144bb8",
+    "semantic_hash": "e0b98c66fda53805fa59231e75144bb8"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm7.txt": {
+    "mtime": 1783747510.258778,
+    "ast_hash": "63fda59cddd4b0fad0d9dbda902d28c7",
+    "semantic_hash": "63fda59cddd4b0fad0d9dbda902d28c7"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm8.txt": {
+    "mtime": 1783747510.258778,
+    "ast_hash": "fc26954052a35139f8b62671e350d51f",
+    "semantic_hash": "fc26954052a35139f8b62671e350d51f"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/inparm_pr2_2/inParm9.txt": {
+    "mtime": 1783747510.258778,
+    "ast_hash": "feb88abd9be825fd494373954718f49a",
+    "semantic_hash": "feb88abd9be825fd494373954718f49a"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/etc/sensors/sensors_list.txt": {
+    "mtime": 1783747510.274411,
+    "ast_hash": "56e7bab8443d21ad44296ac179539c09",
+    "semantic_hash": "56e7bab8443d21ad44296ac179539c09"
+  },
+  "waterlily-i001d-reconstruction/baseline/vendor_asus_I001D/proprietary/vendor/firmware/mcu_firmware.txt": {
+    "mtime": 1783747510.417212,
+    "ast_hash": "0c66f529c35b5cc75cb88689f4da71d8",
+    "semantic_hash": "0c66f529c35b5cc75cb88689f4da71d8"
+  },
+  "waterlily-i001d-reconstruction/handoff/README.md": {
+    "mtime": 1784208711.2820446,
+    "ast_hash": "649223a0331e995cc3c3d9aabb8eb4fc",
+    "semantic_hash": "649223a0331e995cc3c3d9aabb8eb4fc"
+  },
+  "waterlily-i001d-reconstruction/handoff/local-current/LOCAL-STATE.md": {
+    "mtime": 1784037617.0434365,
+    "ast_hash": "29dfca247484edf9c4653815cd980628",
+    "semantic_hash": "29dfca247484edf9c4653815cd980628"
+  },
+  "waterlily-i001d-reconstruction/handoff/vm-current/current-overlay-deletions.txt": {
+    "mtime": 1784208578.3437016,
+    "ast_hash": "5e7aa202b88cebff51853a822dc1055b",
+    "semantic_hash": "5e7aa202b88cebff51853a822dc1055b"
+  },
+  "waterlily-i001d-reconstruction/handoff/vm-current/current-overlay-files.txt": {
+    "mtime": 1784208580.956929,
+    "ast_hash": "bd989ceb6bf1ad8766cc2531102d508b",
+    "semantic_hash": "bd989ceb6bf1ad8766cc2531102d508b"
+  },
+  "waterlily-i001d-reconstruction/handoff/vm-current/snapshot-metadata.txt": {
+    "mtime": 1784208574.833289,
+    "ast_hash": "7141e4ddc18c08090a23c8c3034ca29a",
+    "semantic_hash": "7141e4ddc18c08090a23c8c3034ca29a"
+  },
+  "waterlily-i001d-reconstruction/handoff/vm-current/vm-project-status.txt": {
+    "mtime": 1784208576.6898003,
+    "ast_hash": "9daff8feceb2dc32ffced74a08c92a19",
+    "semantic_hash": "9daff8feceb2dc32ffced74a08c92a19"
+  },
+  "waterlily-i001d-reconstruction/progress.md": {
+    "mtime": 1784254306.3562725,
+    "ast_hash": "f2134a8aafefb6403785279b430820cc",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/device/asus/I001D/proprietary-files.txt": {
+    "mtime": 1784075706.0,
+    "ast_hash": "9644dd2968668a3dc27b489e2af596bf",
+    "semantic_hash": "9644dd2968668a3dc27b489e2af596bf"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/CONTRIBUTING.md": {
+    "mtime": 1784032803.0,
+    "ast_hash": "e26b2db95a2fb1f4e5370cc36911e9ce",
+    "semantic_hash": "e26b2db95a2fb1f4e5370cc36911e9ce"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/DIRECTORY-MAP.md": {
+    "mtime": 1784032804.0,
+    "ast_hash": "861a10e3231f5bc013e1e96b029a6ec9",
+    "semantic_hash": "861a10e3231f5bc013e1e96b029a6ec9"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/MILESTONES.md": {
+    "mtime": 1784034787.0,
+    "ast_hash": "ec2b3f2b1421a1abb61ca5db9ac4468a",
+    "semantic_hash": "ec2b3f2b1421a1abb61ca5db9ac4468a"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/OWNERSHIP.md": {
+    "mtime": 1784032815.0,
+    "ast_hash": "25f2d1bfcb09a87bb3cf375b5fb2cece",
+    "semantic_hash": "25f2d1bfcb09a87bb3cf375b5fb2cece"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/PROVENANCE.md": {
+    "mtime": 1784032817.0,
+    "ast_hash": "4a2f33db1dc75ed17c9dbdd3c735646c",
+    "semantic_hash": "4a2f33db1dc75ed17c9dbdd3c735646c"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/README.md": {
+    "mtime": 1784033915.0,
+    "ast_hash": "86e27752f059a46e27ec408acfc9ab9d",
+    "semantic_hash": "86e27752f059a46e27ec408acfc9ab9d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/TARGETS.md": {
+    "mtime": 1784033915.0,
+    "ast_hash": "6492a1134cef5788936e4bacdf05219d",
+    "semantic_hash": "6492a1134cef5788936e4bacdf05219d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/apex/README.md": {
+    "mtime": 1784032800.0,
+    "ast_hash": "a93d0d0bb9fffc7da4533a5ccfd91700",
+    "semantic_hash": "a93d0d0bb9fffc7da4533a5ccfd91700"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/config/README.md": {
+    "mtime": 1784032802.0,
+    "ast_hash": "8c532bda6355bbbe7bcface70a94a666",
+    "semantic_hash": "8c532bda6355bbbe7bcface70a94a666"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/docs/README.md": {
+    "mtime": 1784032809.0,
+    "ast_hash": "689bad0a864f4c916883dc7a68bc5236",
+    "semantic_hash": "689bad0a864f4c916883dc7a68bc5236"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/docs/architecture/README.md": {
+    "mtime": 1784032806.0,
+    "ast_hash": "444f2d4c6de15693d7e29a6533433429",
+    "semantic_hash": "444f2d4c6de15693d7e29a6533433429"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/docs/engineering/P0-01-IMPLEMENTATION-REPORT.md": {
+    "mtime": 1784034787.0,
+    "ast_hash": "8fff321e0697c6c1799103cf4bc14c17",
+    "semantic_hash": "8fff321e0697c6c1799103cf4bc14c17"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/docs/engineering/README.md": {
+    "mtime": 1784032808.0,
+    "ast_hash": "a004616b70d0727154ac253d016a0f05",
+    "semantic_hash": "a004616b70d0727154ac253d016a0f05"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/README.md": {
+    "mtime": 1784032813.0,
+    "ast_hash": "8651d25f64356b7617d825c834d5fbdd",
+    "semantic_hash": "8651d25f64356b7617d825c834d5fbdd"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/api/README.md": {
+    "mtime": 1784032811.0,
+    "ast_hash": "3bd469a9de968663beb0ff8c3ee2c245",
+    "semantic_hash": "3bd469a9de968663beb0ff8c3ee2c245"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/framework/contract/README.md": {
+    "mtime": 1784032812.0,
+    "ast_hash": "e0cbd0674b581d78a40b23d0c1cc1e09",
+    "semantic_hash": "e0cbd0674b581d78a40b23d0c1cc1e09"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/providers/README.md": {
+    "mtime": 1784032819.0,
+    "ast_hash": "6ec85121f282afeb38fc1ef330ae9434",
+    "semantic_hash": "6ec85121f282afeb38fc1ef330ae9434"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/providers/test/README.md": {
+    "mtime": 1784032820.0,
+    "ast_hash": "8fcc44d425bd1795bac5d10688b2f6ba",
+    "semantic_hash": "8fcc44d425bd1795bac5d10688b2f6ba"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/README.md": {
+    "mtime": 1784032824.0,
+    "ast_hash": "d56124e72300ca04c4c370392e68a48a",
+    "semantic_hash": "d56124e72300ca04c4c370392e68a48a"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sepolicy/README.md": {
+    "mtime": 1784032825.0,
+    "ast_hash": "47eaeda4ea07ef84891f98d546bd9b5d",
+    "semantic_hash": "47eaeda4ea07ef84891f98d546bd9b5d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/README.md": {
+    "mtime": 1784032835.0,
+    "ast_hash": "acdb597bed6260d5a0f013ffc093b1c7",
+    "semantic_hash": "acdb597bed6260d5a0f013ffc093b1c7"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/audit/README.md": {
+    "mtime": 1784183303.0,
+    "ast_hash": "26a255261ab5def96df1e621663b1877",
+    "semantic_hash": "26a255261ab5def96df1e621663b1877"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/broker/README.md": {
+    "mtime": 1784032829.0,
+    "ast_hash": "ccebd9e275d428f226a788367b6bedda",
+    "semantic_hash": "ccebd9e275d428f226a788367b6bedda"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/extension/README.md": {
+    "mtime": 1784032830.0,
+    "ast_hash": "a4e6fd042b873c89b687021c8c6d1033",
+    "semantic_hash": "a4e6fd042b873c89b687021c8c6d1033"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/learning/README.md": {
+    "mtime": 1784032832.0,
+    "ast_hash": "a888cc4cf8866cee1511d022ab59f563",
+    "semantic_hash": "a888cc4cf8866cee1511d022ab59f563"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/README.md": {
+    "mtime": 1784032834.0,
+    "ast_hash": "b48292821749b82ed28dbccc5f63b395",
+    "semantic_hash": "b48292821749b82ed28dbccc5f63b395"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/reasoning/README.md": {
+    "mtime": 1784032836.0,
+    "ast_hash": "b20e436076a87effaf6ea0c3aab48933",
+    "semantic_hash": "b20e436076a87effaf6ea0c3aab48933"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/README.md": {
+    "mtime": 1784032848.0,
+    "ast_hash": "c9ee4a9846e95cc87d5ac78764f8d2dc",
+    "semantic_hash": "c9ee4a9846e95cc87d5ac78764f8d2dc"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/contract/README.md": {
+    "mtime": 1784032839.0,
+    "ast_hash": "dab9a052a4996ba58608c6977d24389e",
+    "semantic_hash": "dab9a052a4996ba58608c6977d24389e"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/device/README.md": {
+    "mtime": 1784032841.0,
+    "ast_hash": "13a3430a8d658ebf9c7d427414c5dd2f",
+    "semantic_hash": "13a3430a8d658ebf9c7d427414c5dd2f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fixtures/README.md": {
+    "mtime": 1784032843.0,
+    "ast_hash": "2b47db77a72d943b8a91b5164c33fac0",
+    "semantic_hash": "2b47db77a72d943b8a91b5164c33fac0"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/fuzz/README.md": {
+    "mtime": 1784032844.0,
+    "ast_hash": "50f1b93c4fcd1f1661c6bfc0a59c0fe7",
+    "semantic_hash": "50f1b93c4fcd1f1661c6bfc0a59c0fe7"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/host/README.md": {
+    "mtime": 1784032846.0,
+    "ast_hash": "bf18fea25e03e4e5b523d9dbd45b3013",
+    "semantic_hash": "bf18fea25e03e4e5b523d9dbd45b3013"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/integration/README.md": {
+    "mtime": 1784032847.0,
+    "ast_hash": "abc77018085e52f3d3fcfdc6975b6a0f",
+    "semantic_hash": "abc77018085e52f3d3fcfdc6975b6a0f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/DECISION-LOG.md": {
+    "mtime": 1784031928.0,
+    "ast_hash": "ff5337a59f8a0fe38b3e3a1f7c72b10c",
+    "semantic_hash": "ff5337a59f8a0fe38b3e3a1f7c72b10c"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/DEPENDENCY-GRAPH.md": {
+    "mtime": 1784031929.0,
+    "ast_hash": "e23763bb80f1c7a35dd71074224328cb",
+    "semantic_hash": "e23763bb80f1c7a35dd71074224328cb"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/ENGINEERING-BASELINE.md": {
+    "mtime": 1784031931.0,
+    "ast_hash": "38504e5d1bdd286fbcb3b7bdc73a532f",
+    "semantic_hash": "38504e5d1bdd286fbcb3b7bdc73a532f"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/GOVERNANCE.md": {
+    "mtime": 1784031932.0,
+    "ast_hash": "aeeb7909c40feeb1103fcb1a3e24480a",
+    "semantic_hash": "aeeb7909c40feeb1103fcb1a3e24480a"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/MILESTONE-TRACKER.md": {
+    "mtime": 1784031933.0,
+    "ast_hash": "3836d0c795370de25e3135a02c72b946",
+    "semantic_hash": "3836d0c795370de25e3135a02c72b946"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/POST-INSTALL-VERIFICATION.md": {
+    "mtime": 1784032329.0,
+    "ast_hash": "d93a4e4f57236d80553cdc9473322db3",
+    "semantic_hash": "d93a4e4f57236d80553cdc9473322db3"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/README.md": {
+    "mtime": 1784031935.0,
+    "ast_hash": "8bc9c66e6dfcdcef47ab5d427196fbf8",
+    "semantic_hash": "8bc9c66e6dfcdcef47ab5d427196fbf8"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/REFERENCE-LOCK.md": {
+    "mtime": 1784031936.0,
+    "ast_hash": "398d1fcf6b44f0438734398092f9a4c3",
+    "semantic_hash": "398d1fcf6b44f0438734398092f9a4c3"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/immutable/ProdX-P0-Runtime-Implementation-Specification-20260714.md": {
+    "mtime": 1784031969.0,
+    "ast_hash": "ceb30bff3f4a7fe97cd279737d097ee0",
+    "semantic_hash": "ceb30bff3f4a7fe97cd279737d097ee0"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/immutable/ProdX-Runtime-Contract-Specification-20260714.md": {
+    "mtime": 1784031969.0,
+    "ast_hash": "0a42a6a0b2c967c1982432d427d9100c",
+    "semantic_hash": "0a42a6a0b2c967c1982432d427d9100c"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/immutable/ProdX-Runtime-Skeleton-Specification-20260714.md": {
+    "mtime": 1784031969.0,
+    "ast_hash": "a1061864e7e984f7161195d48294b2c6",
+    "semantic_hash": "a1061864e7e984f7161195d48294b2c6"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/reference/repo-status.txt": {
+    "mtime": 1784031968.0,
+    "ast_hash": "24d56e2c4c35d3bbae086f57840f8a26",
+    "semantic_hash": "24d56e2c4c35d3bbae086f57840f8a26"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/security/README.md": {
+    "mtime": 1784032850.0,
+    "ast_hash": "73d6cbca2f8a5a9958fe4093d0c7437d",
+    "semantic_hash": "73d6cbca2f8a5a9958fe4093d0c7437d"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tests/unit/README.md": {
+    "mtime": 1784032852.0,
+    "ast_hash": "d75ceba44fcfb58b31f34a9954987da5",
+    "semantic_hash": "d75ceba44fcfb58b31f34a9954987da5"
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/tools/README.md": {
+    "mtime": 1784032853.0,
+    "ast_hash": "e6c8371146877be2f99364da0a6780f0",
+    "semantic_hash": "e6c8371146877be2f99364da0a6780f0"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/AGENTS.md": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "7efc6566a2e7ffaef499ef466ae46e71",
+    "semantic_hash": "7efc6566a2e7ffaef499ef466ae46e71"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/TaskPersister_b64.txt": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "f853e7a79495aa397022ae49dc1f7b67",
+    "semantic_hash": "f853e7a79495aa397022ae49dc1f7b67"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/animationengine.md": {
+    "mtime": 1783946469.5883346,
+    "ast_hash": "ec4c88dd66b1ce7ee5650c155903fbc9",
+    "semantic_hash": "ec4c88dd66b1ce7ee5650c155903fbc9"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/final-architecture-investigation.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "46082a486211297b5ded96f5758b9a63",
+    "semantic_hash": "46082a486211297b5ded96f5758b9a63"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/investigation.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "592a1a7f506cc6efec3595fde17a15cd",
+    "semantic_hash": "592a1a7f506cc6efec3595fde17a15cd"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/liverecent.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "64c07333e7180694c70b10365c608bbe",
+    "semantic_hash": "64c07333e7180694c70b10365c608bbe"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/research/blackberry-10-home-screen-research.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "90e0917d450c98cfd7b7a40430c245b7",
+    "semantic_hash": "90e0917d450c98cfd7b7a40430c245b7"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/research/implementation-plan.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "76dd1da0d4338c6ad60ac08532d30819",
+    "semantic_hash": "76dd1da0d4338c6ad60ac08532d30819"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/research/required-permissions.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "03ad95918a1cb766a1ec610e31abebbb",
+    "semantic_hash": "03ad95918a1cb766a1ec610e31abebbb"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/research/three-column-recents-launcher-design.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "b331e0753e884e67d84172222b904be8",
+    "semantic_hash": "b331e0753e884e67d84172222b904be8"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/research/windows-mobile-5-home-screen-research.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "4eb91e20d3e49ede1a90428dc2ca4d61",
+    "semantic_hash": "4eb91e20d3e49ede1a90428dc2ca4d61"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/README.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "71b9ee78483072649e629b634a96d5da",
+    "semantic_hash": "71b9ee78483072649e629b634a96d5da"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/deployment-manifest.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "2880626be02e681d0e3ce3772972bcb2",
+    "semantic_hash": "2880626be02e681d0e3ce3772972bcb2"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/architecture-summary.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "739db94320ce850e897ce1ea31bcc2c0",
+    "semantic_hash": "739db94320ce850e897ce1ea31bcc2c0"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/cloud-vm-execution-checklist.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "a601c882b23a51c2581f7fc00adb857b",
+    "semantic_hash": "a601c882b23a51c2581f7fc00adb857b"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/communication.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "641ec2f4e50ca60dc2b2f21b01c8ab87",
+    "semantic_hash": "641ec2f4e50ca60dc2b2f21b01c8ab87"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/current-project-audit.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "0e81d03d15343170d9b2a0fcbd6ca601",
+    "semantic_hash": "0e81d03d15343170d9b2a0fcbd6ca601"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/deferred-tasks.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "575918a2b51287d12082deda54c5d969",
+    "semantic_hash": "575918a2b51287d12082deda54c5d969"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/expected-first-boot-failures.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "619dea148cf269c31520ef2a3ce088f8",
+    "semantic_hash": "619dea148cf269c31520ef2a3ce088f8"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/handover.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "5c91957cbc86d43f8ce98184ca9f10fc",
+    "semantic_hash": "5c91957cbc86d43f8ce98184ca9f10fc"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/implementation-report.md": {
+    "mtime": 1783946469.6040313,
+    "ast_hash": "9adb47353d3bd5aa378e4f2cdd23d7ad",
+    "semantic_hash": "9adb47353d3bd5aa378e4f2cdd23d7ad"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/permission-audit.md": {
+    "mtime": 1783946469.6198456,
+    "ast_hash": "0a9c4df80f705d171e982cc85072db6c",
+    "semantic_hash": "0a9c4df80f705d171e982cc85072db6c"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/post-flash-verification-checklist.md": {
+    "mtime": 1783946469.6198456,
+    "ast_hash": "107f571862314e7a7ea6abed6582734a",
+    "semantic_hash": "107f571862314e7a7ea6abed6582734a"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/taskorganizer-migration-roadmap.md": {
+    "mtime": 1783946469.6198456,
+    "ast_hash": "f5da8057fa0cc5799614269e98c9b55c",
+    "semantic_hash": "f5da8057fa0cc5799614269e98c9b55c"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/docs/vm-operations-runbook.md": {
+    "mtime": 1783946469.6198456,
+    "ast_hash": "8c21ad7111b41fa28c94a59cbe6f5dc1",
+    "semantic_hash": "8c21ad7111b41fa28c94a59cbe6f5dc1"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/rom-integration/sepolicy/draft/README.md": {
+    "mtime": 1783946469.6198456,
+    "ast_hash": "a651f0556946459ae2a19cfda3fcfdaf",
+    "semantic_hash": "a651f0556946459ae2a19cfda3fcfdaf"
+  },
+  "waterlily-i001d-reconstruction/work/HomeLauncher-repo/system-recents-launcher-findings.md": {
+    "mtime": 1783946469.6198456,
+    "ast_hash": "c11546c9ac87ca93696d31a95c42530e",
+    "semantic_hash": "c11546c9ac87ca93696d31a95c42530e"
+  },
+  ".opencode/opencode.json": {
+    "mtime": 1784250229.2809267,
+    "ast_hash": "1efe24ecf938911d4f23e4b1c6ec91f7",
+    "semantic_hash": ""
+  },
+  ".opencode/plugins/graphify.js": {
+    "mtime": 1784248201.6915526,
+    "ast_hash": "b33d000860642c6f4907a877e0387a21",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/src/com/android/prodx/sdk/CapabilityInventory.kt": {
+    "mtime": 1784249273.5488448,
+    "ast_hash": "dcf3278ba4a9fc97adff5e12a9a9c3b6",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/sdk/src/com/android/prodx/sdk/CapabilityManifest.kt": {
+    "mtime": 1784249269.863703,
+    "ast_hash": "31670b8dc8266119508cff61e1432239",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/IncidentRecord.kt": {
+    "mtime": 1784249260.2172568,
+    "ast_hash": "4d8d4ccb69f221dce5fde908d7a4e51d",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/RuleEngine.kt": {
+    "mtime": 1784249267.2541032,
+    "ast_hash": "2b174d18e66f3ec34614c0973b2c3451",
+    "semantic_hash": ""
+  },
+  "waterlily-i001d-reconstruction/vm-edit/current-overlay/packages/modules/ProdX/service/observation/src/com/android/prodx/runtime/observation/SecurityMonitor.kt": {
+    "mtime": 1784249276.5544984,
+    "ast_hash": "937227f7e0c3c625416db8386d99f2e8",
+    "semantic_hash": ""
+  },
+  ".opencode/skills/graphify/SKILL.md": {
+    "mtime": 1784248201.6794589,
+    "ast_hash": "61843fdfaa85156f506caba13881a35a",
+    "semantic_hash": ""
+  },
+  ".opencode/skills/graphify/references/add-watch.md": {
+    "mtime": 1784246393.9147718,
+    "ast_hash": "d59d027fe449f06aa03905a01184e779",
+    "semantic_hash": ""
+  },
+  ".opencode/skills/graphify/references/exports.md": {
+    "mtime": 1784246393.9147718,
+    "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
+    "semantic_hash": ""
+  },
+  ".opencode/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1784246393.9167867,
+    "ast_hash": "42fef56a01698118f7fd722acdadea34",
+    "semantic_hash": ""
+  },
+  ".opencode/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1784246393.9187958,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": ""
+  },
+  ".opencode/skills/graphify/references/hooks.md": {
+    "mtime": 1784246393.9187958,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": ""
+  },
+  ".opencode/skills/graphify/references/query.md": {
+    "mtime": 1784246393.9204853,
+    "ast_hash": "3c46f8ad006874260614ed8657d02307",
+    "semantic_hash": ""
+  },
+  ".opencode/skills/graphify/references/transcribe.md": {
+    "mtime": 1784246393.9204853,
+    "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
+    "semantic_hash": ""
+  },
+  ".opencode/skills/graphify/references/update.md": {
+    "mtime": 1784246393.9224942,
+    "ast_hash": "c698309979460d0f02ba616417844399",
+    "semantic_hash": ""
+  }
+}

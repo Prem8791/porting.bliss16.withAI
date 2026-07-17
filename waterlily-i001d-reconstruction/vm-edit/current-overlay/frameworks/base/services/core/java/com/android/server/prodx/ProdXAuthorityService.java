@@ -103,6 +103,7 @@ public class ProdXAuthorityService extends SystemService {
             mOperational = false;
             ProdXKillSwitch.emergencyDisable();
             mGrantStore.invalidateOnKillSwitch();
+            mPolicyEngine.setMode(ProdXMode.DISABLED);
         }
 
         @Override public boolean isEmergencyDisabled() {
@@ -113,6 +114,7 @@ public class ProdXAuthorityService extends SystemService {
         @Override public void setMode(ProdXMode mode) {
             enforcePermission(PERMISSION_ADMIN, "set ProdX mode");
             mMode = mode;
+            mPolicyEngine.setMode(mode);
         }
 
         @Override public void registerRegistryObserver(IProdXRegistryObserver observer) {
@@ -242,7 +244,7 @@ public class ProdXAuthorityService extends SystemService {
         super(context);
         mContextBuilder = new ProdXContextBuilder(context);
         mGrantStore = new ProdXGrantStore();
-        mRegistry = new ProdXRegistry();
+        mRegistry = new ProdXRegistry(context);
         mPolicyEngine = new ProdXPolicyEngine(mGrantStore, mRegistry);
         mAuthorizationEngine = new ProdXAuthorizationEngine(mGrantStore, mPolicyEngine, mRegistry);
         mAttestation = new ProdXComponentAttestation(context);

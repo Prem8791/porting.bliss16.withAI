@@ -1,2 +1,3 @@
 # VM recovery overlays are byte-exact snapshots; never normalize line endings.
 waterlily-i001d-reconstruction/vm-edit/current-overlay/** -text
+graphify-out/graph.json merge=graphify
