@@ -820,9 +820,9 @@
     "semantic_hash": "a153943d7ddda5de41812f55592d7fdd"
   },
   "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXAuthorityService.java": {
-    "mtime": 1784199671.0,
-    "ast_hash": "5a420e8d2062eb1664bc63a0e0760e14",
-    "semantic_hash": "5a420e8d2062eb1664bc63a0e0760e14"
+    "mtime": 1784254680.7382467,
+    "ast_hash": "195a22473948af401870e9957f0af535",
+    "semantic_hash": ""
   },
   "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXAuthorityShellCommand.java": {
     "mtime": 1784040255.0,
@@ -865,14 +865,14 @@
     "semantic_hash": "6308f2901a68b9fd6c415551dba926d3"
   },
   "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXPolicyEngine.java": {
-    "mtime": 1784178013.0,
-    "ast_hash": "07dfbd72f308214e5ae32ad3b2c81fac",
-    "semantic_hash": "07dfbd72f308214e5ae32ad3b2c81fac"
+    "mtime": 1784254642.187301,
+    "ast_hash": "159b44bb7b27b9300961a1363b563975",
+    "semantic_hash": ""
   },
   "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXRegistry.java": {
-    "mtime": 1784199779.0,
-    "ast_hash": "1d44af72c162343af5018aa0b09a70d4",
-    "semantic_hash": "1d44af72c162343af5018aa0b09a70d4"
+    "mtime": 1784254623.4340398,
+    "ast_hash": "7072f70f9a6bceaabb60451886b92642",
+    "semantic_hash": ""
   },
   "waterlily-i001d-reconstruction/vm-edit/current-overlay/frameworks/base/services/core/java/com/android/server/prodx/ProdXSettingsMediatorService.java": {
     "mtime": 1784199780.0,
