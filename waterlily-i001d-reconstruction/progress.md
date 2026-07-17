@@ -6147,3 +6147,38 @@ Designed complete SELinux policy for all ProdX service domains. All 7 sepolicy f
 ### Blockers before compilation:
 - Four binder service types must be declared in `system/sepolicy`: `prodx_audit_service`, `prodx_broker_service`, `prodx_observation_service`, `prodx_extension_service`
 - No `system/sepolicy` edits included — VM deployment needed
+
+## 2026-07-17: ProdX Programs A/B/D + PRODUCT_PACKAGES — Full Build Success
+
+All changes (Programs A/B/D, P0-13 sepolicy design, and PRODUCT_PACKAGES wiring) were pushed to the VM and built together. The complete target set compiled successfully in 4:22:
+
+```bash
+m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests \
+  ProdXAuditService ProdXAuditTests \
+  ProdXBrokerService ProdXObservationService ProdXNoOpTestProvider
+```
+
+### Build outcome
+- **All targets**: 34/34 modules, completed without errors
+- **New modules compiled**: `ProdXBrokerService`, `ProdXObservationService`, `ProdXNoOpTestProvider`, `prodx-test-fixtures`, `prodx-provider-sdk`
+- **Existing targets re-verified**: services, SystemUI, Settings, ProdXSystemUITests, ProdXSettingsTests, ProdXAuditService, ProdXAuditTests
+- **Build fixes applied**: `#` comments → `//` in Android.bp; replaced non-existent `prodx-framework-api` dep with `platform_apis: true` + framework AIDL include_dirs
+
+### Current P0/program state
+| Area | Status |
+|------|--------|
+| P0-00/01 (reference/repo) | Established |
+| P0-02 (contracts) | Implemented, tests need bounds/fuzz |
+| P0-03 (framework projection) | Compiles |
+| P0-04 (Authority) | Compiles, feature-gated |
+| P0-05 (Registry) | Basic in-memory catalog |
+| P0-06 (policy/authorization) | Partial, unsafe for execution |
+| P0-07 (Audit) | Meaningful ledger core, compiles |
+| P0-08 (trusted UI/Settings) | Compiles, pending device tests |
+| **Program B (Broker)** | **Full impl, compiles** |
+| **Program A (SDK/inventory)** | **Full impl, compiles** |
+| **Program D (Observation)** | **Full impl, compiles** |
+| P0-12 (Extension) | Skeleton (deferred) |
+| P0-13 (SEAndroid) | Design complete, needs system/sepolicy |
+| P0-14 (APEX) | Placeholder (deferred) |
+| Programs C/E/F (AI/KB/Learning) | Not started |
