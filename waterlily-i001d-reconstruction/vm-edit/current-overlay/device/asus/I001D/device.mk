@@ -44,6 +44,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     prodx-system-feature.xml
 
+PRODUCT_PACKAGES += \
+    ProdXAuditService \
+    ProdXBrokerService \
+    ProdXObservationService \
+    ProdXNoOpTestProvider
+
 # UDFPS animations
 EXTRA_UDFPS_ANIMATIONS := true
 
