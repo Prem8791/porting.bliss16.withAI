@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="config_recentsComponentName" translatable="false">
+        com.home.launcher/com.home.launcher.RecentsActivity
+    </string>
+</resources>

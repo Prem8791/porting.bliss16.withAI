@@ -1,0 +1,22 @@
+diff --git a/packages/apps/HomeLauncher/permissions/privapp-permissions-com.home.launcher.xml b/packages/apps/HomeLauncher/permissions/privapp-permissions-com.home.launcher.xml
+new file mode 100644
+--- /dev/null
++++ b/packages/apps/HomeLauncher/permissions/privapp-permissions-com.home.launcher.xml
+@@
++<?xml version="1.0" encoding="utf-8"?>
++<permissions>
++    <privapp-permissions package="com.home.launcher">
++        <permission name="android.permission.REAL_GET_TASKS" />
++        <permission name="android.permission.MANAGE_ACTIVITY_TASKS" />
++        <permission name="android.permission.START_TASKS_FROM_RECENTS" />
++        <permission name="android.permission.REMOVE_TASKS" />
++        <permission name="android.permission.READ_FRAME_BUFFER" />
++        <permission name="android.permission.FORCE_STOP_PACKAGES" />
++        <permission name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
++        <permission name="android.permission.BATTERY_STATS" />
++        <permission name="android.permission.DEVICE_POWER" />
++        <permission name="android.permission.STATUS_BAR" />
++        <permission name="android.permission.STATUS_BAR_SERVICE" />
++        <permission name="android.permission.INTERACT_ACROSS_USERS" />
++    </privapp-permissions>
++</permissions>

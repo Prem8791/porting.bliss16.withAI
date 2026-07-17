@@ -1,0 +1,20 @@
+diff --git a/device/asus/I001D/bliss_I001D.mk b/device/asus/I001D/bliss_I001D.mk
+--- a/device/asus/I001D/bliss_I001D.mk
++++ b/device/asus/I001D/bliss_I001D.mk
+@@ -28,14 +28,16 @@ PRODUCT_MANUFACTURER := asus
+ 
+ PRODUCT_GMS_CLIENTID_BASE := android-asus
+ 
++ifeq ($(TARGET_BUILD_VARIANT),user)
+ PRODUCT_BUILD_PROP_OVERRIDES += \
+     PRIVATE_BUILD_DESC="WW_I001D-user 11 RKQ1.200710.002 18.0210.2201.215-0 release-keys"
+ 
+ # Build info
+ PRODUCT_BUILD_PROP_OVERRIDES += \
+     TARGET_DEVICE=ZS660KL \
+     PRODUCT_NAME=WW_I001D
+     BUILD_FINGERPRINT := asus/WW_I001D/ASUS_I001_1:11/RKQ1.200710.002/18.0210.2201.215-0:user/release-keys
++endif
+ 
+ # HomeLauncher
+ PRODUCT_PACKAGES += \

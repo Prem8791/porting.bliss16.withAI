@@ -1,0 +1,13 @@
+on early-boot
+    chown system system /sys/class/leds/vibrator/activate
+    chown system system /sys/class/leds/vibrator/duration
+    chown system system /sys/class/leds/vibrator/lp_trigger_effect
+    chown system system /sys/class/leds/vibrator/state
+    chown system system /sys/class/leds/vibrator/scale
+
+    write /sys/class/leds/vibrator/channel 3
+
+service vendor.vibrator-1-2 /vendor/bin/hw/android.hardware.vibrator@1.2-service.I001D
+    class hal
+    user system
+    group system

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/tile_bg"
+    android:padding="2dp">
+
+    <ImageView
+        android:id="@+id/tileThumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/tileAppIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tileAppLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:padding="4dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="#FFFFFF"
+        android:textSize="9sp"
+        android:background="#80000000" />
+
+    <ImageButton
+        android:id="@+id/tileCloseButton"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_gravity="top|end"
+        android:background="@drawable/close_button_bg"
+        android:contentDescription="Close"
+        android:src="@drawable/ic_close"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/tileTaskId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:padding="1dp"
+        android:textColor="#50FFFFFF"
+        android:textSize="7sp" />
+</FrameLayout>

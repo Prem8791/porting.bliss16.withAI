@@ -1,0 +1,11 @@
+# Allow system_server to read/write for display gestures and smart key
+allow system_server vendor_proc_graphics:file rw_file_perms;
+allow system_server vendor_sysfs_gestures:file { rw_file_perms setattr };
+
+allow system_server sysfs_hallsensor_file:file rw_file_perms;
+
+get_prop(system_server, vendor_odm_tel_prop)
+
+allow system_server vendor_sysfs_usb_device:file { getattr map open read };
+
+get_prop(system_server, asus_dongle_prop)

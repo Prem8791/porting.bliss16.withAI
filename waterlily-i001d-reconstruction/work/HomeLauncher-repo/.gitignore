@@ -1,0 +1,38 @@
+# Local machine / IDE state
+.idea/
+.settings/
+.project
+.classpath
+local.properties
+
+# Gradle / Android build output
+.gradle/
+build/
+**/build/
+
+# Android generated artifacts
+*.apk
+*.apks
+*.aab
+*.idsig
+
+# Signing material - do not publish private platform keys
+*.pk8
+*.pem
+signing/
+
+# Tooling binaries and temporary extracted artifacts
+bundletool.jar
+*.tmp
+*.log
+
+# Generated migration/deployment packages
+HomeLauncher_AOSP_Deployment_*/
+HomeLauncher_AOSP_Deployment_*.zip
+HomeLauncher_AOSP_Source/
+HomeLauncher_AOSP_Source.zip
+_readonly_source/
+
+# OS noise
+Thumbs.db
+desktop.ini

@@ -1,0 +1,17 @@
+# Block
+type asdf_block_device, dev_type;
+type asus_block_device, dev_type;
+
+# Goodix
+type fingerprintd_device, dev_type;
+
+# Hid
+type hid_device, dev_type;
+
+# Motor camera
+type asus_laser_device, dev_type;
+type asus_motor_device, dev_type;
+type asus_sensors_device, dev_type;
+
+# Sensor
+type frgb_sensor_device, dev_type;

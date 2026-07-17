@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#00000000</color>
+    <color name="column_bg">#00000000</color>
+    <color name="center_bg">#00000000</color>
+    <color name="accent">#FFE94560</color>
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#B0FFFFFF</color>
+    <color name="tile_bg">#331A1A3E</color>
+    <color name="tile_border">#332A2A4E</color>
+    <color name="divider">#15FFFFFF</color>
+    <color name="section_boundary">#18FFFFFF</color>
+    <color name="stats_bar_bg">#00000000</color>
+    <color name="dock_bg">#33000000</color>
+    <color name="alphabet_letter">#FFFFFFFF</color>
+    <color name="alphabet_letter_selected">#FFE94560</color>
+    <color name="alphabet_letter_disabled">#40FFFFFF</color>
+    <color name="kill_all_bg">#FFE94560</color>
+</resources>

@@ -1,0 +1,35 @@
+diff --git a/packages/apps/HomeLauncher/overlays/HomeLauncherConfigOverlay/Android.bp b/packages/apps/HomeLauncher/overlays/HomeLauncherConfigOverlay/Android.bp
+new file mode 100644
+--- /dev/null
++++ b/packages/apps/HomeLauncher/overlays/HomeLauncherConfigOverlay/Android.bp
+@@
++runtime_resource_overlay {
++    name: "HomeLauncherConfigOverlay",
++    resource_dirs: ["res"],
++    manifest: "AndroidManifest.xml",
++    certificate: "platform",
++}
+diff --git a/packages/apps/HomeLauncher/overlays/HomeLauncherConfigOverlay/AndroidManifest.xml b/packages/apps/HomeLauncher/overlays/HomeLauncherConfigOverlay/AndroidManifest.xml
+new file mode 100644
+--- /dev/null
++++ b/packages/apps/HomeLauncher/overlays/HomeLauncherConfigOverlay/AndroidManifest.xml
+@@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.home.launcher.config.overlay">
++    <overlay
++        android:targetPackage="android"
++        android:isStatic="true"
++        android:priority="700" />
++</manifest>
+diff --git a/packages/apps/HomeLauncher/overlays/HomeLauncherConfigOverlay/res/values/config.xml b/packages/apps/HomeLauncher/overlays/HomeLauncherConfigOverlay/res/values/config.xml
+new file mode 100644
+--- /dev/null
++++ b/packages/apps/HomeLauncher/overlays/HomeLauncherConfigOverlay/res/values/config.xml
+@@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <string name="config_recentsComponentName" translatable="false">
++        com.home.launcher/com.home.launcher.RecentsActivity
++    </string>
++</resources>

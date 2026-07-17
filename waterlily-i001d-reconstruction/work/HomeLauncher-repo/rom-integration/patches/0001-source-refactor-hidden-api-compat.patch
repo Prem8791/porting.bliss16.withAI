@@ -1,0 +1,979 @@
+﻿diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+index 54e81c7..1480d4f 100644
+--- a/app/src/main/AndroidManifest.xml
++++ b/app/src/main/AndroidManifest.xml
+@@ -1,45 +1,31 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:tools="http://schemas.android.com/tools"
+->
++<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ 
+     <!-- ============ RECENT APPS (signature|system) ============ -->
+-    <uses-permission android:name="android.permission.REAL_GET_TASKS"
+-        tools:ignore="ProtectedPermissions" />
+-    <uses-permission android:name="android.permission.MANAGE_ACTIVITY_TASKS"
+-        tools:ignore="ProtectedPermissions" />
+-    <uses-permission android:name="android.permission.START_TASKS_FROM_RECENTS"
+-        tools:ignore="ProtectedPermissions" />
+-    <uses-permission android:name="android.permission.REMOVE_TASKS"
+-        tools:ignore="ProtectedPermissions" />
+-    <uses-permission android:name="android.permission.READ_FRAME_BUFFER"
+-        tools:ignore="ProtectedPermissions" />
+-    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES"
+-        tools:ignore="ProtectedPermissions" />
++    <uses-permission android:name="android.permission.REAL_GET_TASKS" />
++    <uses-permission android:name="android.permission.MANAGE_ACTIVITY_TASKS" />
++    <uses-permission android:name="android.permission.START_TASKS_FROM_RECENTS" />
++    <uses-permission android:name="android.permission.REMOVE_TASKS" />
++    <uses-permission android:name="android.permission.READ_FRAME_BUFFER" />
++    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
+ 
+     <!-- ============ NOTIFICATIONS ============ -->
+-    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+-        tools:ignore="ProtectedPermissions" />
++    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
+     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+ 
+     <!-- ============ SYSTEM STATS ============ -->
+-    <uses-permission android:name="android.permission.BATTERY_STATS"
+-        tools:ignore="ProtectedPermissions" />
+-    <uses-permission android:name="android.permission.DEVICE_POWER"
+-        tools:ignore="ProtectedPermissions" />
++    <uses-permission android:name="android.permission.BATTERY_STATS" />
++    <uses-permission android:name="android.permission.DEVICE_POWER" />
+ 
+     <!-- ============ TODAY (CALENDAR) ============ -->
+     <uses-permission android:name="android.permission.READ_CALENDAR" />
+ 
+     <!-- ============ APP DISCOVERY ============ -->
+-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+-        tools:ignore="QueryAllPackagesPermission" />
++    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+ 
+     <!-- ============ SYSTEM INTEGRATION ============ -->
+-    <uses-permission android:name="android.permission.STATUS_BAR"
+-        tools:ignore="ProtectedPermissions" />
+-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS"
+-        tools:ignore="ProtectedPermissions" />
++    <uses-permission android:name="android.permission.STATUS_BAR" />
++    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
+ 
+     <application
+         android:allowBackup="false"
+diff --git a/app/src/main/java/com/home/launcher/HiddenApi.kt b/app/src/main/java/com/home/launcher/HiddenApi.kt
+deleted file mode 100644
+index 242b55a..0000000
+--- a/app/src/main/java/com/home/launcher/HiddenApi.kt
++++ /dev/null
+@@ -1,300 +0,0 @@
+-package com.home.launcher
+-
+-import android.app.ActivityManager
+-import android.content.Context
+-import android.content.pm.PackageManager
+-import android.graphics.Bitmap
+-import android.graphics.Bitmap.Config
+-import android.graphics.Canvas
+-import android.graphics.Matrix
+-import android.hardware.HardwareBuffer
+-import android.os.Build
+-import android.util.Log
+-import java.lang.reflect.InvocationHandler
+-import java.lang.reflect.Method
+-import java.lang.reflect.Proxy
+-
+-object HiddenApi {
+-    private const val TAG = "HiddenApi"
+-
+-    private var activityTaskManager: Any? = null
+-    private var iAtm: Any? = null
+-
+-    init {
+-        try {
+-            val atmClass = Class.forName("android.app.ActivityTaskManager")
+-            val getService = atmClass.getDeclaredMethod("getService")
+-            getService.isAccessible = true
+-            iAtm = getService.invoke(null)
+-            Log.i(TAG, "IActivityTaskManager obtained: $iAtm")
+-        } catch (e: Exception) {
+-            Log.w(TAG, "Failed to get IActivityTaskManager via getService()", e)
+-            try {
+-                val serviceManager = Class.forName("android.os.ServiceManager")
+-                val getService = serviceManager.getDeclaredMethod("getService", String::class.java)
+-                val binder = getService.invoke(null, "activity_task")
+-                val asInterface = Class.forName("android.app.IActivityTaskManager\$Stub")
+-                    .getDeclaredMethod("asInterface", android.os.IBinder::class.java)
+-                iAtm = asInterface.invoke(null, binder)
+-                Log.i(TAG, "IActivityTaskManager obtained via ServiceManager: $iAtm")
+-            } catch (e2: Exception) {
+-                Log.e(TAG, "Failed to get IActivityTaskManager", e2)
+-            }
+-        }
+-        try {
+-            val atmClass = Class.forName("android.app.ActivityTaskManager")
+-            activityTaskManager = atmClass
+-                .getDeclaredMethod("getInstance")
+-                .invoke(null)
+-            Log.i(TAG, "ActivityTaskManager instance: $activityTaskManager")
+-        } catch (e: Exception) {
+-            Log.e(TAG, "Failed to get ActivityTaskManager instance", e)
+-        }
+-    }
+-
+-    data class SimpleTaskInfo(
+-        val taskId: Int,
+-        val packageName: String,
+-        val label: String?,
+-        val userId: Int
+-    )
+-
+-    fun getRecentTasks(maxNum: Int = 20): List<SimpleTaskInfo> {
+-        val result = mutableListOf<SimpleTaskInfo>()
+-        try {
+-            if (iAtm != null) {
+-                val raw = try {
+-                    iAtm!!.javaClass
+-                        .getDeclaredMethod("getRecentTasks", Int::class.java, Int::class.java, Int::class.java)
+-                        .invoke(iAtm, maxNum, 1, 0)
+-                } catch (e: Exception) {
+-                    Log.e(TAG, "getRecentTasks 3-param failed", e)
+-                    null
+-                }
+-
+-                val taskList = when (raw) {
+-                    is List<*> -> raw
+-                    else -> {
+-                        try {
+-                            raw?.javaClass?.getDeclaredMethod("getList")?.invoke(raw) as? List<*>
+-                        } catch (e: Exception) {
+-                            Log.e(TAG, "Failed to unwrap list", e)
+-                            null
+-                        }
+-                    }
+-                } ?: return result
+-
+-                val taskInfoClass = Class.forName("android.app.TaskInfo")
+-                val fTaskId = taskInfoClass.getField("taskId")
+-                val fBaseIntent = taskInfoClass.getField("baseIntent")
+-                val fUserId = taskInfoClass.getField("userId")
+-                val fTaskDescription = try {
+-                    taskInfoClass.getField("taskDescription")
+-                } catch (e: NoSuchFieldException) {
+-                    null
+-                }
+-
+-                Log.i(TAG, "getRecentTasks: ${taskList.size} raw tasks, parsing...")
+-                var parsed = 0
+-                for (task in taskList) {
+-                    try {
+-                        val taskId = fTaskId.getInt(task)
+-                        val baseIntent = fBaseIntent.get(task) as? android.content.Intent
+-                        val userId = fUserId.getInt(task)
+-                        val taskDescription = fTaskDescription?.get(task)
+-
+-                        val packageName = baseIntent?.component?.packageName ?: "unknown"
+-                        val label: String? = if (taskDescription != null) {
+-                            try {
+-                                taskDescription.javaClass.getDeclaredMethod("getLabel").invoke(taskDescription) as? String
+-                            } catch (e: Exception) {
+-                                baseIntent?.component?.shortClassName
+-                            }
+-                        } else {
+-                            baseIntent?.component?.shortClassName
+-                        }
+-
+-                        result.add(SimpleTaskInfo(taskId, packageName, label, userId))
+-                        parsed++
+-                    } catch (e: Exception) {
+-                        Log.w(TAG, "Error parsing task info for task at index ${taskList.indexOf(task)}", e)
+-                    }
+-                }
+-                Log.i(TAG, "getRecentTasks: parsed $parsed/${taskList.size} tasks")
+-            }
+-        } catch (e: Exception) {
+-            Log.e(TAG, "getRecentTasks failed", e)
+-        }
+-        return result
+-    }
+-
+-    fun registerTaskStackListener(listener: Any): Boolean {
+-        try {
+-            if (iAtm != null) {
+-                val registerMethod = iAtm!!.javaClass
+-                    .getDeclaredMethod("registerTaskStackListener", Class.forName("android.app.ITaskStackListener"))
+-                registerMethod.invoke(iAtm, listener)
+-                Log.i(TAG, "TaskStackListener registered via IActivityTaskManager")
+-                return true
+-            }
+-        } catch (e: Exception) {
+-            Log.e(TAG, "registerTaskStackListener failed", e)
+-        }
+-        return false
+-    }
+-
+-    fun unregisterTaskStackListener(listener: Any): Boolean {
+-        try {
+-            if (iAtm != null) {
+-                val unregisterMethod = iAtm!!.javaClass
+-                    .getDeclaredMethod("unregisterTaskStackListener", Class.forName("android.app.ITaskStackListener"))
+-                unregisterMethod.invoke(iAtm, listener)
+-                Log.i(TAG, "TaskStackListener unregistered via IActivityTaskManager")
+-                return true
+-            }
+-        } catch (e: Exception) {
+-            Log.e(TAG, "unregisterTaskStackListener failed", e)
+-        }
+-        return false
+-    }
+-
+-    fun removeTask(taskId: Int): Boolean {
+-        try {
+-            if (iAtm != null) {
+-                iAtm!!.javaClass
+-                    .getDeclaredMethod("removeTask", Int::class.java)
+-                    .invoke(iAtm, taskId)
+-                Log.i(TAG, "Task $taskId removed")
+-                return true
+-            }
+-        } catch (e: Exception) {
+-            Log.e(TAG, "removeTask failed", e)
+-        }
+-        return false
+-    }
+-
+-    fun removeAllRecentTasks(): Boolean {
+-        try {
+-            if (iAtm != null) {
+-                iAtm!!.javaClass
+-                    .getDeclaredMethod("removeAllVisibleRecentTasks")
+-                    .invoke(iAtm)
+-                Log.i(TAG, "All visible recent tasks removed")
+-                return true
+-            }
+-        } catch (e: Exception) {
+-            Log.e(TAG, "removeAllVisibleRecentTasks failed", e)
+-        }
+-        return false
+-    }
+-
+-    fun startActivityFromRecents(taskId: Int): Boolean {
+-        try {
+-            if (iAtm != null) {
+-                iAtm!!.javaClass
+-                    .getDeclaredMethod("startActivityFromRecents", Int::class.java, String::class.java)
+-                    .invoke(iAtm, taskId, null)
+-                Log.i(TAG, "Started activity from recents: $taskId")
+-                return true
+-            }
+-        } catch (e: Exception) {
+-            Log.e(TAG, "startActivityFromRecents failed", e)
+-        }
+-        return false
+-    }
+-
+-    fun getTaskSnapshot(taskId: Int, isLowResolution: Boolean = false): Bitmap? {
+-        try {
+-            if (iAtm != null) {
+-                val rawSnapshot = iAtm!!.javaClass
+-                    .getDeclaredMethod("getTaskSnapshot", Int::class.java, Boolean::class.java)
+-                    .invoke(iAtm, taskId, isLowResolution)
+-                if (rawSnapshot == null) {
+-                    Log.i(TAG, "getTaskSnapshot($taskId): raw snapshot is null")
+-                    return null
+-                }
+-                val snapshotClass = rawSnapshot.javaClass
+-
+-                val getHardwareBuffer = try {
+-                    snapshotClass.getDeclaredMethod("getHardwareBuffer")
+-                } catch (e: NoSuchMethodException) {
+-                    snapshotClass.getDeclaredMethod("getSnapshot")
+-                }
+-                val getOrientation = try {
+-                    snapshotClass.getDeclaredMethod("getOrientation")
+-                } catch (e: NoSuchMethodException) { null }
+-
+-                val hb = getHardwareBuffer.invoke(rawSnapshot) as? HardwareBuffer
+-                if (hb == null) return null
+-
+-                val orientation = getOrientation?.invoke(rawSnapshot) as? Int ?: 0
+-                val bitmap = Bitmap.wrapHardwareBuffer(hb, null)
+-                hb.close()
+-                if (bitmap == null) return null
+-
+-                if (orientation != 0) {
+-                    val matrix = Matrix()
+-                    matrix.postRotate(orientation.toFloat())
+-                    return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+-                }
+-                return bitmap
+-            }
+-        } catch (e: Exception) {
+-            Log.w(TAG, "getTaskSnapshot failed for task $taskId", e)
+-        }
+-        return null
+-    }
+-
+-    fun forceStopPackage(context: Context, packageName: String): Boolean {
+-        try {
+-            val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+-            val method = Class.forName("android.app.ActivityManager").getDeclaredMethod("forceStopPackage", String::class.java)
+-            method.invoke(am, packageName)
+-            Log.i(TAG, "Force stopped: $packageName")
+-            return true
+-        } catch (e: Exception) {
+-            Log.e(TAG, "forceStopPackage failed for $packageName", e)
+-        }
+-        return false
+-    }
+-
+-    fun buildTaskStackListener(onTaskStackChanged: () -> Unit): Any? {
+-        return try {
+-            val iTaskStackListener = Class.forName("android.app.ITaskStackListener")
+-            val proxy = Proxy.newProxyInstance(
+-                iTaskStackListener.classLoader,
+-                arrayOf(iTaskStackListener)
+-            ) { _, method, _ ->
+-                when (method.name) {
+-                    "onTaskStackChanged" -> onTaskStackChanged()
+-                    "onTaskAdded", "onTaskRemoved", "onTaskMovedToFront" -> onTaskStackChanged()
+-                    else -> null
+-                }
+-            }
+-            proxy
+-        } catch (e: Exception) {
+-            Log.e(TAG, "Failed to build TaskStackListener", e)
+-            null
+-        }
+-    }
+-
+-    fun getAppIconForTask(context: Context, packageName: String): android.graphics.drawable.Drawable? {
+-        return try {
+-            val pm = context.packageManager
+-            val info = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
+-            info.loadIcon(pm)
+-        } catch (e: Exception) {
+-            null
+-        }
+-    }
+-
+-    fun getAppLabelForTask(context: Context, packageName: String): String? {
+-        return try {
+-            val pm = context.packageManager
+-            val info = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
+-            info.loadLabel(pm).toString()
+-        } catch (e: Exception) {
+-            packageName
+-        }
+-    }
+-}
+diff --git a/app/src/main/java/com/home/launcher/MainActivity.kt b/app/src/main/java/com/home/launcher/MainActivity.kt
+index 4eca21e..8cbfcc2 100644
+--- a/app/src/main/java/com/home/launcher/MainActivity.kt
++++ b/app/src/main/java/com/home/launcher/MainActivity.kt
+@@ -35,6 +35,8 @@ import kotlin.math.roundToInt
+ import com.home.launcher.data.AppIndex
+ import com.home.launcher.service.NotificationEntry
+ import com.home.launcher.service.NotificationListener
++import com.home.launcher.task.RecentTasksRepository
++import com.home.launcher.task.TaskListenerRegistration
+ import com.home.launcher.ui.AppListOverlay
+ import com.home.launcher.ui.SystemStatsBar
+ import java.text.SimpleDateFormat
+@@ -61,9 +63,9 @@ class MainActivity : AppCompatActivity() {
+ 
+     // Data
+     private val appIndex by lazy { AppIndex(this) }
++    private val recentTasksRepository by lazy { RecentTasksRepository(this) }
+     private lateinit var statsBar: SystemStatsBar
+-    private val taskListenerTag = "launcher_task_listener"
+-    private var taskStackListener: Any? = null
++    private var taskListenerRegistration: TaskListenerRegistration? = null
+     private val handler = Handler(Looper.getMainLooper())
+     private val refreshRunnable = object : Runnable {
+         override fun run() {
+@@ -202,7 +204,8 @@ class MainActivity : AppCompatActivity() {
+         recentAppsAdapter = RecentAppsAdapter(
+             context = this,
+             onClose = { tile -> closeTask(tile) },
+-            onResume = { tile -> resumeTask(tile) }
++            onResume = { tile -> resumeTask(tile) },
++            thumbnailLoader = { taskId -> recentTasksRepository.getTaskSnapshot(taskId, false) }
+         )
+ 
+         val glm = GridLayoutManager(this, 3, RecyclerView.VERTICAL, false)
+@@ -224,7 +227,7 @@ class MainActivity : AppCompatActivity() {
+     }
+ 
+     private fun refreshRecentTasks() {
+-        val tasks = HiddenApi.getRecentTasks(30).filter { it.packageName != packageName }
++        val tasks = recentTasksRepository.getRecentTasks(30).filter { it.packageName != packageName }
+         val tiles = tasks.map { task ->
+             RecentTaskTile(
+                 taskId = task.taskId,
+@@ -239,12 +242,12 @@ class MainActivity : AppCompatActivity() {
+     }
+ 
+     private fun closeTask(tile: RecentTaskTile) {
+-        HiddenApi.removeTask(tile.taskId)
++        recentTasksRepository.removeTask(tile.taskId)
+         recentAppsAdapter.removeTile(tile.taskId)
+     }
+ 
+     private fun resumeTask(tile: RecentTaskTile) {
+-        val started = HiddenApi.startActivityFromRecents(tile.taskId)
++        val started = recentTasksRepository.startTaskFromRecents(tile.taskId)
+         if (!started) {
+             try {
+                 val intent = packageManager.getLaunchIntentForPackage(tile.packageName)
+@@ -269,12 +272,12 @@ class MainActivity : AppCompatActivity() {
+                 .setPositiveButton("Kill All") { _, _ ->
+                     var killedCount = 0
+                     for (tile in tiles) {
+-                        if (HiddenApi.forceStopPackage(this, tile.packageName)) {
++                        if (recentTasksRepository.forceStopPackage(tile.packageName)) {
+                             killedCount++
+                         }
+-                        HiddenApi.removeTask(tile.taskId)
++                        recentTasksRepository.removeTask(tile.taskId)
+                     }
+-                    HiddenApi.removeAllRecentTasks()
++                    recentTasksRepository.removeAllVisibleRecentTasks()
+                     recentAppsAdapter.clearAll()
+                     Toast.makeText(this, "Killed $killedCount app(s)", Toast.LENGTH_SHORT).show()
+                 }
+@@ -345,16 +348,16 @@ class MainActivity : AppCompatActivity() {
+     // ============ TASK LISTENER ============
+ 
+     private fun registerTaskListener() {
+-        if (taskStackListener == null) {
+-            taskStackListener = HiddenApi.buildTaskStackListener {
++        if (taskListenerRegistration == null) {
++            taskListenerRegistration = recentTasksRepository.registerTaskChangeListener {
+                 runOnUiThread { refreshRecentTasks() }
+             }
+         }
+-        taskStackListener?.let { HiddenApi.registerTaskStackListener(it) }
+     }
+ 
+     private fun unregisterTaskListener() {
+-        taskStackListener?.let { HiddenApi.unregisterTaskStackListener(it) }
++        taskListenerRegistration?.unregister()
++        taskListenerRegistration = null
+     }
+ 
+     // ============ NOTIFICATIONS ============
+diff --git a/app/src/main/java/com/home/launcher/adapter/RecentAppsAdapter.kt b/app/src/main/java/com/home/launcher/adapter/RecentAppsAdapter.kt
+index 672eff7..47e4810 100644
+--- a/app/src/main/java/com/home/launcher/adapter/RecentAppsAdapter.kt
++++ b/app/src/main/java/com/home/launcher/adapter/RecentAppsAdapter.kt
+@@ -2,16 +2,13 @@ package com.home.launcher.adapter
+ 
+ import android.content.Context
+ import android.graphics.Bitmap
+-import android.util.DisplayMetrics
+ import android.view.LayoutInflater
+ import android.view.View
+ import android.view.ViewGroup
+ import android.widget.ImageButton
+ import android.widget.ImageView
+ import android.widget.TextView
+-import androidx.recyclerview.widget.GridLayoutManager
+ import androidx.recyclerview.widget.RecyclerView
+-import com.home.launcher.HiddenApi
+ import com.home.launcher.R
+ 
+ data class RecentTaskTile(
+@@ -24,7 +21,8 @@ data class RecentTaskTile(
+ class RecentAppsAdapter(
+     private val context: Context,
+     private val onClose: (RecentTaskTile) -> Unit,
+-    private val onResume: (RecentTaskTile) -> Unit
++    private val onResume: (RecentTaskTile) -> Unit,
++    private val thumbnailLoader: (Int) -> Bitmap?
+ ) : RecyclerView.Adapter<RecentAppsAdapter.TileViewHolder>() {
+ 
+     private val tiles = mutableListOf<RecentTaskTile>()
+@@ -86,7 +84,7 @@ class RecentAppsAdapter(
+             val tile = tiles[i]
+             val cached = thumbnailCache[tile.taskId]
+             if (cached == null && tile.taskId > 0) {
+-                val bmp = HiddenApi.getTaskSnapshot(tile.taskId, false)
++                val bmp = thumbnailLoader(tile.taskId)
+                 thumbnailCache[tile.taskId] = bmp
+                 notifyItemChanged(i)
+             }
+@@ -117,10 +115,10 @@ class RecentAppsAdapter(
+         private val closeButton: ImageButton = itemView.findViewById(R.id.tileCloseButton)
+ 
+         fun bind(tile: RecentTaskTile) {
+-            val label = tile.appLabel ?: HiddenApi.getAppLabelForTask(context, tile.packageName) ?: tile.packageName
++            val label = tile.appLabel ?: getAppLabel(tile.packageName)
+             appLabel.text = label
+ 
+-            val icon = HiddenApi.getAppIconForTask(context, tile.packageName)
++            val icon = getAppIcon(tile.packageName)
+             if (icon != null) {
+                 appIcon.setImageDrawable(icon)
+             }
+@@ -141,5 +139,18 @@ class RecentAppsAdapter(
+             val taskIdView: TextView = itemView.findViewById(R.id.tileTaskId)
+             taskIdView.text = "#${tile.taskId}"
+         }
++
++        private fun getAppIcon(packageName: String) = try {
++            context.packageManager.getApplicationIcon(packageName)
++        } catch (e: Exception) {
++            null
++        }
++
++        private fun getAppLabel(packageName: String): String = try {
++            val info = context.packageManager.getApplicationInfo(packageName, 0)
++            context.packageManager.getApplicationLabel(info).toString()
++        } catch (e: Exception) {
++            packageName
++        }
+     }
+ }
+diff --git a/app/src/main/java/com/home/launcher/system/hiddenapi/HiddenApiBridge.kt b/app/src/main/java/com/home/launcher/system/hiddenapi/HiddenApiBridge.kt
+new file mode 100644
+index 0000000..7f18184
+--- /dev/null
++++ b/app/src/main/java/com/home/launcher/system/hiddenapi/HiddenApiBridge.kt
+@@ -0,0 +1,120 @@
++package com.home.launcher.system.hiddenapi
++
++import android.os.IBinder
++import android.util.Log
++import java.lang.reflect.Method
++
++internal object HiddenApiBridge {
++    private const val TAG = "HiddenApiBridge"
++
++    val activityTaskManager: Any? by lazy { resolveActivityTaskManager() }
++
++    fun invoke(target: Any?, methodName: String, vararg args: Any?): Any? {
++        return call(target, methodName, *args).value
++    }
++
++    fun call(target: Any?, methodName: String, vararg args: Any?): HiddenApiResult {
++        if (target == null) {
++            Log.w(TAG, "invoke skipped: target is null for $methodName")
++            return HiddenApiResult(invoked = false, value = null)
++        }
++        return runCatching {
++            val method = findCompatibleMethod(target, methodName, *args)
++            if (method == null) {
++                Log.w(TAG, "method not found: ${target.javaClass.name}.$methodName(${args.signature()})")
++                HiddenApiResult(invoked = false, value = null)
++            } else {
++                method.isAccessible = true
++                HiddenApiResult(invoked = true, value = method.invoke(target, *args))
++            }
++        }.onFailure {
++            Log.e(TAG, "invoke failed: ${target.javaClass.name}.$methodName(${args.signature()})", it)
++        }.getOrDefault(HiddenApiResult(invoked = false, value = null))
++    }
++
++    fun findCompatibleMethod(target: Any?, methodName: String, vararg args: Any?): Method? {
++        if (target == null) return null
++        return findCompatibleMethod(target.javaClass, methodName, args)
++    }
++
++    fun getMethod(owner: Class<*>, methodName: String, vararg argTypes: Class<*>): Method? {
++        return runCatching {
++            owner.getDeclaredMethod(methodName, *argTypes).also { it.isAccessible = true }
++        }.onFailure {
++            Log.w(TAG, "method lookup failed: ${owner.name}.$methodName", it)
++        }.getOrNull()
++    }
++
++    fun classForName(name: String): Class<*>? {
++        return runCatching { Class.forName(name) }
++            .onFailure { Log.w(TAG, "class lookup failed: $name", it) }
++            .getOrNull()
++    }
++
++    private fun resolveActivityTaskManager(): Any? {
++        val viaActivityTaskManager = runCatching {
++            val atmClass = Class.forName("android.app.ActivityTaskManager")
++            val getService = atmClass.getDeclaredMethod("getService")
++            getService.isAccessible = true
++            getService.invoke(null)
++        }.onSuccess {
++            Log.i(TAG, "IActivityTaskManager resolved via ActivityTaskManager.getService")
++        }.onFailure {
++            Log.w(TAG, "ActivityTaskManager.getService failed; trying ServiceManager", it)
++        }.getOrNull()
++
++        if (viaActivityTaskManager != null) return viaActivityTaskManager
++
++        return runCatching {
++            val serviceManager = Class.forName("android.os.ServiceManager")
++            val getService = serviceManager.getDeclaredMethod("getService", String::class.java)
++            getService.isAccessible = true
++            val binder = getService.invoke(null, "activity_task") as? IBinder
++            val asInterface = Class.forName("android.app.IActivityTaskManager\$Stub")
++                .getDeclaredMethod("asInterface", IBinder::class.java)
++            asInterface.isAccessible = true
++            asInterface.invoke(null, binder)
++        }.onSuccess {
++            Log.i(TAG, "IActivityTaskManager resolved via ServiceManager")
++        }.onFailure {
++            Log.e(TAG, "failed to resolve IActivityTaskManager", it)
++        }.getOrNull()
++    }
++
++    private fun findCompatibleMethod(owner: Class<*>, name: String, args: Array<out Any?>): Method? {
++        return owner.methods.firstOrNull { method ->
++            method.name == name && method.parameterTypes.accept(args)
++        } ?: owner.declaredMethods.firstOrNull { method ->
++            method.name == name && method.parameterTypes.accept(args)
++        }
++    }
++
++    private fun Array<Class<*>>.accept(args: Array<out Any?>): Boolean {
++        if (size != args.size) return false
++        return indices.all { index ->
++            val arg = args[index]
++            arg == null || this[index].wrapPrimitive().isAssignableFrom(arg.javaClass)
++        }
++    }
++
++    private fun Class<*>.wrapPrimitive(): Class<*> = when (this) {
++        java.lang.Boolean.TYPE -> java.lang.Boolean::class.java
++        java.lang.Byte.TYPE -> java.lang.Byte::class.java
++        java.lang.Character.TYPE -> java.lang.Character::class.java
++        java.lang.Double.TYPE -> java.lang.Double::class.java
++        java.lang.Float.TYPE -> java.lang.Float::class.java
++        java.lang.Integer.TYPE -> java.lang.Integer::class.java
++        java.lang.Long.TYPE -> java.lang.Long::class.java
++        java.lang.Short.TYPE -> java.lang.Short::class.java
++        java.lang.Void.TYPE -> java.lang.Void::class.java
++        else -> this
++    }
++
++    private fun Array<out Any?>.signature(): String =
++        joinToString(",") { it?.javaClass?.simpleName ?: "null" }
++
++    data class HiddenApiResult(
++        val invoked: Boolean,
++        val value: Any?
++    )
++}
+diff --git a/app/src/main/java/com/home/launcher/system/hiddenapi/ReflectionRecentTasksBackend.kt b/app/src/main/java/com/home/launcher/system/hiddenapi/ReflectionRecentTasksBackend.kt
+new file mode 100644
+index 0000000..bea45b0
+--- /dev/null
++++ b/app/src/main/java/com/home/launcher/system/hiddenapi/ReflectionRecentTasksBackend.kt
+@@ -0,0 +1,195 @@
++package com.home.launcher.system.hiddenapi
++
++import android.app.ActivityManager
++import android.content.Context
++import android.graphics.Bitmap
++import android.graphics.Matrix
++import android.hardware.HardwareBuffer
++import android.os.Bundle
++import android.util.Log
++import com.home.launcher.task.RecentTask
++import com.home.launcher.task.RecentTasksBackend
++import com.home.launcher.task.TaskListenerRegistration
++import java.lang.reflect.Proxy
++
++class ReflectionRecentTasksBackend(private val context: Context) : RecentTasksBackend {
++    private val iAtm: Any?
++        get() = HiddenApiBridge.activityTaskManager
++
++    override fun getRecentTasks(maxNum: Int): List<RecentTask> {
++        val service = iAtm ?: return emptyList()
++        val raw = HiddenApiBridge.invoke(service, "getRecentTasks", maxNum, RECENT_WITH_EXCLUDED, USER_CURRENT)
++        val taskList = unwrapParceledList(raw) ?: return emptyList()
++        return parseRecentTasks(taskList)
++    }
++
++    override fun removeTask(taskId: Int): Boolean {
++        val removed = HiddenApiBridge.invoke(iAtm, "removeTask", taskId) as? Boolean
++        val success = removed == true
++        Log.i(TAG, "removeTask($taskId) success=$success")
++        return success
++    }
++
++    override fun removeAllVisibleRecentTasks(): Boolean {
++        val service = iAtm ?: return false
++        if (HiddenApiBridge.findCompatibleMethod(service, "removeAllVisibleRecentTasks") == null) {
++            Log.w(TAG, "removeAllVisibleRecentTasks method unavailable")
++            return false
++        }
++        return runCatching {
++            val result = HiddenApiBridge.call(service, "removeAllVisibleRecentTasks")
++            Log.i(TAG, "removeAllVisibleRecentTasks invoked=${result.invoked}")
++            result.invoked
++        }.onFailure {
++            Log.e(TAG, "removeAllVisibleRecentTasks failed", it)
++        }.getOrDefault(false)
++    }
++
++    override fun startTaskFromRecents(taskId: Int): Boolean {
++        val service = iAtm ?: return false
++        if (HiddenApiBridge.findCompatibleMethod(service, "startActivityFromRecents", taskId, Bundle()) == null) {
++            Log.w(TAG, "startActivityFromRecents(int, Bundle) method unavailable")
++            return false
++        }
++        val options = Bundle()
++        val call = runCatching {
++            HiddenApiBridge.call(service, "startActivityFromRecents", taskId, options)
++        }.onFailure {
++            Log.e(TAG, "startActivityFromRecents($taskId, Bundle) failed", it)
++        }.getOrDefault(HiddenApiBridge.HiddenApiResult(invoked = false, value = null))
++
++        val success = call.invoked
++        Log.i(TAG, "startActivityFromRecents($taskId) invoked=$success result=${call.value}")
++        return success
++    }
++
++    override fun getTaskSnapshot(taskId: Int, isLowResolution: Boolean): Bitmap? {
++        val rawSnapshot = HiddenApiBridge.invoke(iAtm, "getTaskSnapshot", taskId, isLowResolution)
++        if (rawSnapshot == null) {
++            Log.i(TAG, "getTaskSnapshot($taskId) returned null")
++            return null
++        }
++
++        return runCatching {
++            val snapshotClass = rawSnapshot.javaClass
++            val hardwareBuffer = runCatching {
++                snapshotClass.getDeclaredMethod("getHardwareBuffer").invoke(rawSnapshot) as? HardwareBuffer
++            }.getOrElse {
++                Log.w(TAG, "getHardwareBuffer unavailable for task $taskId; trying getSnapshot", it)
++                null
++            }
++
++            val bitmap = hardwareBuffer?.let { buffer ->
++                Bitmap.wrapHardwareBuffer(buffer, null).also { buffer.close() }
++            }
++
++            if (bitmap == null) {
++                Log.w(TAG, "snapshot bitmap unavailable for task $taskId")
++                return null
++            }
++
++            val orientation = runCatching {
++                snapshotClass.getDeclaredMethod("getOrientation").invoke(rawSnapshot) as? Int
++            }.getOrDefault(0) ?: 0
++
++            if (orientation == 0) {
++                bitmap
++            } else {
++                val matrix = Matrix()
++                matrix.postRotate(orientation.toFloat())
++                Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
++            }
++        }.onFailure {
++            Log.w(TAG, "getTaskSnapshot failed for task $taskId", it)
++        }.getOrNull()
++    }
++
++    override fun forceStopPackage(packageName: String): Boolean {
++        return runCatching {
++            val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
++            val method = Class.forName("android.app.ActivityManager")
++                .getDeclaredMethod("forceStopPackage", String::class.java)
++            method.isAccessible = true
++            method.invoke(am, packageName)
++            Log.i(TAG, "forceStopPackage($packageName) invoked")
++            true
++        }.onFailure {
++            Log.e(TAG, "forceStopPackage($packageName) failed", it)
++        }.getOrDefault(false)
++    }
++
++    override fun registerTaskChangeListener(onChanged: () -> Unit): TaskListenerRegistration? {
++        val listenerClass = HiddenApiBridge.classForName("android.app.ITaskStackListener") ?: return null
++        val listener = runCatching {
++            Proxy.newProxyInstance(listenerClass.classLoader, arrayOf(listenerClass)) { _, method, _ ->
++                when (method.name) {
++                    "onTaskStackChanged",
++                    "onTaskAdded",
++                    "onTaskRemoved",
++                    "onTaskMovedToFront" -> onChanged()
++                }
++                null
++            }
++        }.onFailure {
++            Log.e(TAG, "failed to create ITaskStackListener proxy", it)
++        }.getOrNull() ?: return null
++
++        val registered = runCatching {
++            HiddenApiBridge.call(iAtm, "registerTaskStackListener", listener).invoked
++        }.onFailure {
++            Log.e(TAG, "registerTaskStackListener failed", it)
++        }.getOrDefault(false)
++
++        if (!registered) return null
++        Log.i(TAG, "TaskStackListener registered")
++        return TaskListenerRegistration {
++            runCatching {
++                HiddenApiBridge.invoke(iAtm, "unregisterTaskStackListener", listener)
++                Log.i(TAG, "TaskStackListener unregistered")
++            }.onFailure {
++                Log.e(TAG, "unregisterTaskStackListener failed", it)
++            }
++        }
++    }
++
++    private fun unwrapParceledList(raw: Any?): List<*>? {
++        return when (raw) {
++            is List<*> -> raw
++            null -> null
++            else -> HiddenApiBridge.invoke(raw, "getList") as? List<*>
++        }
++    }
++
++    private fun parseRecentTasks(taskList: List<*>): List<RecentTask> {
++        val taskInfoClass = HiddenApiBridge.classForName("android.app.TaskInfo") ?: return emptyList()
++        val fTaskId = runCatching { taskInfoClass.getField("taskId") }.getOrNull() ?: return emptyList()
++        val fBaseIntent = runCatching { taskInfoClass.getField("baseIntent") }.getOrNull() ?: return emptyList()
++        val fUserId = runCatching { taskInfoClass.getField("userId") }.getOrNull()
++        val fTaskDescription = runCatching { taskInfoClass.getField("taskDescription") }.getOrNull()
++
++        val tasks = taskList.mapNotNull { task ->
++            runCatching {
++                val taskId = fTaskId.getInt(task)
++                val baseIntent = fBaseIntent.get(task) as? android.content.Intent
++                val userId = fUserId?.getInt(task) ?: USER_CURRENT
++                val taskDescription = fTaskDescription?.get(task)
++                val packageName = baseIntent?.component?.packageName ?: return@runCatching null
++                val label = taskDescription?.let { description ->
++                    HiddenApiBridge.invoke(description, "getLabel") as? String
++                } ?: baseIntent.component?.shortClassName
++                RecentTask(taskId, packageName, label, userId)
++            }.onFailure {
++                Log.w(TAG, "failed to parse recent task entry", it)
++            }.getOrNull()
++        }
++
++        Log.i(TAG, "getRecentTasks parsed ${tasks.size}/${taskList.size} tasks")
++        return tasks
++    }
++
++    private companion object {
++        const val TAG = "ReflectionTasksBackend"
++        const val RECENT_WITH_EXCLUDED = 1
++        const val USER_CURRENT = 0
++    }
++}
+diff --git a/app/src/main/java/com/home/launcher/task/RecentTask.kt b/app/src/main/java/com/home/launcher/task/RecentTask.kt
+new file mode 100644
+index 0000000..43f27bc
+--- /dev/null
++++ b/app/src/main/java/com/home/launcher/task/RecentTask.kt
+@@ -0,0 +1,8 @@
++package com.home.launcher.task
++
++data class RecentTask(
++    val taskId: Int,
++    val packageName: String,
++    val label: String?,
++    val userId: Int
++)
+diff --git a/app/src/main/java/com/home/launcher/task/RecentTasksBackend.kt b/app/src/main/java/com/home/launcher/task/RecentTasksBackend.kt
+new file mode 100644
+index 0000000..07426c0
+--- /dev/null
++++ b/app/src/main/java/com/home/launcher/task/RecentTasksBackend.kt
+@@ -0,0 +1,13 @@
++package com.home.launcher.task
++
++import android.graphics.Bitmap
++
++interface RecentTasksBackend {
++    fun getRecentTasks(maxNum: Int): List<RecentTask>
++    fun removeTask(taskId: Int): Boolean
++    fun removeAllVisibleRecentTasks(): Boolean
++    fun startTaskFromRecents(taskId: Int): Boolean
++    fun getTaskSnapshot(taskId: Int, isLowResolution: Boolean = false): Bitmap?
++    fun forceStopPackage(packageName: String): Boolean
++    fun registerTaskChangeListener(onChanged: () -> Unit): TaskListenerRegistration?
++}
+diff --git a/app/src/main/java/com/home/launcher/task/RecentTasksRepository.kt b/app/src/main/java/com/home/launcher/task/RecentTasksRepository.kt
+new file mode 100644
+index 0000000..b7e4929
+--- /dev/null
++++ b/app/src/main/java/com/home/launcher/task/RecentTasksRepository.kt
+@@ -0,0 +1,26 @@
++package com.home.launcher.task
++
++import android.content.Context
++import android.graphics.Bitmap
++import com.home.launcher.system.hiddenapi.ReflectionRecentTasksBackend
++
++class RecentTasksRepository(
++    context: Context,
++    private val backend: RecentTasksBackend = ReflectionRecentTasksBackend(context.applicationContext)
++) {
++    fun getRecentTasks(maxNum: Int): List<RecentTask> = backend.getRecentTasks(maxNum)
++
++    fun removeTask(taskId: Int): Boolean = backend.removeTask(taskId)
++
++    fun removeAllVisibleRecentTasks(): Boolean = backend.removeAllVisibleRecentTasks()
++
++    fun startTaskFromRecents(taskId: Int): Boolean = backend.startTaskFromRecents(taskId)
++
++    fun getTaskSnapshot(taskId: Int, isLowResolution: Boolean = false): Bitmap? =
++        backend.getTaskSnapshot(taskId, isLowResolution)
++
++    fun forceStopPackage(packageName: String): Boolean = backend.forceStopPackage(packageName)
++
++    fun registerTaskChangeListener(onChanged: () -> Unit): TaskListenerRegistration? =
++        backend.registerTaskChangeListener(onChanged)
++}
+diff --git a/app/src/main/java/com/home/launcher/task/TaskListenerRegistration.kt b/app/src/main/java/com/home/launcher/task/TaskListenerRegistration.kt
+new file mode 100644
+index 0000000..c433cff
+--- /dev/null
++++ b/app/src/main/java/com/home/launcher/task/TaskListenerRegistration.kt
+@@ -0,0 +1,5 @@
++package com.home.launcher.task
++
++fun interface TaskListenerRegistration {
++    fun unregister()
++}
+diff --git a/app/src/main/java/com/home/launcher/task/TaskOrganizerRecentTasksBackend.kt b/app/src/main/java/com/home/launcher/task/TaskOrganizerRecentTasksBackend.kt
+new file mode 100644
+index 0000000..41771b8
+--- /dev/null
++++ b/app/src/main/java/com/home/launcher/task/TaskOrganizerRecentTasksBackend.kt
+@@ -0,0 +1,33 @@
++package com.home.launcher.task
++
++import android.graphics.Bitmap
++import android.util.Log
++
++/**
++ * Placeholder for the Android 14+ TaskOrganizer/WM Shell backend.
++ *
++ * This class intentionally does not register a TaskOrganizer yet. It defines the replacement
++ * boundary for the reflection backend so both implementations can coexist during migration.
++ */
++class TaskOrganizerRecentTasksBackend : RecentTasksBackend {
++    override fun getRecentTasks(maxNum: Int): List<RecentTask> {
++        Log.w(TAG, "TaskOrganizer backend is not implemented yet")
++        return emptyList()
++    }
++
++    override fun removeTask(taskId: Int): Boolean = false
++
++    override fun removeAllVisibleRecentTasks(): Boolean = false
++
++    override fun startTaskFromRecents(taskId: Int): Boolean = false
++
++    override fun getTaskSnapshot(taskId: Int, isLowResolution: Boolean): Bitmap? = null
++
++    override fun forceStopPackage(packageName: String): Boolean = false
++
++    override fun registerTaskChangeListener(onChanged: () -> Unit): TaskListenerRegistration? = null
++
++    private companion object {
++        const val TAG = "TaskOrganizerBackend"
++    }
++}

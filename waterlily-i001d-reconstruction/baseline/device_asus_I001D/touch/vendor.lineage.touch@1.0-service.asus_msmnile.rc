@@ -1,0 +1,23 @@
+on boot
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/gesture_w
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/gesture_s
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/gesture_e
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/gesture_c
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/gesture_z
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/gesture_v
+    chmod 0660 /sys/devices/platform/goodix_ts.0/gesture/swipeup
+
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/gesture_w
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/gesture_s
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/gesture_e
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/gesture_c
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/gesture_z
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/gesture_v
+    chown system system /sys/devices/platform/goodix_ts.0/gesture/swipeup
+
+service touch-hal-1-0 /vendor/bin/hw/vendor.lineage.touch@1.0-service.asus_msmnile
+    interface vendor.lineage.touch@1.0::IGloveMode default
+    interface vendor.lineage.touch@1.0::ITouchscreenGesture default
+    class hal
+    user system
+    group system

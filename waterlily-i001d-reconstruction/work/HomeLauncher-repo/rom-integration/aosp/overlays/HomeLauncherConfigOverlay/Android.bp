@@ -1,0 +1,6 @@
+runtime_resource_overlay {
+    name: "HomeLauncherConfigOverlay",
+    resource_dirs: ["res"],
+    manifest: "AndroidManifest.xml",
+    certificate: "platform",
+}

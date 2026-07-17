@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Home</string>
+    <string name="no_recent_apps">No recent apps</string>
+    <string name="kill_all">KILL ALL APPS</string>
+    <string name="no_apps">No apps starting with %s</string>
+    <string name="close">Close</string>
+    <string name="favourites">Favourites</string>
+    <string name="numbers">#</string>
+    <string name="star">*</string>
+    <string name="weather_title">Weather</string>
+    <string name="weather_unavailable">Not configured</string>
+    <string name="weather_loading">Updating weather...</string>
+    <string name="weather_update_failed">Unable to update</string>
+</resources>

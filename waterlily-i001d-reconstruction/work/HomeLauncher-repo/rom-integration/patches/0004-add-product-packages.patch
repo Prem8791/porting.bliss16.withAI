@@ -1,0 +1,8 @@
+diff --git a/device/<vendor>/<product>/<product>.mk b/device/<vendor>/<product>/<product>.mk
+--- a/device/<vendor>/<product>/<product>.mk
++++ b/device/<vendor>/<product>/<product>.mk
+@@
++# HomeLauncher privileged platform app.
++PRODUCT_PACKAGES += \
++    HomeLauncher \
++    privapp-permissions-com.home.launcher

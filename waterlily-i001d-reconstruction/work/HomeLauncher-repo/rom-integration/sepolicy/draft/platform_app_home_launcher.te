@@ -1,0 +1,11 @@
+# Deferred draft only. Do not enable before first boot of the ROM-bundled launcher.
+#
+# The /proc/stat proc_stat rule moved to active policy:
+# rom-integration/sepolicy/private/platform_app_home_launcher.te
+#
+# Remaining standalone runtime evidence showed platform_app denials for:
+# - /sys/class/thermal/.../temp labeled sysfs_thermal
+#
+# Re-collect AVCs after HomeLauncher is baked into /system/priv-app before enabling these.
+
+allow platform_app sysfs_thermal:file r_file_perms;

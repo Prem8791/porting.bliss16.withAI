@@ -1,0 +1,2 @@
+get_prop(radio, vendor_asus_prop)
+get_prop(radio, vendor_odm_tel_prop)
