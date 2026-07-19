@@ -1,16 +1,16 @@
 # Graph Report - porting  (2026-07-17)
 
 ## Corpus Check
-- 426 files · ~358,764 words
+- 426 files · ~358,858 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 4200 nodes · 7541 edges · 388 communities (189 shown, 199 thin omitted)
-- Extraction: 95% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 318 edges (avg confidence: 0.8)
+- 4235 nodes · 7540 edges · 408 communities (197 shown, 211 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 299 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `95e09928`
+- Built from commit: `1ee6b23c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -251,12 +251,16 @@
 - .copy
 - State
 - DependencyResolver
+- BootCompletedReceiver.java
 - 10. `getRecentTasks()` Framework Execution Path
 - dng_xmp_sdk::PackageForJPEG
 - SparseBooleanArray
+- AsusParts
 - NoOpCapabilities
 - AuthorizationVerifier.kt
 - ContractEnvelopeTest
+- ProdXExecutionAuthorization
+- CollapsingToolbarBaseActivity
 - LegacyCameraProviderImpl_2_5.cpp
 - dng_string
 - SystemSettingSwitchPreference.java
@@ -264,16 +268,20 @@
 - patch_boot_ramdisk_property.py
 - ProdXCapabilityActivity
 - ExtensionService
+- PickupSensor
 - SystemStatsBar
 - 11. Decision Matrix
 - 9. Summary: Application Privilege Level & Capability Mapping
 - graphify reference: query, path, explain
+- Deprecated
 - ProdXSettingsFailClosedTest
 - PipelineStage
 - QuickStepService
+- PocketSensor
 - AsusPartsTileService
 - extract-files.sh
 - setup-makefiles.sh
+- HandwaveSensor
 - extract_boot_v2.py
 - ProdXDeveloperOptionsFragment
 - QuarantineStore
@@ -388,18 +396,30 @@
 - README.md
 - README.md
 - README.md
+- ProdXUserLifecycle
+- ProdXTamperEvidentEpoch
+- opencode.json
+- .handleMessage
+- IProdXConfirmationCallback
+- Override
+- Stub
+- TargetUser
+- ArrayMap
+- ArraySet
+- IBinder
+- IProdXRegistryObserver
 
 ## God Nodes (most connected - your core abstractions)
 1. `ActivityTaskManagerService` - 319 edges
-2. `Context` - 274 edges
+2. `Context` - 272 edges
 3. `LocalService` - 114 edges
 4. `RecentTasks` - 86 edges
 5. `MainActivity` - 71 edges
 6. `SystemServer` - 56 edges
 7. `ProdXManager` - 35 edges
-8. `BiometricsFingerprint` - 33 edges
-9. `TouchKeyHandler` - 33 edges
-10. `FakeBrokerService` - 32 edges
+8. `ProdXRegistry` - 34 edges
+9. `BiometricsFingerprint` - 33 edges
+10. `TouchKeyHandler` - 33 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `inParm16` --semantically_similar_to--> `Parameter Cluster A (R/G/B Gain Base)`  [INFERRED] [semantically similar]
@@ -419,7 +439,7 @@
 ## Hyperedges (group relationships)
 - **inParm PR1 Camera Calibration Parameter Set** — waterlily_i001d_reconstruction_baseline_vendor_asus_i001d_proprietary_vendor_etc_inparm_pr1_inparm_parameter_set, waterlily_i001d_reconstruction_baseline_vendor_asus_i001d_proprietary_vendor_etc_inparm_pr1_parameter_cluster_a, waterlily_i001d_reconstruction_baseline_vendor_asus_i001d_proprietary_vendor_etc_inparm_pr1_parameter_cluster_b, waterlily_i001d_reconstruction_baseline_vendor_asus_i001d_proprietary_vendor_etc_inparm_pr1_parameter_cluster_c [INFERRED 0.95]
 
-## Communities (388 total, 199 thin omitted)
+## Communities (408 total, 211 thin omitted)
 
 ### Community 0 - "inParm Touch Calibration PR2-1"
 Cohesion: 0.08
@@ -447,7 +467,7 @@ Nodes (25): inParm1, inParm10, inParm11, inParm12, inParm13, inParm14, inParm15,
 
 ### Community 6 - "inParm Calibration PR2-2"
 Cohesion: 0.02
-Nodes (37): ActivityClientController, ActivityStartController, ActivityTaskManagerInternal, AnrController, AppOpsManager, AppWarnings, BackNavigationController, ClientLifecycleManager (+29 more)
+Nodes (43): ActivityClientController, ActivityStartController, ActivityTaskManagerInternal, AnrController, AppOpsManager, AppWarnings, BackgroundActivityStartCallback, BackNavigationController (+35 more)
 
 ### Community 7 - "ProdX Core Services"
 Cohesion: 0.04
@@ -482,8 +502,8 @@ Cohesion: 0.33
 Nodes (6): SELinux proc_stat denial, SystemStatsProvider.getCpuUsage(), Expected first-boot failures, Patch 0008-add-active-home-launcher-proc-stat-sepolicy, CPU failure backoff mechanism, Denial storm suppression
 
 ### Community 15 - "HomeLauncher Integration"
-Cohesion: 0.08
-Nodes (18): ActivityOptions, AssistContent, AssistStructure, BackgroundStartPrivileges, IAssistDataReceiver, IIntentSender, IRecentsAnimationRunner, PendingIntentRecord (+10 more)
+Cohesion: 0.09
+Nodes (16): ActivityOptions, AssistContent, AssistStructure, BackgroundStartPrivileges, IAssistDataReceiver, IIntentSender, PendingIntentRecord, ProfilerInfo (+8 more)
 
 ### Community 16 - "TaskOrganizer Migration Plan"
 Cohesion: 0.40
@@ -507,11 +527,11 @@ Nodes (4): Authoritative references, Build participation, Namespace reservations
 
 ### Community 112 - "SystemServer"
 Cohesion: 0.05
-Nodes (30): ActivityThread, CrashInfo, DataLoaderManagerService, DisplayManagerService, Dumpable, EntropyMixer, LongArray, PackageManagerService (+22 more)
+Nodes (32): ActivityManagerService, ActivityThread, CrashInfo, DataLoaderManagerService, DisplayManagerService, Dumpable, EntropyMixer, GuardedBy (+24 more)
 
 ### Community 113 - "Context"
-Cohesion: 0.03
-Nodes (14): AssetManager, AttributionSource, AutofillClient, ClassLoader, ComponentCallbacks, Deprecated, Drawable, FileInputStream (+6 more)
+Cohesion: 0.04
+Nodes (9): AssetManager, AttributionSource, AutofillClient, ClassLoader, ComponentCallbacks, RavenwoodSupported, Context, Looper (+1 more)
 
 ### Community 114 - "AudioFxService"
 Cohesion: 0.07
@@ -519,11 +539,11 @@ Nodes (27): AudioDeviceInfo, AudioOutputChangedCallback, AudioOutputChangeListen
 
 ### Community 115 - "Intent"
 Cohesion: 0.12
-Nodes (13): BroadcastOptions, IntentSender, RequiresPermission, SuppressWarnings, SystemApi, UnsupportedAppUsage, UserHandle, BroadcastReceiver (+5 more)
+Nodes (12): BroadcastOptions, IntentFilter, IntentSender, RequiresPermission, SuppressWarnings, SystemApi, UnsupportedAppUsage, UserHandle (+4 more)
 
 ### Community 116 - "ATMS_decoded.java"
 Cohesion: 0.04
-Nodes (37): ActivityManagerInternal, AppTimeTracker, BackAnimationAdapter, BackNavigationInfo, GuardedBy, IActivityClientController, IPackageManager, IScreenCaptureObserver (+29 more)
+Nodes (38): ActivityManagerInternal, AppTimeTracker, BackAnimationAdapter, BackNavigationInfo, CompatibilityInfo, ContentObserver, IActivityClientController, IPackageManager (+30 more)
 
 ### Community 117 - "BiometricsFingerprint"
 Cohesion: 0.08
@@ -534,24 +554,24 @@ Cohesion: 0.09
 Nodes (17): DeathRecipient, LifecycleService, Messenger, Notification, SoundRecording, UiStatus, BroadcastReceiver, Handler (+9 more)
 
 ### Community 119 - "ContractVersion"
-Cohesion: 0.12
-Nodes (6): CompatibilityResolver, parse(), VersionRange, ContractVersion, ContractCompatibilityResolverTest, ContractVersionTest
+Cohesion: 0.11
+Nodes (7): CompatibilityResolver, parse(), VersionRange, ContractVersion, parse(), ContractCompatibilityResolverTest, ContractVersionTest
 
 ### Community 120 - "HandwaveSensor"
-Cohesion: 0.07
-Nodes (23): IntentFilter, SensorEventListener, Service, DozeService, BroadcastReceiver, IBinder, Intent, Override (+15 more)
+Cohesion: 0.27
+Nodes (6): Service, DozeService, BroadcastReceiver, IBinder, Intent, Override
 
 ### Community 121 - "SchemaValidator"
-Cohesion: 0.16
-Nodes (7): compute(), ContentHash, ByteArray, verify(), SchemaRegistry, ByteArray, TestVectors
+Cohesion: 0.14
+Nodes (10): Result, compute(), ContentHash, ByteArray, parse(), verify(), SchemaRegistry, SchemaProfile (+2 more)
 
 ### Community 122 - "ProdXConfirmationBridge"
 Cohesion: 0.06
 Nodes (18): CustomizationProvider, Subcomponent, SystemUIDialog, SysUIComponent, SysUISingleton, Builder, ReferenceSysUIComponent, ProdXAuthAdapter (+10 more)
 
 ### Community 123 - "ProdXRegistry"
-Cohesion: 0.05
-Nodes (22): ReadWriteLock, Creator, Override, Parcel, ProdXProviderManifest, Creator, Override, Parcel (+14 more)
+Cohesion: 0.12
+Nodes (8): Creator, Override, Parcel, ProdXProviderManifest, Creator, Override, Parcel, ProdXRegistryEntry
 
 ### Community 124 - "TouchKeyHandler"
 Cohesion: 0.07
@@ -562,28 +582,28 @@ Cohesion: 0.05
 Nodes (36): ErrorCategory, CONTRACTUAL, CRYPTO, SCHEMA, TRANSIENT, ErrorCode, BAD_EXTENSION_PAYLOAD, COMPATIBILITY_VIOLATION (+28 more)
 
 ### Community 126 - "ProdXAuthorityService"
-Cohesion: 0.06
-Nodes (10): Override, Stub, TargetUser, ProdXAuthorityService, PackageManager, ProdXComponentAttestation, ProdXKillSwitch, ProdXTamperEvidentEpoch (+2 more)
+Cohesion: 0.05
+Nodes (33): ArrayMap, ArraySet, AtomicFile, FileInputStream, IBinder, IProdXConfirmationCallback, IProdXRegistryObserver, Override (+25 more)
 
 ### Community 127 - "ProdXGrantStore"
-Cohesion: 0.09
-Nodes (10): Stub, Creator, Override, Parcel, ProdXGrant, Override, ProdXGrantAdminService, ArrayMap (+2 more)
+Cohesion: 0.13
+Nodes (8): Creator, Override, Parcel, ProdXRegistryGeneration, Creator, Override, Parcel, ProdXRegistrySnapshot
 
 ### Community 128 - "ProdXCapabilityRequest"
 Cohesion: 0.06
 Nodes (19): IProdXProvider, SigningInfo, BrokerCheckpointStore, CheckpointEntry, BrokerHealth, BrokerService, IBinder, Intent (+11 more)
 
 ### Community 129 - "ProdXConfirmationController"
-Cohesion: 0.10
-Nodes (13): Challenge, Choice, ALLOW, DENY, ByteArray, ProdXConfirmationController, State, CANCELLED (+5 more)
+Cohesion: 0.16
+Nodes (11): Challenge, Choice, ALLOW, DENY, ByteArray, ProdXConfirmationController, State, CANCELLED (+3 more)
 
 ### Community 130 - "NonNull"
-Cohesion: 0.08
-Nodes (10): ContextParams, Display, DisplayContext, FlaggedApi, NonNull, ServiceConnection, UiContext, BindServiceFlags (+2 more)
+Cohesion: 0.14
+Nodes (5): FlaggedApi, ServiceConnection, BindServiceFlags, Builder, UpdateBindingParams
 
 ### Community 131 - "Context.java"
 Cohesion: 0.12
-Nodes (22): ContentCaptureClient, CursorFactory, DatabaseErrorHandler, DisplayAdjustments, IServiceConnection, LongDef, RavenwoodKeepPartialClass, SQLiteDatabase (+14 more)
+Nodes (21): CursorFactory, DatabaseErrorHandler, DisplayAdjustments, IntConsumer, LongDef, RavenwoodKeepPartialClass, SQLiteDatabase, StringDef (+13 more)
 
 ### Community 132 - "FakeBrokerService"
 Cohesion: 0.08
@@ -602,20 +622,20 @@ Cohesion: 0.13
 Nodes (20): ShortcutInfo, AppEntry, AppIndex, AppListAdapter, AppListOverlay, getPublishedShortcuts(), Activity, ImageView (+12 more)
 
 ### Community 136 - ".getContentResolver"
-Cohesion: 0.09
-Nodes (8): ConfigurationInfo, ContentObserver, Configuration, ContentResolver, Uri, UserIdInt, SettingObserver, UpdateConfigurationResult
+Cohesion: 0.11
+Nodes (6): ConfigurationInfo, ContentResolver, Configuration, ContentResolver, UserIdInt, UpdateConfigurationResult
 
 ### Community 137 - "ActivityRecord"
 Cohesion: 0.08
 Nodes (6): IVoiceInteractionSession, IVoiceInteractor, PictureInPictureParams, TransitionController, ActivityRecord, FileDescriptor
 
 ### Community 138 - "Parcelable"
-Cohesion: 0.27
-Nodes (4): Creator, Override, Parcel, ProdXCapabilityError
+Cohesion: 0.11
+Nodes (10): Parcelable, Creator, Override, Parcel, ProdXCapabilityError, Creator, Override, Parcel (+2 more)
 
 ### Community 139 - "ProdXCapabilityDescriptor"
-Cohesion: 0.08
-Nodes (13): Creator, Override, Parcel, ProdXCapabilityDescriptor, Creator, Override, Parcel, ProdXCapabilityRequest (+5 more)
+Cohesion: 0.12
+Nodes (8): Creator, Override, Parcel, ProdXCapabilityDescriptor, Creator, Override, Parcel, ProdXCapabilityRequest
 
 ### Community 140 - "MainActivity"
 Cohesion: 0.11
@@ -629,10 +649,6 @@ Nodes (26): add_lun_to_update_list(), blk_rw(), map, string, vector, get_dev_pat
 Cohesion: 0.07
 Nodes (29): Application-Only Changes, Architecture Comparison, ART / Framework Source Evidence, Current Recents / Overview Runtime State, Executive Conclusion, Final Architecture Investigation: `com.home.launcher`, Final Recommendation, Framework Changes (+21 more)
 
-### Community 143 - "DozeUtils"
-Cohesion: 0.11
-Nodes (10): BroadcastReceiver, SharedPreferences, BootCompletedReceiver, Intent, Override, Override, DozeUtils, Sensor (+2 more)
-
 ### Community 144 - "EventRecord"
 Cohesion: 0.30
 Nodes (4): EventPipeline, ByteArray, EventRecord, PipelineResult
@@ -642,24 +658,24 @@ Cohesion: 0.09
 Nodes (6): NoOpManifest, CapabilityInventory, InventoryEntry, CapabilityManifest, ProviderManifest, RiskLevel
 
 ### Community 146 - ".enforceTaskPermission"
-Cohesion: 0.11
-Nodes (5): ITaskStackListener, PictureInPictureUiState, RootTaskInfo, TaskDescription, Rect
+Cohesion: 0.07
+Nodes (7): ITaskStackListener, PictureInPictureUiState, ProtoOutputStream, RootTaskInfo, TaskDescription, Rect, Task
 
 ### Community 147 - "Uri"
-Cohesion: 0.12
-Nodes (5): CheckResult, PermissionMethod, PermissionResult, IBinder, Uri
+Cohesion: 0.15
+Nodes (4): CheckResult, PermissionMethod, PermissionResult, Uri
 
 ### Community 148 - "ProdXPolicyDecision"
-Cohesion: 0.13
-Nodes (10): Parcelable, PrivateKey, PublicKey, SecureRandom, Creator, Override, Parcel, ProdXPolicyDecision (+2 more)
+Cohesion: 0.16
+Nodes (8): PrivateKey, PublicKey, SecureRandom, Creator, Override, Parcel, ProdXPolicyDecision, ProdXAuthorizationEngine
 
 ### Community 149 - "Lights"
 Cohesion: 0.15
 Nodes (21): BnLights, HwLight, led_type, HwLightState, ScopedAStatus, string, vector, HwLightState (+13 more)
 
 ### Community 150 - ".getResources"
-Cohesion: 0.12
-Nodes (10): ColorInt, ColorStateList, ExportedProperty, RavenwoodKeep, TypedArray, AttributeSet, PackageManager, Resources (+2 more)
+Cohesion: 0.08
+Nodes (13): ColorInt, ColorStateList, ContextParams, Display, DisplayContext, ExportedProperty, NonNull, RavenwoodKeep (+5 more)
 
 ### Community 151 - "MorphingEngine"
 Cohesion: 0.14
@@ -674,8 +690,8 @@ Cohesion: 0.12
 Nodes (3): EventSummary, FakeObservationHub, ProdXObservationIntegrationTest
 
 ### Community 154 - "ProdXSettingsMediatorService"
-Cohesion: 0.11
-Nodes (7): Creator, Override, Parcel, ProdXAuditRecord, AuthorityActions, Override, ProdXSettingsMediatorService
+Cohesion: 0.06
+Nodes (16): Stub, Creator, Override, Parcel, ProdXAuditRecord, Creator, Override, ProdXGrant (+8 more)
 
 ### Community 155 - "What You Must Do When Invoked"
 Cohesion: 0.08
@@ -686,12 +702,16 @@ Cohesion: 0.12
 Nodes (8): IncidentRecord, IncidentSeverity, CRITICAL, HIGH, INFO, LOW, MEDIUM, SecurityMonitor
 
 ### Community 158 - "FakeProdXAuthorityService"
-Cohesion: 0.10
-Nodes (8): Creator, Override, Parcel, ProdXExecutionAuthorization, FakeProdXAuthorityService, IProdXConfirmationCallback, IProdXRegistryObserver, Override
+Cohesion: 0.17
+Nodes (4): FakeProdXAuthorityService, IProdXConfirmationCallback, IProdXRegistryObserver, Override
 
 ### Community 159 - "DomainCode"
 Cohesion: 0.09
 Nodes (23): DomainCode, CAPABILITY_DISABLED, CAPABILITY_NOT_FOUND, EXECUTION_FAILED, GRANT_EXPIRED, GRANT_NOT_FOUND, GRANT_REVOKED, IDENTITY_BINDING_FAILED (+15 more)
+
+### Community 160 - ".enforceNotIsolatedCaller"
+Cohesion: 0.17
+Nodes (13): Dialog, DialogFragment, DialogInterface, MainSwitchPreference, OnCheckedChangeListener, DozeSettingsFragment, HelpDialogFragment, Bundle (+5 more)
 
 ### Community 162 - "ObservationQueue"
 Cohesion: 0.13
@@ -710,8 +730,8 @@ Cohesion: 0.12
 Nodes (13): ListPreference, MenuItem, OnPreferenceStartFragmentCallback, TouchscreenGesture, Bundle, Override, Preference, PreferenceFragment (+5 more)
 
 ### Community 166 - "RecentTasks"
-Cohesion: 0.12
-Nodes (7): PointerEventListener, TaskPersister, ActivityTaskSupervisor, ComponentName, Resources, TaskChangeNotificationController, RecentTasks
+Cohesion: 0.10
+Nodes (8): PointerEventListener, TaskPersister, ActivityRecord, ActivityTaskSupervisor, ComponentName, Resources, TaskChangeNotificationController, RecentTasks
 
 ### Community 168 - "Live Recent Cards — Real-time Surface Feed for Recents Grid"
 Cohesion: 0.10
@@ -730,36 +750,36 @@ Cohesion: 0.18
 Nodes (4): AppendOnlyLedger, ByteArray, LedgerPartitionManager, RetentionManager
 
 ### Community 172 - "ConfirmationCoordinator.kt"
-Cohesion: 0.14
-Nodes (14): ProdXExecutionContext, Approved, ConfirmationCoordinator, ConfirmationResult, ConfirmationState, Denied, Failed, ByteArray (+6 more)
+Cohesion: 0.15
+Nodes (13): Approved, ConfirmationCoordinator, ConfirmationResult, ConfirmationState, Denied, Failed, ByteArray, IProdXAuthority (+5 more)
 
 ### Community 173 - "RecentTasks_decoded.java"
-Cohesion: 0.15
-Nodes (8): ActivityManagerService, ActivityTaskManager, ActivityInfo, ApplicationInfo, Bitmap, IBinder, Nullable, SparseArray
+Cohesion: 0.12
+Nodes (7): Callbacks, ActivityInfo, ApplicationInfo, Bitmap, IBinder, Nullable, SparseArray
 
 ### Community 174 - "FileOutputStream"
-Cohesion: 0.05
-Nodes (29): CollapsingToolbarBaseActivity, Dialog, DialogFragment, DialogInterface, FileOutputStream, MainSwitchPreference, OnCheckedChangeListener, OnPreferenceChangeListener (+21 more)
+Cohesion: 0.16
+Nodes (3): FileOutputStream, FileUtils, Utils
+
+### Community 175 - ".getPackageManager"
+Cohesion: 0.16
+Nodes (7): ActionUtils, Intent, PackageManager, PackageManager, ProdXComponentAttestation, PackageManager, ProdXContextBuilder
 
 ### Community 178 - "ProdXMode"
 Cohesion: 0.10
-Nodes (15): createFromParcel(), describeContents(), fromValue(), Override, Parcel, newArray(), ProdXMode, DISABLED (+7 more)
+Nodes (14): createFromParcel(), describeContents(), fromValue(), Override, Parcel, newArray(), ProdXMode, DISABLED (+6 more)
 
 ### Community 180 - "MorphingEngine — Dynamic Island-style Animation Engine"
 Cohesion: 0.12
 Nodes (16): 1. `animation/MorphingEngine.kt` (~250 lines), 2. `animation/SpringInterpolator.kt` (~40 lines), 3. `animation/MorphConfig.kt` (~30 lines), Architecture, Caller Examples, Edge Cases, Files, Future Considerations (+8 more)
 
 ### Community 182 - "PlatformRecentTasksBackend"
-Cohesion: 0.22
-Nodes (4): ActivityManager, Bitmap, ComponentName, PlatformRecentTasksBackend
+Cohesion: 0.20
+Nodes (5): ActivityManager, ActivityTaskManager, Bitmap, ComponentName, PlatformRecentTasksBackend
 
 ### Community 183 - "TestApi"
 Cohesion: 0.12
 Nodes (7): AutofillOptions, CanBeALL, CanBeCURRENT, ContentCaptureOptions, SuppressLint, TestApi, UserIdInt
-
-### Community 184 - "VisibleForTesting"
-Cohesion: 0.13
-Nodes (3): UserInfo, ActivityRecord, VisibleForTesting
 
 ### Community 185 - "ProdXIndicatorController"
 Cohesion: 0.17
@@ -822,8 +842,8 @@ Cohesion: 0.15
 Nodes (12): categorizeError(), ErrorCategory, AUTHENTICATION, AUTHORIZATION, EXECUTION, INTERNAL, NETWORK, POLICY_VIOLATION (+4 more)
 
 ### Community 202 - "BrokerCheckpointStore"
-Cohesion: 0.24
-Nodes (4): BackgroundActivityStartCallback, CompatibilityInfo, ApplicationInfo, Nullable
+Cohesion: 0.15
+Nodes (5): ContentCaptureClient, IServiceConnection, ComponentName, IBinder, Nullable
 
 ### Community 203 - "RedactionPipeline"
 Cohesion: 0.20
@@ -857,10 +877,6 @@ Nodes (10): And, ConditionResult, Not, Or, PatternMatch, RuleCondition, RuleEval
 Cohesion: 0.24
 Nodes (10): BnTouchscreenGesture, Gesture, ScopedAStatus, vector, GestureInfo, map, TouchscreenGesture, getSupportedGestures (+2 more)
 
-### Community 211 - "AsusParts"
-Cohesion: 0.27
-Nodes (4): Creator, Override, Parcel, ProdXCapabilityResponse
-
 ### Community 212 - "AuditService"
 Cohesion: 0.19
 Nodes (5): AuditService, ByteArray, IBinder, Intent, Service
@@ -885,6 +901,10 @@ Nodes (3): SecureSettingsRepository, FakeSecureSettingsRepository, Flow
 Cohesion: 0.22
 Nodes (4): SystemService, TargetUser, WindowManagerGlobalLock, Lifecycle
 
+### Community 219 - "MainSettingsFragment"
+Cohesion: 0.18
+Nodes (4): Creator, Override, Parcel, ProdXExecutionContext
+
 ### Community 220 - "extract_payload.py"
 Cohesion: 0.25
 Nodes (10): decode_field(), decode_varint(), extract_from_zip(), find_partition_in_payload(), parse_protobuf_fields(), Extract boot.img from OTA payload.bin inside zip files., Extract boot.img from an OTA zip's payload.bin., Decode a protobuf field, return (field_number, wire_type, value, new_offset) (+2 more)
@@ -906,7 +926,7 @@ Cohesion: 0.29
 Nodes (5): invalid(), ProdXCapabilityRequest, ProposalValidator, valid(), ValidationResult
 
 ### Community 226 - ".getRecentTasksImpl"
-Cohesion: 0.22
+Cohesion: 0.19
 Nodes (3): ArraySet, ParceledListSlice, RecentTaskInfo
 
 ### Community 227 - "SleepTokenAcquirerImpl"
@@ -949,6 +969,10 @@ Nodes (6): State, ACTIVE, CANCELLED, COMPLETED, EXPIRED, TransactionReservation
 Cohesion: 0.33
 Nodes (3): DependencyGraph, DependencyNode, DependencyResolver
 
+### Community 241 - "BootCompletedReceiver.java"
+Cohesion: 0.21
+Nodes (7): BroadcastReceiver, SharedPreferences, BootCompletedReceiver, Intent, Override, Sensor, SensorManager
+
 ### Community 242 - "10. `getRecentTasks()` Framework Execution Path"
 Cohesion: 0.22
 Nodes (9): 10.1 The Initial Hypothesis (Refuted), 10.2 Complete Call Flow, 10.3 Filtering Pipeline (in order), 10.4 `isVisibleRecentTask()` — the Actual Gate, 10.5 What `mTasks` Actually Contains, 10.6 How QuickStep Actually Gets Tasks, 10.7 Why the First Call Showed "1 raw task", 10.8 Conclusion: getRecentTasks() Works Correctly (+1 more)
@@ -957,6 +981,10 @@ Nodes (9): 10.1 The Initial Hypothesis (Refuted), 10.2 Complete Call Flow, 10.3 
 Cohesion: 0.29
 Nodes (8): AutoPtr, dng_host, dng_memory_allocator, dng_memory_block, uint32, dng_xmp_sdk::PackageForJPEG(), dng_xmp_sdk::Parse(), dng_xmp_sdk::Serialize()
 
+### Community 245 - "AsusParts"
+Cohesion: 0.28
+Nodes (7): OnPreferenceChangeListener, PreferenceFragment, TwoStatePreference, AsusParts, Bundle, Override, Preference
+
 ### Community 246 - "NoOpCapabilities"
 Cohesion: 0.39
 Nodes (3): ByteArray, NoOpCapabilities, NoOpCapability
@@ -964,6 +992,14 @@ Nodes (3): ByteArray, NoOpCapabilities, NoOpCapability
 ### Community 247 - "AuthorizationVerifier.kt"
 Cohesion: 0.43
 Nodes (5): AuthorizationResult, AuthorizationVerifier, Denied, Granted, ByteArray
+
+### Community 249 - "ProdXExecutionAuthorization"
+Cohesion: 0.19
+Nodes (5): Creator, Override, Parcel, ProdXExecutionAuthorization, ByteArray
+
+### Community 250 - "CollapsingToolbarBaseActivity"
+Cohesion: 0.25
+Nodes (7): CollapsingToolbarBaseActivity, AsusPartsActivity, Bundle, Override, DozeSettingsActivity, Bundle, Override
 
 ### Community 251 - "LegacyCameraProviderImpl_2_5.cpp"
 Cohesion: 0.33
@@ -993,6 +1029,10 @@ Nodes (4): Activity, Bundle, LinearLayout, ProdXCapabilityActivity
 Cohesion: 0.33
 Nodes (4): ExtensionService, IBinder, Intent, Service
 
+### Community 258 - "PickupSensor"
+Cohesion: 0.31
+Nodes (5): Override, Sensor, SensorEvent, SensorManager, PickupSensor
+
 ### Community 260 - "11. Decision Matrix"
 Cohesion: 0.29
 Nodes (7): 11.1 SELinux Restrictions, 11.2 Permission Restrictions, 11.3 Framework Filtering Restrictions, 11.4 Other Restrictions, 11.5 What Baking Into `/system_ext/priv-app/` Would Change, 11.6 Actual Priority Order for Fixes, 11. Decision Matrix
@@ -1005,6 +1045,10 @@ Nodes (7): 9.1 Current State, 9.2 What Works (and Why), 9.3 What Doesn't Work (a
 Cohesion: 0.33
 Nodes (5): For /graphify explain, For /graphify path, graphify reference: query, path, explain, Step 0 — Constrained query expansion (REQUIRED before traversal), Step 1 — Traversal
 
+### Community 263 - "Deprecated"
+Cohesion: 0.22
+Nodes (3): Deprecated, Drawable, Bitmap
+
 ### Community 265 - "PipelineStage"
 Cohesion: 0.33
 Nodes (6): PipelineStage, DELIVER, QUEUE, RECEIVE, REDACT, VALIDATE
@@ -1012,6 +1056,10 @@ Nodes (6): PipelineStage, DELIVER, QUEUE, RECEIVE, REDACT, VALIDATE
 ### Community 266 - "QuickStepService"
 Cohesion: 0.33
 Nodes (4): IBinder, Intent, Service, QuickStepService
+
+### Community 267 - "PocketSensor"
+Cohesion: 0.36
+Nodes (6): SensorEventListener, Override, Sensor, SensorEvent, SensorManager, PocketSensor
 
 ### Community 268 - "AsusPartsTileService"
 Cohesion: 0.50
@@ -1024,6 +1072,10 @@ Nodes (4): DEVICE, DEVICE_COMMON, extract-files.sh script, VENDOR
 ### Community 270 - "setup-makefiles.sh"
 Cohesion: 0.40
 Nodes (4): DEVICE, DEVICE_COMMON, setup-makefiles.sh script, VENDOR
+
+### Community 271 - "HandwaveSensor"
+Cohesion: 0.39
+Nodes (5): HandwaveSensor, Override, Sensor, SensorEvent, SensorManager
 
 ### Community 273 - "ProdXDeveloperOptionsFragment"
 Cohesion: 0.40
@@ -1081,10 +1133,6 @@ Nodes (3): configure_memory_parameters(), configure_read_ahead_kb_values(), init
 Cohesion: 0.67
 Nodes (3): decode_varint(), parse_manifest_fields(), Parse OTA payload protobuf manifest using google.protobuf. Dynamically compile t
 
-### Community 288 - "parse"
-Cohesion: 0.29
-Nodes (5): Result, parse(), parse(), parse(), ParsedIdentifier
-
 ### Community 292 - "1. APK Installation & Classification"
 Cohesion: 0.50
 Nodes (4): 1.1 APK Path and Partition, 1.2 PackageManager Classification, 1.3 Signing & Certificate, 1. APK Installation & Classification
@@ -1117,22 +1165,26 @@ Nodes (3): dng_xmp_sdk, dng_xmp_sdk::dng_xmp_sdk(), dng_xmp_sdk::ReplaceXMP()
 Cohesion: 0.67
 Nodes (3): update_data, lun_list, num_valid_entries
 
+### Community 398 - "opencode.json"
+Cohesion: 0.50
+Nodes (3): plugin, $schema, .opencode/plugins/graphify.js
+
 ## Knowledge Gaps
-- **562 isolated node(s):** `RiskLevel`, `OK`, `DEGRADED`, `WARNING`, `ERROR` (+557 more)
+- **564 isolated node(s):** `$schema`, `.opencode/plugins/graphify.js`, `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)` (+559 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **199 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **211 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Context` connect `Context` to `NonNull`, `Context.java`, `ProdXManager`, `inParm Calibration PR2-2`, `ProdXCapabilityDescriptor`, `MainActivity`, `DozeUtils`, `Uri`, `.getResources`, `ProdXSettingsMediatorService`, `TouchscreenGestureSettings.java`, `FileOutputStream`, `.getPackageManager`, `TestApi`, `UnavailableRecentTasksBackend`, `.getSharedPreferences`, `AuditService`, `Lifecycle`, `SystemServer`, `AudioFxService`, `Intent`, `ATMS_decoded.java`, `HandwaveSensor`, `TouchKeyHandler`, `SystemSettingSwitchPreference.java`, `ProdXAuthorityService`, `ProdXGrantStore`?**
-  _High betweenness centrality (0.205) - this node is a cross-community bridge._
-- **Why does `ActivityTaskManagerService` connect `inParm Calibration PR2-2` to `.enforceNotIsolatedCaller`, `SleepTokenAcquirerImpl`, `.startActivity`, `RecentTasks`, `ProdX Core Services`, `.getContentResolver`, `ActivityRecord`, `BrokerCheckpointStore`, `FileOutputStream`, `HomeLauncher Integration`, `SystemServer`, `Context`, `.enforceTaskPermission`, `ATMS_decoded.java`, `.getResources`, `Lifecycle`, `ProdXGrantStore`?**
-  _High betweenness centrality (0.082) - this node is a cross-community bridge._
+- **Why does `Context` connect `Context` to `PickupSensor`, `Context.java`, `NonNull`, `ProdXManager`, `inParm Calibration PR2-2`, `Deprecated`, `.getContentResolver`, `PocketSensor`, `MainActivity`, `ProdXUserLifecycle`, `DozeUtils`, `HandwaveSensor`, `Uri`, `.getResources`, `ProdXSettingsMediatorService`, `.enforceNotIsolatedCaller`, `TouchscreenGestureSettings.java`, `.getPackageManager`, `TestApi`, `UnavailableRecentTasksBackend`, `.getSharedPreferences`, `BrokerCheckpointStore`, `AuditService`, `Lifecycle`, `SystemServer`, `BootCompletedReceiver.java`, `AudioFxService`, `Intent`, `ATMS_decoded.java`, `TouchKeyHandler`, `SystemSettingSwitchPreference.java`, `ProdXGrantStore`?**
+  _High betweenness centrality (0.208) - this node is a cross-community bridge._
+- **Why does `ActivityTaskManagerService` connect `inParm Calibration PR2-2` to `SleepTokenAcquirerImpl`, `.startActivity`, `RecentTasks`, `ProdX Core Services`, `.getContentResolver`, `ActivityRecord`, `Lifecycle`, `FileOutputStream`, `HomeLauncher Integration`, `SystemServer`, `Context`, `.enforceTaskPermission`, `.handleMessage`, `ATMS_decoded.java`, `.getResources`, `ProdXSettingsMediatorService`?**
+  _High betweenness centrality (0.105) - this node is a cross-community bridge._
 - **Why does `LedgerPartitionManager` connect `AppendOnlyLedger` to `AuditService`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
-- **What connects `RiskLevel`, `OK`, `DEGRADED` to the rest of the system?**
-  _562 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.040) - this node is a cross-community bridge._
+- **What connects `$schema`, `.opencode/plugins/graphify.js`, `Usage` to the rest of the system?**
+  _564 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `inParm Touch Calibration PR2-1` be split into smaller, more focused modules?**
   _Cohesion score 0.08045977011494253 - nodes in this community are weakly interconnected._
 - **Should `ASUS I001D Device Parameters` be split into smaller, more focused modules?**

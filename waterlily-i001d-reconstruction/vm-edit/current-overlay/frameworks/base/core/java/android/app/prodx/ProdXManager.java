@@ -136,6 +136,18 @@ public class ProdXManager {
         catch (RemoteException | SecurityException e) { return false; }
     }
 
+    public ProdXPolicyDecision evaluatePolicy(ProdXExecutionContext context, ProdXCapabilityRequest request) {
+        IProdXAuthority s = getService();
+        if (s == null) return null;
+        try { return s.evaluatePolicy(context, request); } catch (RemoteException e) { return null; }
+    }
+
+    public ProdXExecutionAuthorization mintAuthorization(ProdXPolicyDecision decision, byte[] proof) {
+        IProdXAuthority s = getService();
+        if (s == null) return null;
+        try { return s.mintAuthorization(decision, proof); } catch (RemoteException e) { return null; }
+    }
+
     public ProdXMode getMode() {
         IProdXAuthority s = getService();
         if (s == null) return ProdXMode.DISABLED;

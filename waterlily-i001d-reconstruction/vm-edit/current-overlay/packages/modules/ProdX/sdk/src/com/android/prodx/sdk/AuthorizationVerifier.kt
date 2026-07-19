@@ -1,48 +1,59 @@
 package com.android.prodx.sdk
 
-import android.app.prodx.ProdXGrant
-import android.app.prodx.ProdXPolicy
-import android.app.prodx.ProdXRegistry
-import android.app.prodx.ProdXToken
+import android.app.prodx.ProdXCapabilityDescriptor
+import android.app.prodx.ProdXCapabilityRequest
+import android.app.prodx.ProdXExecutionAuthorization
+import android.app.prodx.ProdXManager
+import android.content.Context
 import android.os.Binder
 import android.util.Log
 
-class AuthorizationVerifier(
-    private val policy: ProdXPolicy = ProdXPolicy(),
-    private val grantStore: ProdXGrant = ProdXGrant(),
-    private val registry: ProdXRegistry = ProdXRegistry()
-) {
+class AuthorizationVerifier(context: Context) {
     private val tag = "ProdXAuthZ"
+    private val manager = ProdXManager(context)
 
     fun verify(
-        token: ByteArray,
-        capabilityId: String,
+        capabilityDescriptor: ProdXCapabilityDescriptor,
+        purpose: String = "sdk_authorization",
         callerUid: Int = Binder.getCallingUid(),
     ): AuthorizationResult {
-        val decoded = ProdXToken.decode(token) ?: return AuthorizationResult.DENIED("Malformed token")
-        if (decoded.isExpired()) return AuthorizationResult.DENIED("Token expired")
-        if (decoded.epoch != registry.currentEpoch()) return AuthorizationResult.DENIED("Epoch mismatch")
+        if (!manager.resolveCapability(capabilityDescriptor)) {
+            return AuthorizationResult.DENIED("Capability not resolved")
+        }
 
-        val callerIdentity = registry.resolveCallerIdentity(callerUid) ?: return AuthorizationResult.DENIED("Unknown caller")
-        if (!decoded.isBoundTo(callerIdentity)) return AuthorizationResult.DENIED("Identity binding mismatch")
+        val callerContext = manager.deriveCallerContext(purpose)
+        val request = ProdXCapabilityRequest(capabilityDescriptor, callerUid.toString().toByteArray())
+        val decision = manager.evaluatePolicy(callerContext, request)
+            ?: return AuthorizationResult.DENIED("Policy evaluation unavailable")
 
-        val grant = grantStore.getGrant(decoded.grantId) ?: return AuthorizationResult.DENIED("Grant not found")
-        if (grant.isRevoked()) return AuthorizationResult.DENIED("Grant revoked")
-        if (grant.isExpired()) return AuthorizationResult.DENIED("Grant expired")
-
-        val policyResult = policy.evaluate(capabilityId, callerIdentity, grant)
         return when {
-            policyResult.isAllowed() -> AuthorizationResult.GRANTED(policyResult.confidence)
-            else -> AuthorizationResult.DENIED(policyResult.denyReason())
+            decision.isAllowed() -> AuthorizationResult.GRANTED(1.0)
+            else -> AuthorizationResult.DENIED(decision.reason ?: "denied")
         }
     }
 
+    fun mintAuthorization(
+        capabilityDescriptor: ProdXCapabilityDescriptor,
+        purpose: String = "sdk_authorization",
+        proof: ByteArray = ByteArray(0),
+        callerUid: Int = Binder.getCallingUid(),
+    ): ProdXExecutionAuthorization? {
+        if (!manager.resolveCapability(capabilityDescriptor)) return null
+
+        val callerContext = manager.deriveCallerContext(purpose)
+        val request = ProdXCapabilityRequest(capabilityDescriptor, callerUid.toString().toByteArray())
+        val decision = manager.evaluatePolicy(callerContext, request) ?: return null
+        if (!decision.isAllowed()) return null
+
+        return manager.mintAuthorization(decision, proof)
+    }
+
     fun verifyOrThrow(
-        token: ByteArray,
-        capabilityId: String,
+        capabilityDescriptor: ProdXCapabilityDescriptor,
+        purpose: String = "sdk_authorization",
         callerUid: Int = Binder.getCallingUid(),
     ) {
-        val result = verify(token, capabilityId, callerUid)
+        val result = verify(capabilityDescriptor, purpose, callerUid)
         if (result !is AuthorizationResult.Granted) {
             Log.w(tag, "Authorization denied: ${result.reason}")
             throw SecurityException("Authorization denied: ${result.reason}")
@@ -50,9 +61,18 @@ class AuthorizationVerifier(
     }
 }
 
-sealed class AuthorizationResult(val granted: Boolean, val reason: String?) {
-    data class Granted(val confidence: Double = 1.0) : AuthorizationResult(true, null)
-    data class Denied(override val reason: String) : AuthorizationResult(false, reason)
+sealed class AuthorizationResult {
+    abstract val granted: Boolean
+    abstract val reason: String?
+
+    data class Granted(val confidence: Double = 1.0) : AuthorizationResult() {
+        override val granted get() = true
+        override val reason get() = null
+    }
+
+    data class Denied(override val reason: String) : AuthorizationResult() {
+        override val granted get() = false
+    }
 
     companion object {
         fun GRANTED(confidence: Double = 1.0): AuthorizationResult = Granted(confidence)
