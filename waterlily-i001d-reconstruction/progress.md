@@ -6182,3 +6182,161 @@ m services SystemUI Settings ProdXSystemUITests ProdXSettingsTests \
 | P0-13 (SEAndroid) | Design complete, needs system/sepolicy |
 | P0-14 (APEX) | Placeholder (deferred) |
 | Programs C/E/F (AI/KB/Learning) | Not started |
+
+## 2026-07-19 Android 16 Device Source Reconstruction Migration
+
+Completed the full migration plan for Waterlily ASUS I001D Android 16 device-source reconstruction.
+
+### Task 1: Prebuilt Inventory (Already Complete)
+- `analysis/android16-source-reconstruction/prebuilt-inventory.md`
+- `analysis/android16-source-reconstruction/prebuilt-inventory.tsv`
+- `analysis/android16-source-reconstruction/prebuilt-reference-grep.txt`
+- `analysis/android16-source-reconstruction/proprietary-and-prebuilt-files.txt`
+
+### Task 2: Source-Owned Device/Common Config
+- Verified: No stale Android 14 rules found (no audio@6, no soundtrigger@2.1, no prebuilts/vndk/v29)
+- Verified: All Android 16 source-built HAL selections correct (audio 7.x, soundtrigger 2.3, sensors multihal, camera Lineage provider)
+- Verified: No source-output collisions in vendor copy rules
+- Created: `analysis/android16-source-reconstruction/source-owned-config.md`
+
+### Task 3: VINTF/Init/Fstab/Property/SELinux
+- fstab verified: SHA-256 matches Android 16 reference exactly
+- VINTF manifest validated: audio@7.1/effect@7.0, soundtrigger@2.3, sensors multihal, camera Lineage provider, vendor.asus.motor optional
+- SELinux audit: 202 relevant rules covering all needed domains
+- Init diffs generated for record
+- Created: `analysis/android16-source-reconstruction/runtime-config-reconstruction.md`
+
+### Task 4: hardware/asus Reconstruction
+- Created `hardware/asus/interfaces/motor/1.0/IRotateCameraInterface.hal`
+- Created `hardware/asus/interfaces/motor/1.0/Android.bp`
+- Generated `hardware/asus/interfaces/current.txt` via hidl-gen
+- Created: `analysis/android16-source-reconstruction/hardware-asus.md`
+
+### Task 5: Proprietary Manifest Normalization
+- Verified: No source-built collision paths in vendor makefiles
+- Verified: Proprietary boundaries preserved for all closed firmware/HALs
+- Comparison against Android 16 reference vendor paths documented
+
+### Task 6: Kernel Decision
+- Prebuilt kernel: `4.14.357-openela-perf+` at `device/asus/I001D/prebuilt/kernel`
+- Source kernel: `kernel/asus/I001D` (4.14.190-era, incompatible with runtime)
+- **Decision**: Option A - keep kernel prebuilts as documented boundary
+- Created: `analysis/android16-source-reconstruction/kernel-decision.md`
+
+### Task 7: Validation Matrix
+- Created: `analysis/android16-source-reconstruction/validation-matrix.md`
+
+### Task 8: Final Source Boundary Report
+- Created: `analysis/android16-source-reconstruction/final-source-boundary-report.md`
+
+### Files Changed/Added on VM
+- `hardware/asus/interfaces/motor/1.0/IRotateCameraInterface.hal` (NEW)
+- `hardware/asus/interfaces/motor/1.0/Android.bp` (NEW)
+- `hardware/asus/interfaces/current.txt` (NEW)
+- 9 new analysis documents under `analysis/android16-source-reconstruction/`
+
+### No Build Started
+- `lunch` verified: PASSED (PLATFORM_VERSION=16, BUILD_ID=BP4A.251205.006)
+- No `m`, `blissify`, or other long build commands were started
+
+## 2026-07-19 Fix Soong Bootstrap for vendor.asus.motor@1.0
+
+### Fix Applied
+- Created `hardware/asus/interfaces/Android.bp` with `hidl_package_root` declaration for the `vendor.asus` package root
+- HIDL module at `hardware/asus/interfaces/motor/1.0/` now has a valid root declaration
+
+### Build Validation
+- **Targeted build attempted**: `m vendor.asus.motor@1.0`
+- **Soong configuration**: PASSED — `vendor.asus.motor@1.0` module was successfully parsed and emitted in `out/soong/build.bliss_I001D.4.ninja` and `build.bliss_I001D.9.ninja`
+- **Ninja build**: BLOCKED by pre-existing `min_sdk_version` error in `packages/modules/UprobeStats` (unrelated to our change)
+- The HIDL metadata module (`gen_java: false`, header-only) does not produce binary output files, so the ninja phase exists only for header generation; the proprietary `.so` blob copies are unaffected
+
+### Result
+The `vendor.asus.motor@1.0` HIDL package is successfully registered in the Soong namespace. The pre-existing UprobeStats build error must be resolved before full build validation is possible. This is not caused by the reconstruction migration.
+
+---
+
+## 2026-07-19 APEX Allowed Deps Fix (Update Script Method)
+
+### Problem
+Full GApps build (`blissify -g I001D`) fails in Soong analysis because `packages/modules/common/build/allowed_deps.txt` is missing:
+- `android.hardware.nfc-V2-ndk(minSdkVersion:34)`
+
+### Fix Applied (on VM)
+Ran the official updater script which regenerated the file:
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+packages/modules/common/build/update-apex-allowed-deps.sh
+```
+
+### File Changed
+- `packages/modules/common/build/allowed_deps.txt`
+
+### Entries Added by Script (6 total)
+- `android.hardware.nfc-V2-ndk(minSdkVersion:34)` — **the reported missing dep**
+- `com.android.nfc.module.flags-aconfig-java(minSdkVersion:36)`
+- `framework-nfc(minSdkVersion:36)`
+- `framework-nfc.impl(minSdkVersion:36)`
+- `uprobestats_bpf_headers(minSdkVersion:36)`
+- `uprobestats_bpf_syscall_wrappers(minSdkVersion:36)`
+
+### Validation
+`git -C packages/modules/common diff -- build/allowed_deps.txt` confirmed all 6 additions.
+
+### No Full Build Started
+Only the automated update-apex-allowed-deps.sh script was run (Soong analysis only). No full ROM or GApps build was executed.
+
+### Build Handoff
+```bash
+cd /home/premanandal1978/android/waterlily
+source build/envsetup.sh
+lunch bliss_I001D-bp4a-userdebug
+blissify -g I001D
+```
+
+---
+
+## 2026-07-19 GitHub Reconstruction Backup
+
+### Goal
+Preserve the Android 16 Waterlily I001D reconstruction source state so the VM can be rebuilt from a fresh Bliss/AOSP Android 16 tree plus Prem8791 GitHub repos.
+
+### GitHub CLI
+- Installed portable GitHub CLI locally at `D:\AndroidProjects\porting\.tools\bin\gh.exe`
+- Authenticated as GitHub user `Prem8791`
+
+### Repos Created and Pushed
+- `Prem8791/device_asus_I001D` @ `9da8494c76127e8b4b7c092869a83c8893acc55c`
+- `Prem8791/device_asus_sm8150-common` @ `d8dd9a861bd93786b81fe923ade0510ec1f23041`
+- `Prem8791/vendor_asus_I001D` @ `15b685d9459486527fc60f8e9c611a21cb0c5913`
+- `Prem8791/vendor_asus_sm8150-common` @ `12a6297e91c6f8ad586825ea3a0548a06f42de7e`
+- `Prem8791/kernel_asus_I001D` @ `5b11bc300bc615810ac649fe45a4d695aa31948b`
+- `Prem8791/hardware_asus` @ `3e00c74e5630da086195280f9ae18594a24fe88e`
+- `Prem8791/android_packages_modules_UprobeStats` @ `0e0aa160f20e5f17ab00f2a11ef53e4829af8a51`
+- `Prem8791/android_packages_modules_common` @ `7b20f6c9396a3d0d56c03fb069808896b80cd89b`
+- `Prem8791/waterlily-i001d-a16-manifest` @ `7309049572e1122a90ef2225f16803d5a4e8ef4f`
+
+### Existing Repo Used
+- `Prem8791/homelauncher` @ `5a5251fd21558ca246c0d5d39264cafe3a152409`
+
+### Restore Entry Point
+Manifest repo:
+`https://github.com/Prem8791/waterlily-i001d-a16-manifest`
+
+Local manifest path inside that repo:
+`local_manifests/waterlily-i001d-a16.xml`
+
+From a freshly initialized Bliss Android 16 / BP4A tree:
+```bash
+mkdir -p .repo/local_manifests
+curl -L https://raw.githubusercontent.com/Prem8791/waterlily-i001d-a16-manifest/main/local_manifests/waterlily-i001d-a16.xml \
+  -o .repo/local_manifests/waterlily-i001d-a16.xml
+repo sync -c --force-sync --no-clone-bundle --no-tags
+```
+
+### Notes
+- The kernel repo was pushed from the Linux VM because Windows cannot index kernel paths such as `drivers/gpu/drm/nouveau/nvkm/subdev/i2c/aux.c`.
+- The VM `packages/apps/HomeLauncher` checkout remains dirty/behind, but the restore manifest pins the newer GitHub `homelauncher` state used for reproducible reconstruction.
+- This backup preserves source reconstruction and known build patches. It does not eliminate hard boundaries such as proprietary vendor blobs and prebuilt kernel/modules.
