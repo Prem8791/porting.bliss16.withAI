@@ -1,6 +1,0 @@
-android_test {
-    name: "ProdXDeviceTests",
-    srcs: [],
-    static_libs: ["prodx-contract-runtime"],
-    sdk_version: "system_current",
-}

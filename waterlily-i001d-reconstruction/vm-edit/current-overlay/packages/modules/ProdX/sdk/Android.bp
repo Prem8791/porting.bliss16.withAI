@@ -1,9 +1,0 @@
-java_library {
-    name: "prodx-provider-sdk",
-    srcs: ["src/**/*.kt"],
-    aidl: {
-        include_dirs: ["packages/modules/ProdX/sdk/aidl"],
-    },
-    static_libs: ["prodx-contract-runtime"],
-    sdk_version: "system_current",
-}

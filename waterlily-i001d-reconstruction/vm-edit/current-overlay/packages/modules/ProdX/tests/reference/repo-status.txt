@@ -1,9 +1,0 @@
-project bionic/                                 (*** NO BRANCH ***)
- -m	libc/include/sched.h
-project prebuilts/build-tools/                  (*** NO BRANCH ***)
- -d	path/darwin-x86/date
- -d	path/darwin-x86/tar
- -d	path/linux-arm64/date
- -d	path/linux-arm64/tar
- -d	path/linux-x86/date
- -d	path/linux-x86/tar

@@ -4,10 +4,16 @@
 
 For the Android 16 Bliss Waterlily ASUS I001D reconstruction work:
 
+- If the user asks to reconstruct, restore, recreate a fresh VM, rebuild the ROM
+  workspace, or recover the current ROM source state, read
+  `waterlily-i001d-reconstruction/HOW_TO_RECONSTRUCT_CURRENT_VM.md` first.
+  That file is marked NEVER DELETE and is the canonical restore entry point.
 - VM modifications are handled directly by the agent when needed.
 - Build processes are handed over to the user. Do not start long Android builds on the VM unless the user explicitly asks the agent to run that build.
 - When a build is needed, provide the exact VM-side commands for the user to run, then wait for the user to report the result.
-- Keep `waterlily-i001d-reconstruction/progress.md` updated as reconstruction, VM edits, blockers, and build handoffs change.
+- Prefer updating the restore ledger in
+  `waterlily-i001d-reconstruction/HOW_TO_RECONSTRUCT_CURRENT_VM.md` or the
+  GitHub-backed clean restore repo over reviving old progress logs.
 - The current VM target is `/home/premanandal1978/android/waterlily` on instance `instance-20260710-230647`.
 
 ## graphify

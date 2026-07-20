@@ -1,9 +1,0 @@
-android_test {
-    name: "ProdXP0IntegrationTests",
-    srcs: ["src/**/*.kt"],
-    static_libs: [
-        "prodx-contract-runtime",
-        "prodx-test-fixtures",
-    ],
-    platform_apis: true,
-}

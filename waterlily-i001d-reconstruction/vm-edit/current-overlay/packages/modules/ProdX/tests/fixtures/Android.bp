@@ -1,6 +1,0 @@
-java_library {
-    name: "prodx-test-fixtures",
-    srcs: ["src/**/*.kt"],
-    static_libs: ["prodx-contract-runtime"],
-    platform_apis: true,
-}

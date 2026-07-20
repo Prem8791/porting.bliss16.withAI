@@ -1,7 +1,21 @@
-# Bliss Android 16 Waterlily I001D + ProdX
+# Waterlily I001D Porting Workspace
 
-This repository is the durable engineering handoff for the ASUS I001D Bliss Android 16 reconstruction and the ProdX Runtime foundation work.
+This local workspace holds restore notes, audit artifacts, and helper material
+for the ASUS I001D / Waterlily Bliss Android 16 reconstruction.
 
-Start with [`TAKEOVER.md`](TAKEOVER.md). It identifies the VM, authoritative source locations, current milestone, immutable references, exact snapshot evidence, validation state, and safe next action.
+For any fresh VM reconstruction, start here:
 
-The Android checkout itself is not duplicated here. It is reproducible from the pinned Repo manifest and current patch under `waterlily-i001d-reconstruction/handoff/vm-current/`. The complete ProdX module tree is mirrored under `waterlily-i001d-reconstruction/vm-edit/packages-modules-ProdX/`.
+```text
+waterlily-i001d-reconstruction/HOW_TO_RECONSTRUCT_CURRENT_VM.md
+```
+
+That file is marked **NEVER DELETE** and is the canonical restore entry point.
+
+The GitHub-backed restore ledger is:
+
+```text
+https://github.com/Prem8791/waterlily-i001d-reconstruction
+```
+
+The old ProdX-era takeover notes were intentionally removed from this local
+workspace because Frankenstein Bridge is now the active OS bridge direction.

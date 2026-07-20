@@ -1,7 +1,0 @@
-type prodx_registry_file, file_type, data_file_type;
-type prodx_authorization_file, file_type, data_file_type;
-type prodx_audit_de_file, file_type, data_file_type;
-type prodx_audit_ce_file, file_type, data_file_type;
-type prodx_broker_checkpoint_file, file_type, data_file_type;
-type prodx_observation_queue_file, file_type, data_file_type;
-type prodx_extension_cache_file, file_type, data_file_type;

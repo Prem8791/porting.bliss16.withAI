@@ -1,6 +1,0 @@
-android_test {
-    name: "ProdXUnitTests",
-    srcs: ["src/**/*.kt"],
-    static_libs: ["prodx-contract-runtime"],
-    sdk_version: "system_current",
-}
